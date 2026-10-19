@@ -32,20 +32,33 @@ Style Settings also provides Kanso layout controls (readable width, radius, edit
 
 ## Task checkboxes
 
-Checkbox shape is Rounded by default (Square and Circle are also available, see above), and a handful of alternate checkbox markers get their own color and glyph in Kanso's own palette:
+Checkbox shape is Rounded by default (Square and Circle are also available, see above), and a handful of alternate checkbox markers get their own color and glyph in Kanso's own palette. Every glyph is drawn at the same bold stroke weight as Obsidian's own checkmark, so the set reads as one family instead of thin font characters:
 
 | Marker | Meaning | Style |
 | --- | --- | --- |
 | `[ ]` | To-do | Outlined |
 | `[x]` | Done | Filled green, muted text (no strikethrough) |
-| `[-]` | Cancelled | Outlined muted, minus, strikethrough text |
-| `[>]` | Forwarded | Filled blue, arrow |
-| `[<]` | Scheduled | Filled violet, arrow |
-| `[!]` | Important | Filled red, exclamation mark |
-| `[?]` | Question | Filled yellow, question mark |
+| `[-]` | Cancelled | Outlined muted, bold X, strikethrough text |
+| `[>]` | Forwarded | Filled blue, bold arrow |
+| `[<]` | Scheduled | Filled violet, bold arrow |
+| `[!]` | Important | Filled red, bold exclamation mark |
+| `[?]` | Question | Filled yellow, bold question mark |
 | `[/]` | In progress | Half-filled aqua |
 
 The idea of styling alternate checkbox markers was inspired by [colineckert/obsidian-things](https://github.com/colineckert/obsidian-things) (MIT licensed), which documents the technique as originating from kepano's [Minimal theme](https://minimal.guide/Block+types/Checklists#Checkbox+styling). Kanso's selectors, icons, and colors are an independent implementation in Kanso's own palette.
+
+## Tasks plugin
+
+Kanso styles the metadata the [Tasks](https://github.com/obsidian-tasks-group/obsidian-tasks) community plugin adds to rendered tasks in Reading view and query results, using its documented [styling classes and data attributes](https://publish.obsidian.md/tasks/Advanced/Styling):
+
+- **Priority** (`task-priority`): highest/high in red, medium in yellow, low/lowest in blue, normal muted.
+- **Due date** (`task-due`): red and bold when overdue, orange and bold when due today, muted otherwise.
+- **Scheduled / start** dates: orange when in the past, muted otherwise.
+- **Created / done / cancelled** dates: muted, so they recede behind the task text.
+- **Urgency score** (`tasks-urgency`): a small muted pill.
+- **Tags** (`a.tag`): Kanso's aqua accent.
+
+No Tasks-specific markup is required; these rules key off the plugin's own classes and only apply when the plugin is installed and enabled.
 
 ## License
 
