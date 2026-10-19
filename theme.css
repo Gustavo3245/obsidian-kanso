@@ -698,10 +698,6 @@ li[data-task="?"] > p > input:checked::after {
   background: var(--background-modifier-border);
 }
 
-a.tag[data-tag-name] {
-  color: var(--kanso-aqua);
-}
-
 .tasks-backlink,
 .tasks-edit,
 .tasks-postpone {

@@ -56,7 +56,6 @@ Kanso styles the metadata the [Tasks](https://github.com/obsidian-tasks-group/ob
 - **Scheduled / start** dates: orange when in the past, muted otherwise.
 - **Created / done / cancelled** dates: muted, so they recede behind the task text.
 - **Urgency score** (`tasks-urgency`): a small muted pill.
-- **Tags** (`a.tag`): Kanso's aqua accent.
 
 No Tasks-specific markup is required; these rules key off the plugin's own classes and only apply when the plugin is installed and enabled.
 
