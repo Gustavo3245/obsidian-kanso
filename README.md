@@ -28,6 +28,8 @@ The selected variant overrides Obsidian's base color scheme:
 
 Style Settings also provides Kanso layout controls (readable width, radius, editor font size) and a **Checkbox shape** option (Square, Rounded, Circle). Without the Style Settings plugin installed, checkboxes default to Rounded.
 
+![Checkbox shapes: Square, Rounded, Circle](assets/checkbox-shapes.png)
+
 ## Task checkboxes
 
 Checkbox shape is Rounded by default (Square and Circle are also available, see above), and a handful of alternate checkbox markers get their own color and glyph in Kanso's own palette:

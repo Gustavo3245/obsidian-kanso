@@ -470,7 +470,7 @@ blockquote,
    alternate task markers; icons, colors, and the fill technique below are
    an original Kanso implementation). */
 
-ul > li.task-list-item[data-task="-"],
+li.task-list-item[data-task="-"],
 .markdown-source-view.mod-cm6 .HyperMD-task-line[data-task="-"] {
   --checklist-done-decoration: line-through;
   --checklist-done-color: var(--kanso-muted);
