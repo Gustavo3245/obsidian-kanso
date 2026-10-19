@@ -36,11 +36,11 @@ Checkboxes are round, and a handful of alternate checkbox markers get their own 
 | --- | --- | --- |
 | `[ ]` | To-do | Outlined, round |
 | `[x]` | Done | Filled green, muted text (no strikethrough) |
-| `[-]` | Cancelled | Outlined muted, strikethrough text |
+| `[-]` | Cancelled | Outlined muted, minus, strikethrough text |
 | `[>]` | Forwarded | Filled blue, arrow |
 | `[<]` | Scheduled | Filled violet, arrow |
-| `[!]` | Important | Filled red |
-| `[?]` | Question | Filled yellow |
+| `[!]` | Important | Filled red, exclamation mark |
+| `[?]` | Question | Filled yellow, question mark |
 | `[/]` | In progress | Half-filled aqua |
 
 The idea of styling alternate checkbox markers was inspired by [colineckert/obsidian-things](https://github.com/colineckert/obsidian-things) (MIT licensed), which documents the technique as originating from kepano's [Minimal theme](https://minimal.guide/Block+types/Checklists#Checkbox+styling). Kanso's selectors, icons, and colors are an independent implementation in Kanso's own palette.
