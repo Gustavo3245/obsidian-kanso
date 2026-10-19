@@ -484,42 +484,60 @@ li[data-task="/"] > p > input:checked {
 
 input[data-task="-"]:checked,
 li[data-task="-"] > input:checked,
-li[data-task="-"] > p > input:checked {
+li[data-task="-"] > p > input:checked,
+input[data-task="-"]:checked:hover,
+li[data-task="-"] > input:checked:hover,
+li[data-task="-"] > p > input:checked:hover {
   background-color: transparent;
   border-color: var(--kanso-muted);
 }
 
 input[data-task=">"]:checked,
 li[data-task=">"] > input:checked,
-li[data-task=">"] > p > input:checked {
+li[data-task=">"] > p > input:checked,
+input[data-task=">"]:checked:hover,
+li[data-task=">"] > input:checked:hover,
+li[data-task=">"] > p > input:checked:hover {
   background-color: var(--kanso-blue);
   border-color: var(--kanso-blue);
 }
 
 input[data-task="<"]:checked,
 li[data-task="<"] > input:checked,
-li[data-task="<"] > p > input:checked {
+li[data-task="<"] > p > input:checked,
+input[data-task="<"]:checked:hover,
+li[data-task="<"] > input:checked:hover,
+li[data-task="<"] > p > input:checked:hover {
   background-color: var(--kanso-violet);
   border-color: var(--kanso-violet);
 }
 
 input[data-task="!"]:checked,
 li[data-task="!"] > input:checked,
-li[data-task="!"] > p > input:checked {
+li[data-task="!"] > p > input:checked,
+input[data-task="!"]:checked:hover,
+li[data-task="!"] > input:checked:hover,
+li[data-task="!"] > p > input:checked:hover {
   background-color: var(--kanso-red);
   border-color: var(--kanso-red);
 }
 
 input[data-task="?"]:checked,
 li[data-task="?"] > input:checked,
-li[data-task="?"] > p > input:checked {
+li[data-task="?"] > p > input:checked,
+input[data-task="?"]:checked:hover,
+li[data-task="?"] > input:checked:hover,
+li[data-task="?"] > p > input:checked:hover {
   background-color: var(--kanso-yellow);
   border-color: var(--kanso-yellow);
 }
 
 input[data-task="/"]:checked,
 li[data-task="/"] > input:checked,
-li[data-task="/"] > p > input:checked {
+li[data-task="/"] > p > input:checked,
+input[data-task="/"]:checked:hover,
+li[data-task="/"] > input:checked:hover,
+li[data-task="/"] > p > input:checked:hover {
   background-color: transparent;
   background-image: conic-gradient(var(--kanso-aqua) 0 50%, transparent 50% 100%);
   border-color: var(--kanso-aqua);
