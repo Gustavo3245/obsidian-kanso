@@ -27,3 +27,24 @@ The selected variant overrides Obsidian's base color scheme:
 - Kanso Zen, Kanso Ink, and Kanso Mist always use dark palettes.
 
 Style Settings also provides Kanso layout controls (readable width, radius, editor font size).
+
+## Task checkboxes
+
+Checkboxes are round, and a handful of alternate checkbox markers get their own color and glyph in Kanso's own palette:
+
+| Marker | Meaning | Style |
+| --- | --- | --- |
+| `[ ]` | To-do | Outlined, round |
+| `[x]` | Done | Filled green, muted text (no strikethrough) |
+| `[-]` | Cancelled | Outlined muted, strikethrough text |
+| `[>]` | Forwarded | Filled blue, arrow |
+| `[<]` | Scheduled | Filled violet, arrow |
+| `[!]` | Important | Filled red |
+| `[?]` | Question | Filled yellow |
+| `[/]` | In progress | Half-filled aqua |
+
+The idea of styling alternate checkbox markers was inspired by [colineckert/obsidian-things](https://github.com/colineckert/obsidian-things) (MIT licensed), which documents the technique as originating from kepano's [Minimal theme](https://minimal.guide/Block+types/Checklists#Checkbox+styling). Kanso's selectors, icons, and colors are an independent implementation in Kanso's own palette.
+
+## License
+
+[MIT](LICENSE)
