@@ -543,6 +543,11 @@ li[data-task="?"] > p > input:checked::after {
   content: "";
   position: absolute;
   inset: 0;
+  width: auto;
+  height: auto;
+  -webkit-mask-image: none;
+  mask-image: none;
+  background-color: transparent;
   display: flex;
   align-items: center;
   justify-content: center;
