@@ -50,6 +50,22 @@ settings:
     max: 22
     step: 1
     format: px
+  -
+    id: kanso-checkbox-radius
+    title: Checkbox shape
+    description: Choose the shape of task checkboxes.
+    type: variable-select
+    default: 30%
+    options:
+      -
+        label: Square
+        value: 0%
+      -
+        label: Rounded
+        value: 30%
+      -
+        label: Circle
+        value: 50%
 */
 
 .theme-dark,
@@ -290,7 +306,8 @@ body {
   --checkbox-border-color: var(--kanso-muted);
   --checkbox-border-color-hover: var(--kanso-green);
   --checkbox-marker-color: var(--kanso-bg0);
-  --checkbox-radius: 50%;
+  --kanso-checkbox-radius: 30%;
+  --checkbox-radius: var(--kanso-checkbox-radius);
   --checklist-done-decoration: none;
   --checklist-done-color: var(--kanso-muted-2);
 
@@ -448,17 +465,15 @@ blockquote,
   color: var(--kanso-yellow);
 }
 
-/* Round task checkboxes and alternate checkbox states (markers inspired by
-   the Things community theme's alternate task markers; icons, colors, and
-   the fill technique below are an original Kanso implementation). */
+/* Task checkboxes (shape configurable via Style Settings) and alternate
+   checkbox states (markers inspired by the Things community theme's
+   alternate task markers; icons, colors, and the fill technique below are
+   an original Kanso implementation). */
 
 li[data-task="-"].task-list-item,
 .HyperMD-task-line[data-task="-"] {
   --checklist-done-decoration: line-through;
   --checklist-done-color: var(--kanso-muted);
-  text-decoration: line-through;
-  text-decoration-color: var(--kanso-muted);
-  color: var(--kanso-muted);
 }
 
 input[data-task="-"]:checked,
@@ -582,6 +597,16 @@ li[data-task="-"] > input:checked::after,
 li[data-task="-"] > p > input:checked::after {
   content: "\2212";
   color: var(--kanso-muted);
+}
+
+input[data-task=">"]:checked::after,
+li[data-task=">"] > input:checked::after,
+li[data-task=">"] > p > input:checked::after,
+input[data-task="<"]:checked::after,
+li[data-task="<"] > input:checked::after,
+li[data-task="<"] > p > input:checked::after {
+  font-size: 0.95em;
+  font-weight: 800;
 }
 
 input[data-task=">"]:checked::after,

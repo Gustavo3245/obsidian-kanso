@@ -26,15 +26,15 @@ The selected variant overrides Obsidian's base color scheme:
 - Kanso Pearl always uses the light palette.
 - Kanso Zen, Kanso Ink, and Kanso Mist always use dark palettes.
 
-Style Settings also provides Kanso layout controls (readable width, radius, editor font size).
+Style Settings also provides Kanso layout controls (readable width, radius, editor font size) and a **Checkbox shape** option (Square, Rounded, Circle). Without the Style Settings plugin installed, checkboxes default to Rounded.
 
 ## Task checkboxes
 
-Checkboxes are round, and a handful of alternate checkbox markers get their own color and glyph in Kanso's own palette:
+Checkbox shape is Rounded by default (Square and Circle are also available, see above), and a handful of alternate checkbox markers get their own color and glyph in Kanso's own palette:
 
 | Marker | Meaning | Style |
 | --- | --- | --- |
-| `[ ]` | To-do | Outlined, round |
+| `[ ]` | To-do | Outlined |
 | `[x]` | Done | Filled green, muted text (no strikethrough) |
 | `[-]` | Cancelled | Outlined muted, minus, strikethrough text |
 | `[>]` | Forwarded | Filled blue, arrow |
