@@ -51,11 +51,9 @@ The idea of styling alternate checkbox markers was inspired by [colineckert/obsi
 
 Kanso styles the metadata the [Tasks](https://github.com/obsidian-tasks-group/obsidian-tasks) community plugin adds to rendered tasks in Reading view and query results, using its documented [styling classes and data attributes](https://publish.obsidian.md/tasks/Advanced/Styling):
 
-- **Priority** (`task-priority`): highest/high in red, medium in yellow, low/lowest in blue, normal muted.
 - **Due date** (`task-due`): red and bold when overdue, orange and bold when due today, muted otherwise.
 - **Scheduled / start** dates: orange when in the past, muted otherwise.
 - **Created / done / cancelled** dates: muted, so they recede behind the task text.
-- **Urgency score** (`tasks-urgency`): a small muted pill.
 
 No Tasks-specific markup is required; these rules key off the plugin's own classes and only apply when the plugin is installed and enabled.
 

@@ -640,32 +640,14 @@ li[data-task="?"] > p > input:checked::after {
    and wraps each metadata component in its own span; see its styling docs:
    https://publish.obsidian.md/tasks/Advanced/Styling */
 
-.task-priority,
 .task-due,
 .task-scheduled,
 .task-start,
 .task-created,
 .task-done,
-.task-cancelled,
-.tasks-urgency {
+.task-cancelled {
   font-size: 0.85em;
-  border-radius: var(--radius-s);
   padding: 0.05em 0.4em;
-}
-
-.task-priority[data-task-priority="highest"],
-.task-priority[data-task-priority="high"] {
-  color: var(--kanso-red);
-}
-.task-priority[data-task-priority="medium"] {
-  color: var(--kanso-yellow);
-}
-.task-priority[data-task-priority="low"],
-.task-priority[data-task-priority="lowest"] {
-  color: var(--kanso-blue);
-}
-.task-priority[data-task-priority="normal"] {
-  color: var(--kanso-muted-2);
 }
 
 .task-due,
@@ -690,16 +672,5 @@ li[data-task="?"] > p > input:checked::after {
 
 .task-done,
 .task-cancelled {
-  color: var(--kanso-muted);
-}
-
-.tasks-urgency {
-  color: var(--kanso-muted);
-  background: var(--background-modifier-border);
-}
-
-.tasks-backlink,
-.tasks-edit,
-.tasks-postpone {
   color: var(--kanso-muted);
 }
