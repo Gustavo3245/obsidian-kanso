@@ -44,6 +44,8 @@ Kanso works without any plugins. With the Style Settings plugin installed, the *
 
 Choosing a variant sets the color scheme: Pearl is always light, and Zen, Ink, Mist, and Void are always dark. Void sets the editor background to true black and raises the other surfaces just enough to stay distinguishable, for OLED screens, while keeping the same hue relationships as the other dark variants. The body, heading, and monospace font settings default to whatever you've chosen in **Settings → Appearance → Font**; picking anything other than Default here switches to that font instead.
 
+**Readable line width** sets how wide a line gets, not whether the width is capped at all. Whether it's capped is Obsidian's own **Settings → Editor → Readable line length** toggle (also available as the **Toggle readable line length** command, so you can bind it to a hotkey). Turn that off and notes use the full pane width regardless of this setting; turn it on and notes are capped at the width you choose here, in both Reading view and Live Preview.
+
 Turning on **Custom accent color** replaces the active variant's accent (links, the active nav item, focus rings, and interactive highlights) with your chosen color, without changing anything else about the variant. Leave it off to keep each variant's own accent.
 
 ![Checkbox shapes: Square, Rounded, Circle](assets/checkbox-shapes.png)
