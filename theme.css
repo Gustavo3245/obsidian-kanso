@@ -480,7 +480,7 @@ li.task-list-item[data-task="-"] {
 /* Live Preview renders the list number (ordered lists) and the task text
    as separate sibling spans on the same line; decorate only the text span
    so the strikethrough never crosses the list number. */
-.markdown-source-view.mod-cm6 .HyperMD-task-line[data-task="-"] .cm-list-1:not(.cm-formatting-list) {
+.markdown-source-view.mod-cm6 .HyperMD-task-line[data-task="-"] :is(.cm-list-1, .cm-list-2, .cm-list-3):not(.cm-formatting-list) {
   text-decoration: line-through;
   color: var(--kanso-muted);
 }
