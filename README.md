@@ -10,6 +10,7 @@ A calm, minimal Obsidian theme ported from [kanso.nvim](https://github.com/webho
 - Code blocks colored like kanso.nvim
 - Things-inspired task checkboxes, with eight styled markers and a choice of square, rounded, or circle
 - Styling for the [Tasks](https://github.com/obsidian-tasks-group/obsidian-tasks) plugin's due, scheduled, and start dates
+- Active line highlight while editing, like kanso.nvim's cursorline
 - Focus mode, which hides the title bar, status bar, and ribbon for distraction-free writing
 - Optional custom accent color, overriding a variant's accent without swapping variants
 - Optional code block line numbers, like Neovim's gutter
@@ -33,6 +34,7 @@ Kanso works without any plugins. With the Style Settings plugin installed, the *
 | Readable line width | Width in pixels | 760px |
 | Radius | Size in pixels | 8px |
 | Editor font size | Size in pixels | 16px |
+| Disable active line highlight | On, Off | Off |
 | Focus mode | On, Off | Off |
 | Custom accent color | Off, or a color picker | Off |
 | Code block line numbers | On, Off | Off |
@@ -62,6 +64,10 @@ Turning on **Custom accent color** replaces the active variant's accent (links, 
 ## Tasks plugin
 
 If the Tasks plugin is installed, Kanso colors its dates. Due dates are red when overdue and orange when due today. Scheduled and start dates are orange once they have passed. Created, done, and cancelled dates are muted. You don't need any extra markup.
+
+## Active line highlight
+
+Kanso highlights the line your cursor is on while editing, matching the cursorline kanso.nvim shows by default. It only appears in edit mode, while the editor pane is focused, and uses a translucent fill so it stays subtle under text selections. With the Style Settings plugin installed, turn on **Disable active line highlight** to remove it.
 
 ## Focus mode
 
