@@ -477,14 +477,6 @@ li.task-list-item[data-task="-"] {
   color: var(--checklist-done-color);
 }
 
-li.task-list-item[data-task="-"] > ul,
-li.task-list-item[data-task="-"] > ol {
-  --checklist-done-decoration: none;
-  --checklist-done-color: var(--kanso-muted-2);
-  text-decoration: none;
-  color: var(--text-normal);
-}
-
 /* Live Preview renders the list number (ordered lists) and the task text
    as separate sibling spans on the same line; decorate only the text span
    so the strikethrough never crosses the list number. */
