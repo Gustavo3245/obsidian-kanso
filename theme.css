@@ -145,6 +145,12 @@ settings:
     description: Show line numbers in the gutter of code blocks in Live Preview, like Neovim.
     type: class-toggle
     default: false
+  -
+    id: kanso-no-active-line
+    title: Disable active line highlight
+    description: Turn off the subtle highlight on the line your cursor is on while editing.
+    type: class-toggle
+    default: false
 */
 
 .theme-dark,
@@ -529,6 +535,19 @@ a.tag {
 .cm-s-obsidian .cm-inline-code,
 .cm-s-obsidian .HyperMD-codeblock {
   font-family: var(--kanso-font-mono);
+}
+
+.cm-editor.cm-focused .cm-line.cm-active,
+.cm-editor.cm-focused .cm-gutterElement.cm-active {
+  background-image: linear-gradient(
+    color-mix(in srgb, var(--kanso-bg2) 55%, transparent),
+    color-mix(in srgb, var(--kanso-bg2) 55%, transparent)
+  );
+}
+
+.kanso-no-active-line .cm-editor.cm-focused .cm-line.cm-active,
+.kanso-no-active-line .cm-editor.cm-focused .cm-gutterElement.cm-active {
+  background-image: none;
 }
 
 blockquote,
