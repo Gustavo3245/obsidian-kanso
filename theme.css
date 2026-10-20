@@ -279,14 +279,14 @@ body {
   --link-decoration: none;
   --link-decoration-hover: underline;
 
-  --code-normal: var(--kanso-fg2);
+  --code-normal: var(--kanso-fg);
   --code-background: var(--kanso-bg1);
   --code-comment: var(--kanso-muted);
   --code-function: var(--kanso-blue-soft);
   --code-important: var(--kanso-orange);
   --code-keyword: var(--kanso-violet-soft);
-  --code-operator: var(--kanso-muted-2);
-  --code-property: var(--kanso-aqua);
+  --code-operator: var(--kanso-yellow-soft);
+  --code-property: var(--kanso-fg);
   --code-punctuation: var(--kanso-muted-2);
   --code-string: var(--kanso-green-soft);
   --code-tag: var(--kanso-red-soft);
