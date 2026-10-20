@@ -619,9 +619,10 @@ blockquote,
 }
 
 /* Task checkboxes (shape configurable via Style Settings) and alternate
-   checkbox states (markers inspired by the Things community theme's
-   alternate task markers; icons, colors, and the fill technique below are
-   an original Kanso implementation). */
+   checkbox states (the choice of alternate markers, and a paper airplane
+   for forwarded, is inspired by the Things community theme; the icons
+   themselves are Lucide's, see THIRD_PARTY_LICENSES.md; the colors and the
+   half-fill technique below are an original Kanso implementation). */
 
 li.task-list-item[data-task="-"] {
   --checklist-done-decoration: line-through;
@@ -632,12 +633,26 @@ li.task-list-item[data-task="-"] {
 
 /* Live Preview renders the list number (ordered lists) and the task text
    as separate sibling spans on the same line; decorate only the text span
-   so the strikethrough never crosses the list number. */
+   so the strikethrough never crosses the list number. That span's text also
+   starts with the single literal space CodeMirror keeps between the checkbox
+   and the task text (for caret placement), so a plain text-decoration would
+   strike that leading gap too, and leaves a stray mark when the task has no
+   text at all. Paint the strike as a background line anchored to the span's
+   right edge and shrunk by one leading space's width instead, so it starts
+   at the task text and disappears entirely once the span holds only that
+   leading space. */
 .markdown-source-view.mod-cm6 .HyperMD-task-line[data-task="-"] :is(.cm-list-1, .cm-list-2, .cm-list-3):not(.cm-formatting-list) {
-  text-decoration: line-through;
+  text-decoration: none;
   color: var(--kanso-muted);
+  background-image: linear-gradient(currentcolor, currentcolor);
+  background-repeat: no-repeat;
+  background-position: right center;
+  background-size: calc(100% - 1.15ch) 1.5px;
 }
 
+input[data-task="x"]:checked,
+li[data-task="x"] > input:checked,
+li[data-task="x"] > p > input:checked,
 input[data-task="-"]:checked,
 li[data-task="-"] > input:checked,
 li[data-task="-"] > p > input:checked,
@@ -722,6 +737,9 @@ li[data-task="/"] > p > input:checked:hover {
   border-color: var(--kanso-aqua);
 }
 
+input[data-task="x"]:checked::after,
+li[data-task="x"] > input:checked::after,
+li[data-task="x"] > p > input:checked::after,
 input[data-task="-"]:checked::after,
 li[data-task="-"] > input:checked::after,
 li[data-task="-"] > p > input:checked::after,
@@ -743,56 +761,89 @@ li[data-task="?"] > p > input:checked::after {
   inset-inline-start: -1px;
   width: var(--checkbox-size, 18px);
   height: var(--checkbox-size, 18px);
-  -webkit-mask-position: 52% 52%;
-  -webkit-mask-size: 65%;
+  -webkit-mask-position: 50% 50%;
+  -webkit-mask-size: 75%;
   -webkit-mask-repeat: no-repeat;
-  mask-position: 52% 52%;
-  mask-size: 65%;
+  mask-position: 50% 50%;
+  mask-size: 75%;
   mask-repeat: no-repeat;
   pointer-events: none;
 }
 
-/* Alternate marker glyphs, drawn at the same bold stroke weight as
-   Obsidian's own checkmark glyph so the whole set reads as one family. */
+/* Alternate marker glyphs: exact Lucide (https://lucide.dev, ISC licence)
+   icon paths, unmodified, each drawn on Lucide's native 24x24 viewBox at
+   the same stroke width so the whole set reads as one family. Lucide
+   draws its icons bounding-box-centered on that viewBox's (12,12) middle
+   already, so the shared 50% 50% mask-position above is enough to keep
+   every glyph optically centered in the box, with no per-glyph position
+   offsets - verified by sampling each glyph's rendered pixel bounds (see
+   the PR description). */
 
+/* Done: Lucide "check". */
+input[data-task="x"]:checked::after,
+li[data-task="x"] > input:checked::after,
+li[data-task="x"] > p > input:checked::after {
+  background-color: var(--kanso-bg0);
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E");
+}
+
+/* Cancelled: Lucide "x". */
 input[data-task="-"]:checked::after,
 li[data-task="-"] > input:checked::after,
 li[data-task="-"] > p > input:checked::after {
   background-color: var(--kanso-bg0);
-  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M4.3 4.3L11.7 11.7M11.7 4.3L4.3 11.7' stroke='black' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E");
-  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M4.3 4.3L11.7 11.7M11.7 4.3L4.3 11.7' stroke='black' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E");
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M18 6 6 18'/%3E%3Cpath d='m6 6 12 12'/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M18 6 6 18'/%3E%3Cpath d='m6 6 12 12'/%3E%3C/svg%3E");
 }
 
+/* Forwarded: Lucide "send" (idea of a paper airplane for forwarded also
+   comes from the Things community theme, already credited in the README;
+   the icon itself is Lucide's). Drawn on a slightly expanded viewBox
+   (and stroke-width scaled up to compensate) so it reads at the same
+   apparent size as check/x instead of noticeably larger, since send's
+   path already reaches close to the edges of Lucide's native 24x24. */
 input[data-task=">"]:checked::after,
 li[data-task=">"] > input:checked::after,
 li[data-task=">"] > p > input:checked::after {
   background-color: var(--kanso-bg0);
-  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3 8H12M8 4L12 8L8 12' stroke='black' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E");
-  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3 8H12M8 4L12 8L8 12' stroke='black' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E");
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-3 -3 30 30' fill='none' stroke='black' stroke-width='3.1' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z'/%3E%3Cpath d='m21.854 2.147-10.94 10.939'/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-3 -3 30 30' fill='none' stroke='black' stroke-width='3.1' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z'/%3E%3Cpath d='m21.854 2.147-10.94 10.939'/%3E%3C/svg%3E");
 }
 
+/* Scheduled: Lucide "timer" (a stopwatch). Same expanded-viewBox treatment
+   as send above, to match the check/x apparent size. */
 input[data-task="<"]:checked::after,
 li[data-task="<"] > input:checked::after,
 li[data-task="<"] > p > input:checked::after {
   background-color: var(--kanso-bg0);
-  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M13 8H4M8 4L4 8L8 12' stroke='black' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E");
-  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M13 8H4M8 4L4 8L8 12' stroke='black' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E");
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-3 -3 30 30' fill='none' stroke='black' stroke-width='3.1' stroke-linecap='round' stroke-linejoin='round'%3E%3Cline x1='10' x2='14' y1='2' y2='2'/%3E%3Cline x1='12' x2='15' y1='14' y2='11'/%3E%3Ccircle cx='12' cy='14' r='8'/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-3 -3 30 30' fill='none' stroke='black' stroke-width='3.1' stroke-linecap='round' stroke-linejoin='round'%3E%3Cline x1='10' x2='14' y1='2' y2='2'/%3E%3Cline x1='12' x2='15' y1='14' y2='11'/%3E%3Ccircle cx='12' cy='14' r='8'/%3E%3C/svg%3E");
 }
 
+/* Important: the stem-and-dot from Lucide's "circle-alert", without its
+   outer circle (Kanso's own checkbox box already is the circle/container).
+   Lucide draws that stem-and-dot small, sized to sit inside the icon's own
+   circle outline; with the circle dropped, cropping the viewBox tightly
+   around just the stem and dot (and scaling stroke-width down to match)
+   zooms in on it so it reads at the same visual size and weight as the
+   check/x glyphs above, which use their full 24x24 viewBox. */
 input[data-task="!"]:checked::after,
 li[data-task="!"] > input:checked::after,
 li[data-task="!"] > p > input:checked::after {
   background-color: var(--kanso-bg0);
-  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M8 3V9.5' stroke='black' stroke-width='2.6' stroke-linecap='round'/%3E%3Ccircle cx='8' cy='12.5' r='1.3' fill='black'/%3E%3C/svg%3E");
-  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M8 3V9.5' stroke='black' stroke-width='2.6' stroke-linecap='round'/%3E%3Ccircle cx='8' cy='12.5' r='1.3' fill='black'/%3E%3C/svg%3E");
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='4 4 16 16' fill='none' stroke='black' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'%3E%3Cline x1='12' x2='12' y1='8' y2='12'/%3E%3Cline x1='12' x2='12.01' y1='16' y2='16'/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='4 4 16 16' fill='none' stroke='black' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'%3E%3Cline x1='12' x2='12' y1='8' y2='12'/%3E%3Cline x1='12' x2='12.01' y1='16' y2='16'/%3E%3C/svg%3E");
 }
 
+/* Question: the curve-and-dot from Lucide's "circle-question-mark", same
+   cropped-viewBox reasoning as important above. */
 input[data-task="?"]:checked::after,
 li[data-task="?"] > input:checked::after,
 li[data-task="?"] > p > input:checked::after {
   background-color: var(--kanso-bg0);
-  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M5.6 5.6C5.6 3.3 6.9 2.2 8.3 2.3C9.8 2.4 11 3.6 10.7 5.1C10.4 6.4 8.9 6.7 8.3 7.8C8 8.3 8 8.8 8 9.3' stroke='black' stroke-width='2.1' stroke-linecap='round' fill='none'/%3E%3Ccircle cx='8' cy='12.4' r='1.3' fill='black'/%3E%3C/svg%3E");
-  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M5.6 5.6C5.6 3.3 6.9 2.2 8.3 2.3C9.8 2.4 11 3.6 10.7 5.1C10.4 6.4 8.9 6.7 8.3 7.8C8 8.3 8 8.8 8 9.3' stroke='black' stroke-width='2.1' stroke-linecap='round' fill='none'/%3E%3Ccircle cx='8' cy='12.4' r='1.3' fill='black'/%3E%3C/svg%3E");
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='5.5 4.5 13 15' fill='none' stroke='black' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3'/%3E%3Cline x1='12' x2='12.01' y1='17' y2='17'/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='5.5 4.5 13 15' fill='none' stroke='black' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3'/%3E%3Cline x1='12' x2='12.01' y1='17' y2='17'/%3E%3C/svg%3E");
 }
 
 /* Tasks plugin (obsidian-tasks-group/obsidian-tasks) metadata, Reading view
