@@ -1061,38 +1061,42 @@ div.kanban-plugin__lane-title-count.wip-exceeded {
    its own CSS variables, rewritten as an inline style on the `.excalidraw`
    container every time a drawing opens (most visibly with Excalidraw's own
    "Match Obsidian theme" setting, which samples a generic dark/light
-   palette rather than this theme's colors). Only `!important` can win
-   against that inline style, so it is used here, narrowly, for this
-   plugin's variables only. The canvas itself cannot be reached from CSS at
-   all: it is painted by Excalidraw onto a <canvas> element, and with
-   "Match Obsidian theme" on, Excalidraw substitutes its own fixed default
+   palette rather than this theme's colors). These variables inherit, so an
+   inline value on `.excalidraw` itself can be beaten without `!important`
+   by redeclaring them one level down, on `.excalidraw`'s own direct
+   children (the top/bottom toolbar containers and the context-menu/eye
+   -dropper layers Excalidraw renders its islands and popups into): a normal
+   rule on a descendant always wins over a value the ancestor only has
+   inline. Verified live, with "Match Obsidian theme" on, that the toolbar
+   island, popups, and text still take Kanso's colors exactly as before in
+   both Zen and Pearl. The canvas itself cannot be reached from CSS at all:
+   it is painted by Excalidraw onto a <canvas> element, and with "Match
+   Obsidian theme" on, Excalidraw substitutes its own fixed default
    dark/light canvas color (verified live: the rendered pixel color matches
    neither the drawing's saved background nor any CSS custom property this
    theme or Excalidraw itself exposes). No-op without the plugin. */
 
-/* stylelint-disable declaration-no-important */
-.excalidraw.theme--dark {
-  --island-bg-color: var(--kanso-bg1) !important;
-  --popup-bg-color: var(--kanso-bg1) !important;
-  --popup-secondary-bg-color: var(--kanso-bg2) !important;
-  --text-primary-color: var(--kanso-fg) !important;
-  --popup-text-color: var(--kanso-fg) !important;
-  --icon-fill-color: var(--kanso-fg) !important;
-  --color-primary: var(--kanso-blue) !important;
-  --button-gray-1: var(--kanso-bg2) !important;
+.excalidraw.theme--dark > * {
+  --island-bg-color: var(--kanso-bg1);
+  --popup-bg-color: var(--kanso-bg1);
+  --popup-secondary-bg-color: var(--kanso-bg2);
+  --text-primary-color: var(--kanso-fg);
+  --popup-text-color: var(--kanso-fg);
+  --icon-fill-color: var(--kanso-fg);
+  --color-primary: var(--kanso-blue);
+  --button-gray-1: var(--kanso-bg2);
 }
 
-.excalidraw:not(.theme--dark) {
-  --island-bg-color: var(--kanso-bg0) !important;
-  --popup-bg-color: var(--kanso-bg0) !important;
-  --popup-secondary-bg-color: var(--kanso-bg1) !important;
-  --text-primary-color: var(--kanso-fg) !important;
-  --popup-text-color: var(--kanso-fg) !important;
-  --icon-fill-color: var(--kanso-fg) !important;
-  --color-primary: var(--kanso-blue) !important;
-  --button-gray-1: var(--kanso-bg1) !important;
+.excalidraw:not(.theme--dark) > * {
+  --island-bg-color: var(--kanso-bg0);
+  --popup-bg-color: var(--kanso-bg0);
+  --popup-secondary-bg-color: var(--kanso-bg1);
+  --text-primary-color: var(--kanso-fg);
+  --popup-text-color: var(--kanso-fg);
+  --icon-fill-color: var(--kanso-fg);
+  --color-primary: var(--kanso-blue);
+  --button-gray-1: var(--kanso-bg1);
 }
-/* stylelint-enable declaration-no-important */
 
 /* Calendar plugin (liamcain/obsidian-calendar-plugin): day, week-number,
    and title colors already follow Kanso, since the plugin's own --color-*
@@ -1114,19 +1118,21 @@ div.kanban-plugin__lane-title-count.wip-exceeded {
    An image can sit anywhere in the pane (flush against the sidebar, hugging
    the right edge, in a narrow pane), so scaling it in place from its own
    center can push it past the pane's edge, where the pane's own scrolling
-   overflow then clips it. Instead, while an image is held, its reading view
-   gets a no-op transform so it becomes the containing block the image's
-   `position: fixed` resolves against: this centers the image within the
-   pane specifically (not the window) and takes it out of the pane's own
-   scroll clipping, regardless of where in the pane the image started. The
-   max-width/max-height are the target on-screen size divided by the scale
-   factor, so after the transform scales it back up, the result lands at
-   that target size without exceeding it. The transform is scoped with
-   :has() to only the moment an image inside is actually held, so it never
-   changes how the pane behaves the rest of the time. */
+   overflow then clips it. Instead, the reading view (the non-scrolling
+   wrapper around the actual scrolling `.markdown-preview-view`, sized to
+   the visible pane rather than the full note) is always made the containing
+   block the image's `position: fixed` resolves against via `contain:
+   layout`: this centers a held image within the pane specifically (not the
+   window), regardless of where in the pane the image started or how far
+   the note is scrolled, and takes it out of the pane's own scroll clipping.
+   The max-width/max-height are the target on-screen size divided by the
+   scale factor, so after the transform scales it back up, the result lands
+   at that target size without exceeding it. Layout containment is a no-op
+   whenever nothing inside is actually being held, so it never changes how
+   the pane behaves the rest of the time. */
 
-body:not(.kanso-image-zoom-disabled) .markdown-reading-view:has(img:active) {
-  transform: translateZ(0);
+body:not(.kanso-image-zoom-disabled) .markdown-reading-view {
+  contain: layout;
 }
 
 body:not(.kanso-image-zoom-disabled)
