@@ -11,7 +11,6 @@ const requiredManifestFields = [
   "minAppVersion",
   "author",
   "authorUrl",
-  "description",
 ];
 
 const manifest = JSON.parse(readFileSync("manifest.json", "utf8"));
