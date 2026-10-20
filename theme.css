@@ -21,6 +21,9 @@ settings:
         label: Mist (dark)
         value: kanso-mist
       -
+        label: Void (dark)
+        value: kanso-void
+      -
         label: Pearl (light)
         value: kanso-pearl
   -
@@ -78,7 +81,8 @@ settings:
 .theme-dark.kanso-zen,
 .theme-light.kanso-zen,
 .theme-light.kanso-ink,
-.theme-light.kanso-mist {
+.theme-light.kanso-mist,
+.theme-light.kanso-void {
   --kanso-bg0: #090e13;
   --kanso-bg1: #1c1e25;
   --kanso-bg2: #22262d;
@@ -124,7 +128,15 @@ settings:
   --kanso-bg4: #717c7c;
 }
 
-.theme-light:not(.kanso-zen):not(.kanso-ink):not(.kanso-mist),
+.kanso-void {
+  --kanso-bg0: #000;
+  --kanso-bg1: #10131a;
+  --kanso-bg2: #181b22;
+  --kanso-bg3: #22262d;
+  --kanso-bg4: #393b44;
+}
+
+.theme-light:not(.kanso-zen):not(.kanso-ink):not(.kanso-mist):not(.kanso-void),
 .theme-light.kanso-pearl,
 .theme-dark.kanso-pearl {
   --kanso-bg0: #f2f1ef;
@@ -342,7 +354,8 @@ body {
 
 .theme-light.kanso-zen,
 .theme-light.kanso-ink,
-.theme-light.kanso-mist {
+.theme-light.kanso-mist,
+.theme-light.kanso-void {
   --accent-h: 195;
   --accent-s: 43%;
   --accent-l: 65%;
