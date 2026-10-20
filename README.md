@@ -18,6 +18,7 @@ A calm, minimal Obsidian theme ported from [kanso.nvim](https://github.com/webho
 - Image zoom: click and hold a rendered image in reading view to enlarge it
 - Larger checkbox and tag tap targets on mobile
 - Optional settings through [Style Settings](https://github.com/mgmeyers/obsidian-style-settings)
+- Folder icons in the file explorer, open or closed to match the folder's state
 
 ## Installation
 
@@ -43,6 +44,7 @@ Kanso works without any plugins. With the Style Settings plugin installed, the *
 | Heading font | Default, Sans-serif, Serif | Default (same as body) |
 | Monospace font | Default, System monospace, Classic monospace | Default (Obsidian's monospace font setting) |
 | Disable image zoom | On, Off | Off (zoom is on) |
+| Disable folder icons | On, Off | Off (icons are on) |
 
 Choosing a variant sets the color scheme: Pearl is always light, and Zen, Ink, Mist, and Void are always dark. Void sets the editor background to true black and raises the other surfaces just enough to stay distinguishable, for OLED screens, while keeping the same hue relationships as the other dark variants. The body, heading, and monospace font settings default to whatever you've chosen in **Settings → Appearance → Font**; picking anything other than Default here switches to that font instead.
 
