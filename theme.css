@@ -1026,3 +1026,20 @@ body:not(.kanso-image-zoom-disabled)
   transform: translate(-50%, -50%) scale(1.8);
   box-shadow: 0 4px 24px var(--background-modifier-box-shadow);
 }
+
+/* Mobile polish (always on, scoped to Obsidian's own .is-mobile class; desktop
+   is unchanged). Obsidian ties task-checkbox size to the editor font, which
+   makes them only ~18px square on a phone at Kanso's default font size, and
+   Kanso's own tightened tag padding (set above for desktop density) carries
+   over to mobile too, leaving both below a comfortable tap size. Obsidian's
+   own mobile toolbar and safe-area handling are already adequate (measured
+   directly in-app) and are left untouched. */
+
+.is-mobile {
+  --checkbox-size: calc(var(--font-preferred-size) * 1.6);
+}
+
+.is-mobile .cm-hashtag,
+.is-mobile a.tag {
+  padding-block: 0.45em;
+}
