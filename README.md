@@ -38,7 +38,7 @@ Checkbox shape is Rounded by default (Square and Circle are also available, see 
 | --- | --- | --- |
 | `[ ]` | To-do | Outlined |
 | `[x]` | Done | Filled green, muted text (no strikethrough) |
-| `[-]` | Cancelled | Outlined muted, bold X, strikethrough text |
+| `[-]` | Cancelled | Filled muted, bold X cut out, strikethrough text |
 | `[>]` | Forwarded | Filled blue, bold arrow |
 | `[<]` | Scheduled | Filled violet, bold arrow |
 | `[!]` | Important | Filled red, bold exclamation mark |
