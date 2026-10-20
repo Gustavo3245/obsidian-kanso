@@ -75,6 +75,22 @@ settings:
     description: Hide the title bar, status bar, and left ribbon for distraction-free writing. Hover near an edge to bring its bar back.
     type: class-toggle
     default: false
+  -
+    id: kanso-custom-accent
+    title: Custom accent color
+    description: Override the active variant's accent color. Off by default, so each variant keeps its own accent until you turn this on.
+    type: class-toggle
+  -
+    id: kanso-accent-color
+    title: Accent color
+    description: Used only while "Custom accent color" above is on.
+    type: variable-color
+    format: hex
+    default: '#7fb4ca'
+    alt-format:
+      -
+        id: kanso-accent-color-hsl
+        format: hsl-split
 */
 
 .theme-dark,
@@ -370,6 +386,25 @@ body {
   --accent-l: 45%;
   --background-modifier-box-shadow: rgba(34, 38, 45, 0.15);
   --text-on-accent: #f2f1ef;
+}
+
+.theme-dark.kanso-custom-accent,
+.theme-light.kanso-custom-accent {
+  --accent-h: var(--kanso-accent-color-hsl-h, 195);
+  --accent-s: var(--kanso-accent-color-hsl-s, 43%);
+  --accent-l: var(--kanso-accent-color-hsl-l, 65%);
+  --background-modifier-border-focus: var(--kanso-accent-color, #7fb4ca);
+  --text-accent: var(--kanso-accent-color, #7fb4ca);
+  --text-accent-hover: color-mix(in srgb, var(--kanso-accent-color, #7fb4ca) 80%, var(--kanso-fg2) 20%);
+  --interactive-accent: var(--kanso-accent-color, #7fb4ca);
+  --interactive-accent-hover: color-mix(in srgb, var(--kanso-accent-color, #7fb4ca) 80%, var(--kanso-fg2) 20%);
+  --color-accent: var(--kanso-accent-color, #7fb4ca);
+  --color-accent-1: var(--kanso-accent-color, #7fb4ca);
+  --color-accent-2: var(--kanso-accent-color, #7fb4ca);
+  --nav-item-color-active: var(--kanso-accent-color, #7fb4ca);
+  --nav-item-background-active: color-mix(in srgb, var(--kanso-accent-color, #7fb4ca) 14%, transparent);
+  --link-color: var(--kanso-accent-color, #7fb4ca);
+  --link-color-hover: color-mix(in srgb, var(--kanso-accent-color, #7fb4ca) 80%, var(--kanso-fg2) 20%);
 }
 
 .markdown-source-view,

@@ -11,6 +11,7 @@ A calm, minimal Obsidian theme ported from [kanso.nvim](https://github.com/webho
 - Things-inspired task checkboxes, with eight styled markers and a choice of square, rounded, or circle
 - Styling for the [Tasks](https://github.com/obsidian-tasks-group/obsidian-tasks) plugin's due, scheduled, and start dates
 - Focus mode, which hides the title bar, status bar, and ribbon for distraction-free writing
+- Optional custom accent color, overriding a variant's accent without swapping variants
 - Optional settings through [Style Settings](https://github.com/mgmeyers/obsidian-style-settings)
 
 ## Installation
@@ -31,8 +32,11 @@ Kanso works without any plugins. With the Style Settings plugin installed, the *
 | Radius | Size in pixels | 8px |
 | Editor font size | Size in pixels | 16px |
 | Focus mode | On, Off | Off |
+| Custom accent color | Off, or a color picker | Off |
 
 Choosing a variant sets the color scheme: Pearl is always light, and Zen, Ink, Mist, and Void are always dark. Void sets the editor background to true black and raises the other surfaces just enough to stay distinguishable, for OLED screens, while keeping the same hue relationships as the other dark variants.
+
+Turning on **Custom accent color** replaces the active variant's accent (links, the active nav item, focus rings, and interactive highlights) with your chosen color, without changing anything else about the variant. Leave it off to keep each variant's own accent.
 
 ![Checkbox shapes: Square, Rounded, Circle](assets/checkbox-shapes.png)
 
