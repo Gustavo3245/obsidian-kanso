@@ -128,7 +128,8 @@ settings:
   --kanso-bg4: #717c7c;
 }
 
-.kanso-void {
+.theme-dark.kanso-void,
+.theme-light.kanso-void {
   --kanso-bg0: #000;
   --kanso-bg1: #10131a;
   --kanso-bg2: #181b22;
