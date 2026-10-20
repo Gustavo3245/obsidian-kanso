@@ -632,10 +632,21 @@ li.task-list-item[data-task="-"] {
 
 /* Live Preview renders the list number (ordered lists) and the task text
    as separate sibling spans on the same line; decorate only the text span
-   so the strikethrough never crosses the list number. */
+   so the strikethrough never crosses the list number. That span's text also
+   starts with the single literal space CodeMirror keeps between the checkbox
+   and the task text (for caret placement), so a plain text-decoration would
+   strike that leading gap too, and leaves a stray mark when the task has no
+   text at all. Paint the strike as a background line anchored to the span's
+   right edge and shrunk by one leading space's width instead, so it starts
+   at the task text and disappears entirely once the span holds only that
+   leading space. */
 .markdown-source-view.mod-cm6 .HyperMD-task-line[data-task="-"] :is(.cm-list-1, .cm-list-2, .cm-list-3):not(.cm-formatting-list) {
-  text-decoration: line-through;
+  text-decoration: none;
   color: var(--kanso-muted);
+  background-image: linear-gradient(currentcolor, currentcolor);
+  background-repeat: no-repeat;
+  background-position: right center;
+  background-size: calc(100% - 1.15ch) 1.5px;
 }
 
 input[data-task="-"]:checked,
@@ -743,17 +754,22 @@ li[data-task="?"] > p > input:checked::after {
   inset-inline-start: -1px;
   width: var(--checkbox-size, 18px);
   height: var(--checkbox-size, 18px);
-  -webkit-mask-position: 52% 52%;
+  -webkit-mask-position: 50% 50%;
   -webkit-mask-size: 65%;
   -webkit-mask-repeat: no-repeat;
-  mask-position: 52% 52%;
+  mask-position: 50% 50%;
   mask-size: 65%;
   mask-repeat: no-repeat;
   pointer-events: none;
 }
 
 /* Alternate marker glyphs, drawn at the same bold stroke weight as
-   Obsidian's own checkmark glyph so the whole set reads as one family. */
+   Obsidian's own checkmark glyph so the whole set reads as one family.
+   Every path below is drawn so its own ink (stroke extent included, not
+   just the bare coordinates) is bounding-box-centered on this viewBox's
+   (8,8) middle; combined with the shared 50% 50% mask-position above, that
+   keeps every glyph optically centered in the box without per-glyph
+   position offsets. */
 
 input[data-task="-"]:checked::after,
 li[data-task="-"] > input:checked::after,
@@ -763,36 +779,40 @@ li[data-task="-"] > p > input:checked::after {
   mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M4.3 4.3L11.7 11.7M11.7 4.3L4.3 11.7' stroke='black' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E");
 }
 
+/* Forwarded: a paper airplane (idea borrowed from the Things community
+   theme's forwarded marker; this silhouette and the fold crease are an
+   original Kanso drawing, not its SVG). */
 input[data-task=">"]:checked::after,
 li[data-task=">"] > input:checked::after,
 li[data-task=">"] > p > input:checked::after {
   background-color: var(--kanso-bg0);
-  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3 8H12M8 4L12 8L8 12' stroke='black' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E");
-  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3 8H12M8 4L12 8L8 12' stroke='black' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E");
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M13.8 8L2.3 3L8.8 11L4.8 13Z M13.8 8L8.8 11' stroke='black' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M13.8 8L2.3 3L8.8 11L4.8 13Z M13.8 8L8.8 11' stroke='black' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E");
 }
 
+/* Scheduled: a stopwatch. */
 input[data-task="<"]:checked::after,
 li[data-task="<"] > input:checked::after,
 li[data-task="<"] > p > input:checked::after {
   background-color: var(--kanso-bg0);
-  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M13 8H4M8 4L4 8L8 12' stroke='black' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E");
-  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M13 8H4M8 4L4 8L8 12' stroke='black' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E");
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Ccircle cx='8' cy='9' r='4.5' stroke='black' stroke-width='2' fill='none'/%3E%3Cpath d='M8 4.5V2.7' stroke='black' stroke-width='2' stroke-linecap='round'/%3E%3Cpath d='M8 9L10.2 6.3' stroke='black' stroke-width='1.8' stroke-linecap='round'/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Ccircle cx='8' cy='9' r='4.5' stroke='black' stroke-width='2' fill='none'/%3E%3Cpath d='M8 4.5V2.7' stroke='black' stroke-width='2' stroke-linecap='round'/%3E%3Cpath d='M8 9L10.2 6.3' stroke='black' stroke-width='1.8' stroke-linecap='round'/%3E%3C/svg%3E");
 }
 
 input[data-task="!"]:checked::after,
 li[data-task="!"] > input:checked::after,
 li[data-task="!"] > p > input:checked::after {
   background-color: var(--kanso-bg0);
-  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M8 3V9.5' stroke='black' stroke-width='2.6' stroke-linecap='round'/%3E%3Ccircle cx='8' cy='12.5' r='1.3' fill='black'/%3E%3C/svg%3E");
-  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M8 3V9.5' stroke='black' stroke-width='2.6' stroke-linecap='round'/%3E%3Ccircle cx='8' cy='12.5' r='1.3' fill='black'/%3E%3C/svg%3E");
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M8 3.3V9.8' stroke='black' stroke-width='2.6' stroke-linecap='round'/%3E%3Ccircle cx='8' cy='12.8' r='1.3' fill='black'/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M8 3.3V9.8' stroke='black' stroke-width='2.6' stroke-linecap='round'/%3E%3Ccircle cx='8' cy='12.8' r='1.3' fill='black'/%3E%3C/svg%3E");
 }
 
 input[data-task="?"]:checked::after,
 li[data-task="?"] > input:checked::after,
 li[data-task="?"] > p > input:checked::after {
   background-color: var(--kanso-bg0);
-  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M5.6 5.6C5.6 3.3 6.9 2.2 8.3 2.3C9.8 2.4 11 3.6 10.7 5.1C10.4 6.4 8.9 6.7 8.3 7.8C8 8.3 8 8.8 8 9.3' stroke='black' stroke-width='2.1' stroke-linecap='round' fill='none'/%3E%3Ccircle cx='8' cy='12.4' r='1.3' fill='black'/%3E%3C/svg%3E");
-  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M5.6 5.6C5.6 3.3 6.9 2.2 8.3 2.3C9.8 2.4 11 3.6 10.7 5.1C10.4 6.4 8.9 6.7 8.3 7.8C8 8.3 8 8.8 8 9.3' stroke='black' stroke-width='2.1' stroke-linecap='round' fill='none'/%3E%3Ccircle cx='8' cy='12.4' r='1.3' fill='black'/%3E%3C/svg%3E");
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M5.45 6.2C5.45 3.9 6.75 2.8 8.15 2.9C9.65 3.0 10.85 4.2 10.55 5.7C10.25 7.0 8.75 7.3 8.15 8.4C7.85 8.9 7.85 9.4 7.85 9.9' stroke='black' stroke-width='2.1' stroke-linecap='round' fill='none'/%3E%3Ccircle cx='7.85' cy='13.0' r='1.3' fill='black'/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M5.45 6.2C5.45 3.9 6.75 2.8 8.15 2.9C9.65 3.0 10.85 4.2 10.55 5.7C10.25 7.0 8.75 7.3 8.15 8.4C7.85 8.9 7.85 9.4 7.85 9.9' stroke='black' stroke-width='2.1' stroke-linecap='round' fill='none'/%3E%3Ccircle cx='7.85' cy='13.0' r='1.3' fill='black'/%3E%3C/svg%3E");
 }
 
 /* Tasks plugin (obsidian-tasks-group/obsidian-tasks) metadata, Reading view

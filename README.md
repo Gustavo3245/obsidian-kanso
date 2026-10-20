@@ -61,8 +61,8 @@ Turning on **Custom accent color** replaces the active variant's accent (links, 
 | `[ ]` | To do | Outlined |
 | `[x]` | Done | Green, muted text |
 | `[-]` | Cancelled | Grey with an X, struck-through text |
-| `[>]` | Forwarded | Blue, right arrow |
-| `[<]` | Scheduled | Violet, left arrow |
+| `[>]` | Forwarded | Blue, paper airplane |
+| `[<]` | Scheduled | Violet, stopwatch |
 | `[!]` | Important | Red, exclamation mark |
 | `[?]` | Question | Yellow, question mark |
 | `[/]` | In progress | Half-filled aqua |
