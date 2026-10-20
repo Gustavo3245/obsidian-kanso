@@ -12,6 +12,7 @@ A calm, minimal Obsidian theme ported from [kanso.nvim](https://github.com/webho
 - Styling for the [Tasks](https://github.com/obsidian-tasks-group/obsidian-tasks) plugin's due, scheduled, and start dates
 - Focus mode, which hides the title bar, status bar, and ribbon for distraction-free writing
 - Optional custom accent color, overriding a variant's accent without swapping variants
+- Optional code block line numbers, like Neovim's gutter
 - Optional settings through [Style Settings](https://github.com/mgmeyers/obsidian-style-settings)
 
 ## Installation
@@ -33,6 +34,7 @@ Kanso works without any plugins. With the Style Settings plugin installed, the *
 | Editor font size | Size in pixels | 16px |
 | Focus mode | On, Off | Off |
 | Custom accent color | Off, or a color picker | Off |
+| Code block line numbers | On, Off | Off |
 
 Choosing a variant sets the color scheme: Pearl is always light, and Zen, Ink, Mist, and Void are always dark. Void sets the editor background to true black and raises the other surfaces just enough to stay distinguishable, for OLED screens, while keeping the same hue relationships as the other dark variants.
 
@@ -60,6 +62,10 @@ If the Tasks plugin is installed, Kanso colors its dates. Due dates are red when
 ## Focus mode
 
 With the Style Settings plugin installed, turning on Focus mode hides the title bar, status bar, and ribbon for distraction-free writing. Hover near the left edge to bring the ribbon back, the bottom-right to bring the status bar back, or the window controls in the top-right to bring the title bar back; move the pointer away and each hides again. On touch devices, where there's no hover to rely on, the ribbon stays visible so Settings is always reachable. Turn the setting off to restore the normal layout.
+
+## Code block line numbers
+
+With the Style Settings plugin installed, turning on Code block line numbers shows a gutter of line numbers next to code blocks while editing in Live Preview, like Neovim's gutter. The numbers aren't part of the text, so copying code never copies them, and a line that wraps keeps its continuation indented under the first row instead of losing its place. Reading view has no per-line markup to hook into, so this only applies to Live Preview. Turn the setting off to hide the gutter.
 
 ## Compatibility
 

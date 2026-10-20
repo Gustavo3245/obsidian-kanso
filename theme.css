@@ -91,6 +91,12 @@ settings:
       -
         id: kanso-accent-color-hsl
         format: hsl-split
+  -
+    id: kanso-code-line-numbers
+    title: Code block line numbers
+    description: Show line numbers in the gutter of code blocks in Live Preview, like Neovim.
+    type: class-toggle
+    default: false
 */
 
 .theme-dark,
@@ -757,4 +763,37 @@ li[data-task="?"] > p > input:checked::after {
   .kanso-focus-mode .workspace-ribbon:hover {
     opacity: 1;
   }
+}
+
+/* Code block line numbers (Style Settings toggle, off by default), like
+   Neovim's gutter. Live Preview renders each source line of a fenced code
+   block as its own .cm-line.HyperMD-codeblock element, so a CSS counter can
+   number them without JS; Reading view has no equivalent per-line markup to
+   hook into. The fence lines themselves aren't numbered, matching Neovim's
+   gutter, which only numbers the code inside. The number is a ::before
+   pseudo-element, so it is never included when a line is copied, and it's
+   positioned over padding reserved on the line itself, so a wrapped line's
+   continuation stays indented under the first visual row instead of the
+   number repeating or the text sliding back to column 0. */
+
+.kanso-code-line-numbers .markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock-begin {
+  counter-reset: kanso-code-line;
+}
+
+.kanso-code-line-numbers .markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock:not(.HyperMD-codeblock-begin):not(.HyperMD-codeblock-end) {
+  position: relative;
+  counter-increment: kanso-code-line;
+  padding-inline-start: 2.25em;
+}
+
+.kanso-code-line-numbers .markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock:not(.HyperMD-codeblock-begin):not(.HyperMD-codeblock-end)::before {
+  content: counter(kanso-code-line);
+  position: absolute;
+  inset-inline-start: 0;
+  top: 0;
+  width: 1.75em;
+  text-align: end;
+  color: var(--kanso-muted);
+  font-variant-numeric: tabular-nums;
+  pointer-events: none;
 }
