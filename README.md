@@ -13,6 +13,7 @@ A calm, minimal Obsidian theme ported from [kanso.nvim](https://github.com/webho
 - Focus mode, which hides the title bar, status bar, and ribbon for distraction-free writing
 - Optional custom accent color, overriding a variant's accent without swapping variants
 - Optional code block line numbers, like Neovim's gutter
+- Optional font-family choices for body text, headings, and code, each with web-safe fallbacks
 - Optional settings through [Style Settings](https://github.com/mgmeyers/obsidian-style-settings)
 
 ## Installation
@@ -35,8 +36,11 @@ Kanso works without any plugins. With the Style Settings plugin installed, the *
 | Focus mode | On, Off | Off |
 | Custom accent color | Off, or a color picker | Off |
 | Code block line numbers | On, Off | Off |
+| Body font | Default, Sans-serif, Serif | Default (Obsidian's text font setting) |
+| Heading font | Default, Sans-serif, Serif | Default (same as body) |
+| Monospace font | Default, System monospace, Classic monospace | Default (Obsidian's monospace font setting) |
 
-Choosing a variant sets the color scheme: Pearl is always light, and Zen, Ink, Mist, and Void are always dark. Void sets the editor background to true black and raises the other surfaces just enough to stay distinguishable, for OLED screens, while keeping the same hue relationships as the other dark variants.
+Choosing a variant sets the color scheme: Pearl is always light, and Zen, Ink, Mist, and Void are always dark. Void sets the editor background to true black and raises the other surfaces just enough to stay distinguishable, for OLED screens, while keeping the same hue relationships as the other dark variants. The body, heading, and monospace font settings default to whatever you've chosen in **Settings → Appearance → Font**; picking anything other than Default here switches to that font instead.
 
 Turning on **Custom accent color** replaces the active variant's accent (links, the active nav item, focus rings, and interactive highlights) with your chosen color, without changing anything else about the variant. Leave it off to keep each variant's own accent.
 

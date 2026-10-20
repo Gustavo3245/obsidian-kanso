@@ -54,6 +54,54 @@ settings:
     step: 1
     format: px
   -
+    id: kanso-font-body
+    title: Body font
+    description: Font family for editor and reading view text.
+    type: variable-select
+    default: var(--font-text)
+    options:
+      -
+        label: Default
+        value: var(--font-text)
+      -
+        label: Sans-serif
+        value: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif'
+      -
+        label: Serif
+        value: 'Georgia, Cambria, "Times New Roman", Times, serif'
+  -
+    id: kanso-font-heading
+    title: Heading font
+    description: Font family for headings.
+    type: variable-select
+    default: var(--kanso-font-body)
+    options:
+      -
+        label: Default
+        value: var(--kanso-font-body)
+      -
+        label: Sans-serif
+        value: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif'
+      -
+        label: Serif
+        value: 'Georgia, Cambria, "Times New Roman", Times, serif'
+  -
+    id: kanso-font-mono
+    title: Monospace font
+    description: Font family for code blocks and inline code.
+    type: variable-select
+    default: var(--font-monospace)
+    options:
+      -
+        label: Default
+        value: var(--font-monospace)
+      -
+        label: System monospace
+        value: 'ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace'
+      -
+        label: Classic monospace
+        value: 'Courier New, Courier, monospace'
+  -
     id: kanso-checkbox-radius
     title: Checkbox shape
     description: Choose the shape of task checkboxes.
@@ -195,6 +243,9 @@ body {
   --kanso-readable-line-width: 760px;
   --kanso-radius: 8px;
   --kanso-font-size: 16px;
+  --kanso-font-body: var(--font-text);
+  --kanso-font-heading: var(--kanso-font-body);
+  --kanso-font-mono: var(--font-monospace);
 
   --background-primary: var(--kanso-bg0);
   --background-primary-alt: var(--kanso-bg1);
@@ -422,6 +473,7 @@ body {
 .markdown-source-view.mod-cm6 .cm-scroller,
 .markdown-preview-view {
   line-height: var(--line-height-normal);
+  font-family: var(--kanso-font-body);
 }
 
 .cm-header,
@@ -433,6 +485,7 @@ body {
 .markdown-preview-view h6 {
   font-weight: 700;
   letter-spacing: -0.015em;
+  font-family: var(--kanso-font-heading);
 }
 
 .cm-formatting-header {
@@ -462,10 +515,20 @@ a.tag {
   padding: 0.1em 0.35em;
 }
 
+.markdown-rendered code {
+  font-family: var(--kanso-font-mono);
+}
+
 .markdown-rendered pre {
   border: 1px solid var(--background-modifier-border);
   border-radius: var(--radius-m);
   padding: 1rem;
+  font-family: var(--kanso-font-mono);
+}
+
+.cm-s-obsidian .cm-inline-code,
+.cm-s-obsidian .HyperMD-codeblock {
+  font-family: var(--kanso-font-mono);
 }
 
 blockquote,
@@ -524,6 +587,10 @@ blockquote,
 
 .inline-title {
   color: var(--kanso-yellow);
+}
+
+.inline-title:not([data-level]) {
+  font-family: var(--kanso-font-heading);
 }
 
 /* Task checkboxes (shape configurable via Style Settings) and alternate
