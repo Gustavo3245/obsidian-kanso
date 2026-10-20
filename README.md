@@ -16,6 +16,7 @@ A calm, minimal Obsidian theme ported from [kanso.nvim](https://github.com/webho
 - Optional code block line numbers, like Neovim's gutter
 - Optional font-family choices for body text, headings, and code, each with web-safe fallbacks
 - Styling for Dataview, Kanban, Excalidraw, and Calendar
+- Image zoom: click and hold a rendered image in reading view to enlarge it
 - Optional settings through [Style Settings](https://github.com/mgmeyers/obsidian-style-settings)
 
 ## Installation
@@ -42,6 +43,7 @@ Kanso works without any plugins. With the Style Settings plugin installed, the *
 | Body font | Default, Sans-serif, Serif | Default (Obsidian's text font setting) |
 | Heading font | Default, Sans-serif, Serif | Default (same as body) |
 | Monospace font | Default, System monospace, Classic monospace | Default (Obsidian's monospace font setting) |
+| Disable image zoom | On, Off | Off (zoom is on) |
 
 Choosing a variant sets the color scheme: Pearl is always light, and Zen, Ink, Mist, and Void are always dark. Void sets the editor background to true black and raises the other surfaces just enough to stay distinguishable, for OLED screens, while keeping the same hue relationships as the other dark variants. The body, heading, and monospace font settings default to whatever you've chosen in **Settings → Appearance → Font**; picking anything other than Default here switches to that font instead.
 
@@ -89,6 +91,10 @@ Kanso recolors four popular community plugins with its own palette. No extra mar
 - **[Excalidraw](https://github.com/zsviczian/obsidian-excalidraw-plugin):** the toolbar, side panels, and popups around the canvas follow Kanso's palette. This is most effective with Excalidraw's own "Match Obsidian theme" setting enabled. The canvas itself can't be recolored by a theme: it's painted pixel-by-pixel by Excalidraw's own code, which, with "Match Obsidian theme" on, paints it with Excalidraw's fixed default dark or light canvas color rather than the drawing's own saved background or any CSS variable, so it stays a neutral grey or white instead of Kanso's background.
 - **[Calendar](https://github.com/liamcain/obsidian-calendar-plugin):** day, week-number, and today colors already follow Kanso; Kanso also gives days with a note a subtle backdrop. Per-source dot colors are chosen in the plugin's own settings and are left as-is.
 
+## Image zoom
+
+Click and hold a rendered image in reading view to enlarge it; release to shrink it back. It's on by default and works without any plugins. It only applies to images rendered in reading view, so it never interferes with Live Preview's image resize handles, and it skips images that are themselves links, so their normal click behavior is untouched. With the Style Settings plugin installed, turn on **Disable image zoom** to remove it.
+
 ## Compatibility
 
 Requires Obsidian 1.5.8 or later, on desktop and mobile.
@@ -98,6 +104,7 @@ Requires Obsidian 1.5.8 or later, on desktop and mobile.
 - Colors from [kanso.nvim](https://github.com/webhooked/kanso.nvim) by webhooked.
 - The idea of styling alternate checkbox markers comes from [obsidian-things](https://github.com/colineckert/obsidian-things) (MIT), which credits kepano's [Minimal theme](https://minimal.guide/Block+types/Checklists#Checkbox+styling). Kanso's own selectors, icons, and colors are an independent implementation.
 - The idea of a focus mode that hides the title bar, status bar, and ribbon comes from kepano's [Minimal theme](https://github.com/kepano/obsidian-minimal) (MIT). Kanso's CSS is an independent implementation.
+- The idea of click-and-hold image zoom comes from kepano's [Minimal theme](https://github.com/kepano/obsidian-minimal) (MIT). Kanso's CSS is an independent implementation.
 
 ## Feedback
 

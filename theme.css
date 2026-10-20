@@ -129,6 +129,12 @@ settings:
     description: Override the active variant's accent color. Off by default, so each variant keeps its own accent until you turn this on.
     type: class-toggle
   -
+    id: kanso-image-zoom-disabled
+    title: Disable image zoom
+    description: Click and hold a rendered image in reading view to enlarge it. On by default; turn this on to disable it.
+    type: class-toggle
+    default: false
+  -
     id: kanso-accent-color
     title: Accent color
     description: Used only while "Custom accent color" above is on.
@@ -973,4 +979,50 @@ div.kanban-plugin__lane-title-count.wip-exceeded {
 
 .calendar .day.has-note:not(.today):not(.active) {
   background-color: color-mix(in srgb, var(--kanso-blue) 10%, transparent);
+}
+
+/* Image zoom (Style Settings toggle, on by default): click and hold a
+   rendered image in reading view to enlarge it. Scoped to reading view only,
+   so it never touches Live Preview's image-embed resize handles. Excludes
+   images wrapped in a link and Excalidraw's embedded raster preview, so
+   those keep their own click behavior untouched.
+
+   An image can sit anywhere in the pane (flush against the sidebar, hugging
+   the right edge, in a narrow pane), so scaling it in place from its own
+   center can push it past the pane's edge, where the pane's own scrolling
+   overflow then clips it. Instead, while an image is held, its reading view
+   gets a no-op transform so it becomes the containing block the image's
+   `position: fixed` resolves against: this centers the image within the
+   pane specifically (not the window) and takes it out of the pane's own
+   scroll clipping, regardless of where in the pane the image started. The
+   max-width/max-height are the target on-screen size divided by the scale
+   factor, so after the transform scales it back up, the result lands at
+   that target size without exceeding it. The transform is scoped with
+   :has() to only the moment an image inside is actually held, so it never
+   changes how the pane behaves the rest of the time. */
+
+body:not(.kanso-image-zoom-disabled) .markdown-reading-view:has(img:active) {
+  transform: translateZ(0);
+}
+
+body:not(.kanso-image-zoom-disabled)
+  .markdown-reading-view
+  img:not(a img):not(.excalidraw-embedded-img) {
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  cursor: zoom-in;
+}
+
+body:not(.kanso-image-zoom-disabled)
+  .markdown-reading-view
+  img:active:not(a img):not(.excalidraw-embedded-img) {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  z-index: 10;
+  width: auto;
+  height: auto;
+  max-width: 51%;
+  max-height: 51%;
+  transform: translate(-50%, -50%) scale(1.8);
+  box-shadow: 0 4px 24px var(--background-modifier-box-shadow);
 }
