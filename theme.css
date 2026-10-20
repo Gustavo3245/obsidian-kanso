@@ -129,12 +129,6 @@ settings:
     description: Override the active variant's accent color. Off by default, so each variant keeps its own accent until you turn this on.
     type: class-toggle
   -
-    id: kanso-image-zoom-disabled
-    title: Disable image zoom
-    description: Click and hold a rendered image in reading view to enlarge it. On by default; turn this on to disable it.
-    type: class-toggle
-    default: false
-  -
     id: kanso-accent-color
     title: Accent color
     description: Used only while "Custom accent color" above is on.
@@ -155,6 +149,12 @@ settings:
     id: kanso-no-active-line
     title: Disable active line highlight
     description: Turn off the subtle highlight on the line your cursor is on while editing.
+    type: class-toggle
+    default: false
+  -
+    id: kanso-image-zoom-disabled
+    title: Disable image zoom
+    description: Click and hold a rendered image in reading view to enlarge it. On by default; turn this on to disable it.
     type: class-toggle
     default: false
 */
