@@ -32,7 +32,7 @@ Kanso works without any plugins. With the Style Settings plugin installed, the *
 | Editor font size | Size in pixels | 16px |
 | Focus mode | On, Off | Off |
 
-Choosing a variant sets the color scheme: Pearl is always light, and Zen, Ink, Mist, and Void are always dark. Void swaps the editor and sidebar backgrounds for a true black, for OLED screens, while keeping the same hue relationships as the other dark variants.
+Choosing a variant sets the color scheme: Pearl is always light, and Zen, Ink, Mist, and Void are always dark. Void sets the editor background to true black and raises the other surfaces just enough to stay distinguishable, for OLED screens, while keeping the same hue relationships as the other dark variants.
 
 ![Checkbox shapes: Square, Rounded, Circle](assets/checkbox-shapes.png)
 
