@@ -13,7 +13,6 @@ A calm, minimal Obsidian theme ported from [kanso.nvim](https://github.com/webho
 - Active line highlight while editing, like kanso.nvim's cursorline
 - Focus mode, which hides the title bar, status bar, and ribbon for distraction-free writing
 - Optional custom accent color, overriding a variant's accent without swapping variants
-- Optional code block line numbers, like Neovim's gutter
 - Optional font-family choices for body text, headings, and code, each with web-safe fallbacks
 - Styling for Dataview, Kanban, Excalidraw, and Calendar
 - Image zoom: click and hold a rendered image in reading view to enlarge it
@@ -40,7 +39,6 @@ Kanso works without any plugins. With the Style Settings plugin installed, the *
 | Disable active line highlight | On, Off | Off |
 | Focus mode | On, Off | Off |
 | Custom accent color | Off, or a color picker | Off |
-| Code block line numbers | On, Off | Off |
 | Body font | Default, Sans-serif, Serif | Default (Obsidian's text font setting) |
 | Heading font | Default, Sans-serif, Serif | Default (same as body) |
 | Monospace font | Default, System monospace, Classic monospace | Default (Obsidian's monospace font setting) |
@@ -77,11 +75,7 @@ Kanso highlights the line your cursor is on while editing, matching the cursorli
 
 ## Focus mode
 
-With the Style Settings plugin installed, turning on Focus mode hides the title bar, status bar, and ribbon for distraction-free writing. Hover near the left edge to bring the ribbon back, the bottom-right to bring the status bar back, or the window controls in the top-right to bring the title bar back; move the pointer away and each hides again. On touch devices, where there's no hover to rely on, the ribbon stays visible so Settings is always reachable. Turn the setting off to restore the normal layout.
-
-## Code block line numbers
-
-With the Style Settings plugin installed, turning on Code block line numbers shows a gutter of line numbers next to code blocks while editing in Live Preview, like Neovim's gutter. The numbers aren't part of the text, so copying code never copies them, and a line that wraps keeps its continuation indented under the first row instead of losing its place. Reading view has no per-line markup to hook into, so this only applies to Live Preview. Turn the setting off to hide the gutter.
+With the Style Settings plugin installed, turning on Focus mode hides the title bar, status bar, and ribbon for distraction-free writing. Hover near the left edge to bring the ribbon back, the bottom-right to bring the status bar back, or the window controls in the top-right to bring the title bar back; move the pointer away and each hides again. On touch devices, where there's no hover to rely on, nothing is hidden in the first place: the title bar and status bar stay visible (mobile Obsidian has no ribbon to hide). Turn the setting off to restore the normal layout.
 
 ## Plugin styling
 
