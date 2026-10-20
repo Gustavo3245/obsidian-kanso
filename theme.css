@@ -66,6 +66,12 @@ settings:
       -
         label: Circle
         value: 50%
+  -
+    id: kanso-focus-mode
+    title: Focus mode
+    description: Hide the title bar, status bar, and left ribbon for distraction-free writing. Hover near an edge to bring its bar back.
+    type: class-toggle
+    default: false
 */
 
 .theme-dark,
@@ -680,4 +686,26 @@ li[data-task="?"] > p > input:checked::after {
 .task-done,
 .task-cancelled {
   color: var(--kanso-muted);
+}
+
+/* Focus mode (Style Settings toggle, off by default): hides the title bar,
+   status bar, and left ribbon for distraction-free writing. Each stays in
+   place and keeps its hit area, so hovering near its edge brings it back
+   without any layout shift or JavaScript. Gated on a hover-capable pointer
+   so touch devices, which have no way to trigger :hover, keep the ribbon
+   (and its access to Settings) always visible instead of getting stuck. */
+
+@media (hover: hover) {
+  .kanso-focus-mode .titlebar,
+  .kanso-focus-mode .status-bar,
+  .kanso-focus-mode .workspace-ribbon {
+    opacity: 0;
+    transition: opacity 0.15s ease;
+  }
+
+  .kanso-focus-mode .titlebar:hover,
+  .kanso-focus-mode .status-bar:hover,
+  .kanso-focus-mode .workspace-ribbon:hover {
+    opacity: 1;
+  }
 }
