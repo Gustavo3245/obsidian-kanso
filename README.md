@@ -83,7 +83,7 @@ With the Style Settings plugin installed, turning on Focus mode hides the title 
 
 With the Style Settings plugin installed, turning on Code block line numbers shows a gutter of line numbers next to code blocks while editing in Live Preview, like Neovim's gutter. The numbers aren't part of the text, so copying code never copies them, and a line that wraps keeps its continuation indented under the first row instead of losing its place. Reading view has no per-line markup to hook into, so this only applies to Live Preview. Turn the setting off to hide the gutter.
 
-Numbering is accurate for a code block that fits in about a screen's height. Obsidian's editor only keeps the lines near the viewport in the DOM, so in a much longer block, once the opening fence scrolls out of view, the gutter restarts counting from the first line still rendered rather than showing that line's real position in the block. This is a CSS limitation (there's no per-line position a stylesheet can read), not a bug that a setting fixes.
+Numbers stay correct as you scroll: Obsidian's editor only keeps the lines near the viewport in the DOM, so once a code block's opening fence scrolls out of view, there's no reliable position for a stylesheet to count from. Rather than show a wrong number, the gutter hides the numbers for that stretch of a long block instead, and they come back as soon as you scroll back up far enough for the fence to re-enter the DOM.
 
 ## Plugin styling
 

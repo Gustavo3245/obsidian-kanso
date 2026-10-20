@@ -933,19 +933,32 @@ li[data-task="?"] > p > input:checked::after {
    pseudo-element, so it is never included when a line is copied, and it's
    positioned over padding reserved on the line itself, so a wrapped line's
    continuation stays indented under the first visual row instead of the
-   number repeating or the text sliding back to column 0. */
+   number repeating or the text sliding back to column 0.
+
+   CodeMirror only keeps a contiguous range of lines near the viewport in
+   the DOM, so in a block longer than that range the opening fence
+   (.HyperMD-codeblock-begin) can scroll out while interior lines are still
+   rendered, and a counter alone would restart at 1 for whatever line is
+   first still mounted. The general sibling combinator below only shows a
+   number on a line that has some .HyperMD-codeblock-begin earlier among
+   its rendered siblings in .cm-content; because CodeMirror's rendered
+   range is always contiguous, if any begin (even a different, earlier
+   block's) is still mounted, every line between it and the viewport -
+   including this block's own begin - is mounted too, so the match is
+   never a false positive. A line past the mounted range simply gets no
+   ::before and no reserved padding, instead of a wrong number. */
 
 .kanso-code-line-numbers .markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock-begin {
   counter-reset: kanso-code-line;
 }
 
-.kanso-code-line-numbers .markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock:not(.HyperMD-codeblock-begin):not(.HyperMD-codeblock-end) {
+.kanso-code-line-numbers .markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock-begin ~ .cm-line.HyperMD-codeblock:not(.HyperMD-codeblock-begin):not(.HyperMD-codeblock-end) {
   position: relative;
   counter-increment: kanso-code-line;
   padding-inline-start: 2.25em;
 }
 
-.kanso-code-line-numbers .markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock:not(.HyperMD-codeblock-begin):not(.HyperMD-codeblock-end)::before {
+.kanso-code-line-numbers .markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock-begin ~ .cm-line.HyperMD-codeblock:not(.HyperMD-codeblock-begin):not(.HyperMD-codeblock-end)::before {
   content: counter(kanso-code-line);
   position: absolute;
   inset-inline-start: 0;
