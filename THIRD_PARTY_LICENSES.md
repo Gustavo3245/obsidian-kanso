@@ -1,6 +1,6 @@
 # Third-party licences
 
-Kanso's checkbox marker glyphs (`[x]`, `[-]`, `[>]`, `[<]`, `[!]`, `[?]`) are drawn using unmodified SVG paths from [Lucide](https://lucide.dev), copied exactly (same path data, stroke width scaled to match, round caps and joins kept as drawn): `check`, `x`, `send`, `timer`, and the stem-and-dot / curve-and-dot from `circle-alert` and `circle-question-mark` (used without their outer circle, since Kanso's own checkbox box is already that container).
+Kanso's checkbox marker glyphs (`[x]`, `[-]`, `[>]`, `[<]`, `[!]`) are drawn using unmodified SVG paths from [Lucide](https://lucide.dev), copied exactly (same path data, stroke width scaled to match, round caps and joins kept as drawn): `check`, `x`, `send`, `timer`, and the stem-and-dot from `circle-alert` (used without its outer circle, since Kanso's own checkbox box is already that container). The `[?]` glyph is not from Lucide - it's Kanso's own original hand-drawn question mark (unchanged from 1.0.1), just rescaled to match the Lucide set's sizing.
 
 ## Lucide
 

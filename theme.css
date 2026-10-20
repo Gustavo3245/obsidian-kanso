@@ -827,23 +827,39 @@ li[data-task="<"] > p > input:checked::after {
    circle outline; with the circle dropped, cropping the viewBox tightly
    around just the stem and dot (and scaling stroke-width down to match)
    zooms in on it so it reads at the same visual size and weight as the
-   check/x glyphs above, which use their full 24x24 viewBox. */
+   check/x glyphs above, which use their full 24x24 viewBox. The crop's
+   vertical origin is nudged up slightly (4 -> 4.6) from a dead-center
+   crop so the glyph reads as optically centered in the box; this is a
+   mask-position:50% 50% crop-window shift, so it applies the same way
+   regardless of the checkbox's square/rounded/circle shape. */
 input[data-task="!"]:checked::after,
 li[data-task="!"] > input:checked::after,
 li[data-task="!"] > p > input:checked::after {
   background-color: var(--kanso-bg0);
-  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='4 4 16 16' fill='none' stroke='black' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'%3E%3Cline x1='12' x2='12' y1='8' y2='12'/%3E%3Cline x1='12' x2='12.01' y1='16' y2='16'/%3E%3C/svg%3E");
-  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='4 4 16 16' fill='none' stroke='black' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'%3E%3Cline x1='12' x2='12' y1='8' y2='12'/%3E%3Cline x1='12' x2='12.01' y1='16' y2='16'/%3E%3C/svg%3E");
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='4 4.6 16 16' fill='none' stroke='black' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'%3E%3Cline x1='12' x2='12' y1='8' y2='12'/%3E%3Cline x1='12' x2='12.01' y1='16' y2='16'/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='4 4.6 16 16' fill='none' stroke='black' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'%3E%3Cline x1='12' x2='12' y1='8' y2='12'/%3E%3Cline x1='12' x2='12.01' y1='16' y2='16'/%3E%3C/svg%3E");
 }
 
-/* Question: the curve-and-dot from Lucide's "circle-question-mark", same
-   cropped-viewBox reasoning as important above. */
+/* Question: Kanso's own hand-drawn question mark from 1.0.1 (see
+   git show 1.0.1:theme.css), not a Lucide icon - kept because PR 12's
+   Lucide substitute (the inner curve-and-dot cropped out of
+   circle-question-mark, since Lucide has no standalone question-mark
+   glyph) read too small and lopsided at this size. Same shape and
+   proportions as 1.0.1, just cropped to a tight square viewBox (so
+   mask-size 75% doesn't stretch it the way the old 13x15 non-square
+   PR 12 crop and the original uncropped 16x16 did) and with
+   stroke-width and dot radius scaled down to match the crop so the
+   line weight reads the same as the Lucide check/x/important glyphs
+   beside it. The crop is sized a little looser than a bare tight
+   bbox (14.5 square instead of 13) so the glyph reads slightly
+   smaller than the first pass, while staying centered on the same
+   content midpoint. */
 input[data-task="?"]:checked::after,
 li[data-task="?"] > input:checked::after,
 li[data-task="?"] > p > input:checked::after {
   background-color: var(--kanso-bg0);
-  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='5.5 4.5 13 15' fill='none' stroke='black' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3'/%3E%3Cline x1='12' x2='12.01' y1='17' y2='17'/%3E%3C/svg%3E");
-  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='5.5 4.5 13 15' fill='none' stroke='black' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3'/%3E%3Cline x1='12' x2='12.01' y1='17' y2='17'/%3E%3C/svg%3E");
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='1.05 0.15 14.5 14.5' fill='none' stroke='black' stroke-width='1.4' stroke-linecap='round'%3E%3Cpath d='M5.6 5.6C5.6 3.3 6.9 2.2 8.3 2.3C9.8 2.4 11 3.6 10.7 5.1C10.4 6.4 8.9 6.7 8.3 7.8C8 8.3 8 8.8 8 9.3'/%3E%3Ccircle cx='8' cy='12.4' r='0.87' fill='black' stroke='none'/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='1.05 0.15 14.5 14.5' fill='none' stroke='black' stroke-width='1.4' stroke-linecap='round'%3E%3Cpath d='M5.6 5.6C5.6 3.3 6.9 2.2 8.3 2.3C9.8 2.4 11 3.6 10.7 5.1C10.4 6.4 8.9 6.7 8.3 7.8C8 8.3 8 8.8 8 9.3'/%3E%3Ccircle cx='8' cy='12.4' r='0.87' fill='black' stroke='none'/%3E%3C/svg%3E");
 }
 
 /* Tasks plugin (obsidian-tasks-group/obsidian-tasks) metadata, Reading view
