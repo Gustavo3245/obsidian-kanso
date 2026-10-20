@@ -15,6 +15,7 @@ A calm, minimal Obsidian theme ported from [kanso.nvim](https://github.com/webho
 - Optional custom accent color, overriding a variant's accent without swapping variants
 - Optional code block line numbers, like Neovim's gutter
 - Optional font-family choices for body text, headings, and code, each with web-safe fallbacks
+- Styling for Dataview, Kanban, Excalidraw, and Calendar
 - Optional settings through [Style Settings](https://github.com/mgmeyers/obsidian-style-settings)
 
 ## Installation
@@ -78,6 +79,15 @@ With the Style Settings plugin installed, turning on Focus mode hides the title 
 ## Code block line numbers
 
 With the Style Settings plugin installed, turning on Code block line numbers shows a gutter of line numbers next to code blocks while editing in Live Preview, like Neovim's gutter. The numbers aren't part of the text, so copying code never copies them, and a line that wraps keeps its continuation indented under the first row instead of losing its place. Reading view has no per-line markup to hook into, so this only applies to Live Preview. Turn the setting off to hide the gutter.
+
+## Plugin styling
+
+Kanso recolors four popular community plugins with its own palette. No extra markup or settings are needed, and nothing changes if a plugin isn't installed.
+
+- **[Dataview](https://github.com/blacksmithgu/obsidian-dataview):** query tables, lists, and inline fields read like the rest of Kanso.
+- **[Kanban](https://github.com/mgmeyers/obsidian-kanban):** lanes, cards, and tags already pick up Kanso through Obsidian's shared colors; Kanso also matches the lane corners to its radius setting and colors the WIP-exceeded badge.
+- **[Excalidraw](https://github.com/zsviczian/obsidian-excalidraw-plugin):** the toolbar, side panels, and popups around the canvas follow Kanso's palette. This is most effective with Excalidraw's own "Match Obsidian theme" setting enabled. The canvas itself can't be recolored by a theme: it's painted pixel-by-pixel by Excalidraw's own code, which, with "Match Obsidian theme" on, paints it with Excalidraw's fixed default dark or light canvas color rather than the drawing's own saved background or any CSS variable, so it stays a neutral grey or white instead of Kanso's background.
+- **[Calendar](https://github.com/liamcain/obsidian-calendar-plugin):** day, week-number, and today colors already follow Kanso; Kanso also gives days with a note a subtle backdrop. Per-source dot colors are chosen in the plugin's own settings and are left as-is.
 
 ## Compatibility
 
