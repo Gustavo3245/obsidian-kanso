@@ -17,6 +17,7 @@ A calm, minimal Obsidian theme ported from [kanso.nvim](https://github.com/webho
 - Optional font-family choices for body text, headings, and code, each with web-safe fallbacks
 - Styling for Dataview, Kanban, Excalidraw, and Calendar
 - Image zoom: click and hold a rendered image in reading view to enlarge it
+- Larger checkbox and tag tap targets on mobile
 - Optional settings through [Style Settings](https://github.com/mgmeyers/obsidian-style-settings)
 
 ## Installation
@@ -94,6 +95,10 @@ Kanso recolors four popular community plugins with its own palette. No extra mar
 ## Image zoom
 
 Click and hold a rendered image in reading view to enlarge it; release to shrink it back. It's on by default and works without any plugins. It only applies to images rendered in reading view, so it never interferes with Live Preview's image resize handles, and it skips images that are themselves links, so their normal click behavior is untouched. With the Style Settings plugin installed, turn on **Disable image zoom** to remove it.
+
+## Mobile
+
+Kanso enlarges task checkboxes and inline tags on mobile, where Obsidian's own sizing (tied to the editor font) and Kanso's own tightened desktop tag padding otherwise leave both too small to tap reliably. This applies automatically on phones and tablets; desktop is unaffected. Obsidian's own mobile toolbar and safe-area handling are already generous and are left untouched.
 
 ## Compatibility
 

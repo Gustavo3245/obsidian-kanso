@@ -1026,3 +1026,34 @@ body:not(.kanso-image-zoom-disabled)
   transform: translate(-50%, -50%) scale(1.8);
   box-shadow: 0 4px 24px var(--background-modifier-box-shadow);
 }
+
+/* Mobile polish (always on, scoped to Obsidian's own .is-mobile class; desktop
+   is unchanged). Kanso's own tightened tag padding (set above for desktop
+   density) carries over to mobile too, leaving tags below a comfortable tap
+   size. Obsidian's own mobile toolbar and safe-area handling are already
+   adequate (measured directly in-app) and are left untouched. */
+
+.is-mobile .cm-hashtag,
+.is-mobile a.tag {
+  padding-block: 0.45em;
+}
+
+/* Checkboxes keep Obsidian's own mobile size and position (growing the box
+   itself made it heavier than the text, mis-centered on the text line, and
+   wider than the content margin). Instead, an invisible ::before enlarges
+   only the tap target, centered on the existing box; the visible glyph
+   (::after, above) and checkbox size are untouched. */
+
+.is-mobile input.task-list-item-checkbox {
+  position: relative;
+}
+
+.is-mobile input.task-list-item-checkbox::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 32px;
+  height: 32px;
+  transform: translate(-50%, -50%);
+}
