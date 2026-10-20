@@ -1,12 +1,12 @@
 # Kanso for Obsidian
 
-A calm, minimal Obsidian theme ported from [kanso.nvim](https://github.com/webhooked/kanso.nvim), with four variants: Zen, Ink, Mist, and Pearl.
+A calm, minimal Obsidian theme ported from [kanso.nvim](https://github.com/webhooked/kanso.nvim), with five variants: Zen, Ink, Mist, Void, and Pearl.
 
 ![Kanso Zen in Obsidian](screenshot.png)
 
 ## Features
 
-- Four variants matching kanso.nvim's palettes: three dark (Zen, Ink, Mist) and one light (Pearl)
+- Five variants: Zen, Ink, Mist, and Pearl match kanso.nvim's palettes; Void is a true-black variant built on the same hues, for OLED screens
 - Code blocks colored like kanso.nvim
 - Things-inspired task checkboxes, with eight styled markers and a choice of square, rounded, or circle
 - Styling for the [Tasks](https://github.com/obsidian-tasks-group/obsidian-tasks) plugin's due, scheduled, and start dates
@@ -25,14 +25,14 @@ Kanso works without any plugins. With the Style Settings plugin installed, the *
 
 | Setting | Options | Default |
 | --- | --- | --- |
-| Variant | Zen, Ink, Mist, Pearl | Without the plugin: Zen in dark mode, Pearl in light mode |
+| Variant | Zen, Ink, Mist, Void, Pearl | Without the plugin: Zen in dark mode, Pearl in light mode |
 | Checkbox shape | Square, Rounded, Circle | Rounded |
 | Readable line width | Width in pixels | 760px |
 | Radius | Size in pixels | 8px |
 | Editor font size | Size in pixels | 16px |
 | Focus mode | On, Off | Off |
 
-Choosing a variant sets the color scheme: Pearl is always light, and Zen, Ink, and Mist are always dark.
+Choosing a variant sets the color scheme: Pearl is always light, and Zen, Ink, Mist, and Void are always dark. Void sets the editor background to true black and raises the other surfaces just enough to stay distinguishable, for OLED screens, while keeping the same hue relationships as the other dark variants.
 
 ![Checkbox shapes: Square, Rounded, Circle](assets/checkbox-shapes.png)
 
