@@ -619,9 +619,10 @@ blockquote,
 }
 
 /* Task checkboxes (shape configurable via Style Settings) and alternate
-   checkbox states (markers inspired by the Things community theme's
-   alternate task markers; icons, colors, and the fill technique below are
-   an original Kanso implementation). */
+   checkbox states (the choice of alternate markers, and a paper airplane
+   for forwarded, is inspired by the Things community theme; the icons
+   themselves are Lucide's, see THIRD_PARTY_LICENSES.md; the colors and the
+   half-fill technique below are an original Kanso implementation). */
 
 li.task-list-item[data-task="-"] {
   --checklist-done-decoration: line-through;
@@ -649,6 +650,9 @@ li.task-list-item[data-task="-"] {
   background-size: calc(100% - 1.15ch) 1.5px;
 }
 
+input[data-task="x"]:checked,
+li[data-task="x"] > input:checked,
+li[data-task="x"] > p > input:checked,
 input[data-task="-"]:checked,
 li[data-task="-"] > input:checked,
 li[data-task="-"] > p > input:checked,
@@ -733,6 +737,9 @@ li[data-task="/"] > p > input:checked:hover {
   border-color: var(--kanso-aqua);
 }
 
+input[data-task="x"]:checked::after,
+li[data-task="x"] > input:checked::after,
+li[data-task="x"] > p > input:checked::after,
 input[data-task="-"]:checked::after,
 li[data-task="-"] > input:checked::after,
 li[data-task="-"] > p > input:checked::after,
@@ -755,64 +762,79 @@ li[data-task="?"] > p > input:checked::after {
   width: var(--checkbox-size, 18px);
   height: var(--checkbox-size, 18px);
   -webkit-mask-position: 50% 50%;
-  -webkit-mask-size: 65%;
+  -webkit-mask-size: 75%;
   -webkit-mask-repeat: no-repeat;
   mask-position: 50% 50%;
-  mask-size: 65%;
+  mask-size: 75%;
   mask-repeat: no-repeat;
   pointer-events: none;
 }
 
-/* Alternate marker glyphs, drawn at the same bold stroke weight as
-   Obsidian's own checkmark glyph so the whole set reads as one family.
-   Every path below is drawn so its own ink (stroke extent included, not
-   just the bare coordinates) is bounding-box-centered on this viewBox's
-   (8,8) middle; combined with the shared 50% 50% mask-position above, that
-   keeps every glyph optically centered in the box without per-glyph
-   position offsets. */
+/* Alternate marker glyphs: exact Lucide (https://lucide.dev, ISC licence)
+   icon paths, unmodified, each drawn on Lucide's native 24x24 viewBox at
+   the same stroke width so the whole set reads as one family. Lucide
+   draws its icons bounding-box-centered on that viewBox's (12,12) middle
+   already, so the shared 50% 50% mask-position above is enough to keep
+   every glyph optically centered in the box, with no per-glyph position
+   offsets - verified by sampling each glyph's rendered pixel bounds (see
+   the PR description). */
 
+/* Done: Lucide "check". */
+input[data-task="x"]:checked::after,
+li[data-task="x"] > input:checked::after,
+li[data-task="x"] > p > input:checked::after {
+  background-color: var(--kanso-bg0);
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E");
+}
+
+/* Cancelled: Lucide "x". */
 input[data-task="-"]:checked::after,
 li[data-task="-"] > input:checked::after,
 li[data-task="-"] > p > input:checked::after {
   background-color: var(--kanso-bg0);
-  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M4.3 4.3L11.7 11.7M11.7 4.3L4.3 11.7' stroke='black' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E");
-  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M4.3 4.3L11.7 11.7M11.7 4.3L4.3 11.7' stroke='black' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E");
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M18 6 6 18'/%3E%3Cpath d='m6 6 12 12'/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M18 6 6 18'/%3E%3Cpath d='m6 6 12 12'/%3E%3C/svg%3E");
 }
 
-/* Forwarded: a paper airplane (idea borrowed from the Things community
-   theme's forwarded marker; this silhouette and the fold crease are an
-   original Kanso drawing, not its SVG). */
+/* Forwarded: Lucide "send" (idea of a paper airplane for forwarded also
+   comes from the Things community theme, already credited in the README;
+   the icon itself is Lucide's). */
 input[data-task=">"]:checked::after,
 li[data-task=">"] > input:checked::after,
 li[data-task=">"] > p > input:checked::after {
   background-color: var(--kanso-bg0);
-  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M13.8 8L2.3 3L8.8 11L4.8 13Z M13.8 8L8.8 11' stroke='black' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E");
-  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M13.8 8L2.3 3L8.8 11L4.8 13Z M13.8 8L8.8 11' stroke='black' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E");
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z'/%3E%3Cpath d='m21.854 2.147-10.94 10.939'/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z'/%3E%3Cpath d='m21.854 2.147-10.94 10.939'/%3E%3C/svg%3E");
 }
 
-/* Scheduled: a stopwatch. */
+/* Scheduled: Lucide "timer" (a stopwatch). */
 input[data-task="<"]:checked::after,
 li[data-task="<"] > input:checked::after,
 li[data-task="<"] > p > input:checked::after {
   background-color: var(--kanso-bg0);
-  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Ccircle cx='8' cy='9' r='4.5' stroke='black' stroke-width='2' fill='none'/%3E%3Cpath d='M8 4.5V2.7' stroke='black' stroke-width='2' stroke-linecap='round'/%3E%3Cpath d='M8 9L10.2 6.3' stroke='black' stroke-width='1.8' stroke-linecap='round'/%3E%3C/svg%3E");
-  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Ccircle cx='8' cy='9' r='4.5' stroke='black' stroke-width='2' fill='none'/%3E%3Cpath d='M8 4.5V2.7' stroke='black' stroke-width='2' stroke-linecap='round'/%3E%3Cpath d='M8 9L10.2 6.3' stroke='black' stroke-width='1.8' stroke-linecap='round'/%3E%3C/svg%3E");
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cline x1='10' x2='14' y1='2' y2='2'/%3E%3Cline x1='12' x2='15' y1='14' y2='11'/%3E%3Ccircle cx='12' cy='14' r='8'/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cline x1='10' x2='14' y1='2' y2='2'/%3E%3Cline x1='12' x2='15' y1='14' y2='11'/%3E%3Ccircle cx='12' cy='14' r='8'/%3E%3C/svg%3E");
 }
 
+/* Important: the stem-and-dot from Lucide's "circle-alert", without its
+   outer circle (Kanso's own checkbox box already is the circle/container). */
 input[data-task="!"]:checked::after,
 li[data-task="!"] > input:checked::after,
 li[data-task="!"] > p > input:checked::after {
   background-color: var(--kanso-bg0);
-  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M8 3.3V9.8' stroke='black' stroke-width='2.6' stroke-linecap='round'/%3E%3Ccircle cx='8' cy='12.8' r='1.3' fill='black'/%3E%3C/svg%3E");
-  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M8 3.3V9.8' stroke='black' stroke-width='2.6' stroke-linecap='round'/%3E%3Ccircle cx='8' cy='12.8' r='1.3' fill='black'/%3E%3C/svg%3E");
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cline x1='12' x2='12' y1='8' y2='12'/%3E%3Cline x1='12' x2='12.01' y1='16' y2='16'/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cline x1='12' x2='12' y1='8' y2='12'/%3E%3Cline x1='12' x2='12.01' y1='16' y2='16'/%3E%3C/svg%3E");
 }
 
+/* Question: the curve-and-dot from Lucide's "circle-question-mark", same
+   reasoning as important above. */
 input[data-task="?"]:checked::after,
 li[data-task="?"] > input:checked::after,
 li[data-task="?"] > p > input:checked::after {
   background-color: var(--kanso-bg0);
-  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M5.45 6.2C5.45 3.9 6.75 2.8 8.15 2.9C9.65 3.0 10.85 4.2 10.55 5.7C10.25 7.0 8.75 7.3 8.15 8.4C7.85 8.9 7.85 9.4 7.85 9.9' stroke='black' stroke-width='2.1' stroke-linecap='round' fill='none'/%3E%3Ccircle cx='7.85' cy='13.0' r='1.3' fill='black'/%3E%3C/svg%3E");
-  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M5.45 6.2C5.45 3.9 6.75 2.8 8.15 2.9C9.65 3.0 10.85 4.2 10.55 5.7C10.25 7.0 8.75 7.3 8.15 8.4C7.85 8.9 7.85 9.4 7.85 9.9' stroke='black' stroke-width='2.1' stroke-linecap='round' fill='none'/%3E%3Ccircle cx='7.85' cy='13.0' r='1.3' fill='black'/%3E%3C/svg%3E");
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3'/%3E%3Cline x1='12' x2='12.01' y1='17' y2='17'/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3'/%3E%3Cline x1='12' x2='12.01' y1='17' y2='17'/%3E%3C/svg%3E");
 }
 
 /* Tasks plugin (obsidian-tasks-group/obsidian-tasks) metadata, Reading view

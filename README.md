@@ -107,7 +107,8 @@ Requires Obsidian 1.5.8 or later, on desktop and mobile.
 ## Credits
 
 - Colors from [kanso.nvim](https://github.com/webhooked/kanso.nvim) by webhooked.
-- The idea of styling alternate checkbox markers comes from [obsidian-things](https://github.com/colineckert/obsidian-things) (MIT), which credits kepano's [Minimal theme](https://minimal.guide/Block+types/Checklists#Checkbox+styling). Kanso's own selectors, icons, and colors are an independent implementation.
+- The idea of styling alternate checkbox markers, and of a paper airplane for forwarded, comes from [obsidian-things](https://github.com/colineckert/obsidian-things) (MIT), which credits kepano's [Minimal theme](https://minimal.guide/Block+types/Checklists#Checkbox+styling). Kanso's own selectors and colors are an independent implementation.
+- Checkbox marker icons from [Lucide](https://lucide.dev) (ISC licence; `check` and `x` are Feather-derived icons bundled in Lucide under the MIT licence). See [THIRD_PARTY_LICENSES.md](THIRD_PARTY_LICENSES.md) for the full notices.
 - The idea of a focus mode that hides the title bar, status bar, and ribbon comes from kepano's [Minimal theme](https://github.com/kepano/obsidian-minimal) (MIT). Kanso's CSS is an independent implementation.
 - The idea of click-and-hold image zoom comes from kepano's [Minimal theme](https://github.com/kepano/obsidian-minimal) (MIT). Kanso's CSS is an independent implementation.
 
