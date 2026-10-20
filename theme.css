@@ -471,20 +471,17 @@ blockquote,
    an original Kanso implementation). */
 
 li.task-list-item[data-task="-"] {
-  --checklist-done-decoration: line-through;
   --checklist-done-color: var(--kanso-muted);
-  text-decoration: var(--checklist-done-decoration);
   color: var(--checklist-done-color);
 }
 
+li.task-list-item[data-task="-"]::first-line,
+li.task-list-item[data-task="-"] > p {
+  text-decoration: line-through;
+}
+
 li.task-list-item[data-task="-"] > :is(ul, ol) {
-  --checklist-done-decoration: none;
   --checklist-done-color: var(--kanso-muted-2);
-  display: inline-block;
-  width: 100%;
-  box-sizing: border-box;
-  margin-block: 0;
-  vertical-align: top;
   color: var(--text-normal);
 }
 
