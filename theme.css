@@ -188,7 +188,8 @@ settings:
   --kanso-diff-change: #252535;
 }
 
-.kanso-ink {
+.theme-dark.kanso-ink,
+.theme-light.kanso-ink {
   --kanso-bg0: #14171d;
   --kanso-bg1: #1f1f26;
   --kanso-bg2: #22262d;
@@ -196,7 +197,8 @@ settings:
   --kanso-bg4: #4b4e57;
 }
 
-.kanso-mist {
+.theme-dark.kanso-mist,
+.theme-light.kanso-mist {
   --kanso-bg0: #22262d;
   --kanso-bg1: #2a2c35;
   --kanso-bg2: #393b44;
@@ -256,46 +258,33 @@ body {
   --background-primary: var(--kanso-bg0);
   --background-primary-alt: var(--kanso-bg1);
   --background-secondary: var(--kanso-bg1);
-  --background-secondary-alt: var(--kanso-bg2);
   --background-modifier-border: var(--kanso-bg3);
   --background-modifier-border-hover: var(--kanso-bg4);
   --background-modifier-border-focus: var(--kanso-blue);
-  --background-modifier-form-field: var(--kanso-bg0);
   --background-modifier-form-field-highlighted: var(--kanso-bg1);
   --background-modifier-hover: color-mix(in srgb, var(--kanso-bg2) 72%, transparent);
   --background-modifier-active-hover: var(--kanso-bg2);
   --background-modifier-error: var(--kanso-red);
   --background-modifier-error-hover: var(--kanso-red-soft);
   --background-modifier-success: var(--kanso-green);
-  --background-modifier-cover: color-mix(in srgb, var(--kanso-bg0) 60%, transparent);
-  --background-modifier-box-shadow: rgba(0, 0, 0, 0.25);
 
   --text-normal: var(--kanso-fg);
   --text-muted: var(--kanso-muted-2);
   --text-faint: var(--kanso-muted);
   --text-on-accent: var(--kanso-bg0);
   --text-on-accent-inverted: var(--kanso-fg2);
-  --text-accent: var(--kanso-blue);
   --text-accent-hover: var(--kanso-aqua);
   --text-error: var(--kanso-red);
   --text-warning: var(--kanso-yellow);
   --text-success: var(--kanso-green);
-  --text-selection: color-mix(in srgb, var(--kanso-visual) 72%, transparent);
   --text-highlight-bg: color-mix(in srgb, var(--kanso-yellow) 28%, transparent);
   --text-highlight-bg-active: color-mix(in srgb, var(--kanso-yellow) 38%, transparent);
 
-  --interactive-normal: var(--kanso-bg1);
-  --interactive-hover: var(--kanso-bg2);
-  --interactive-accent: var(--kanso-blue);
-  --interactive-accent-hover: var(--kanso-aqua);
   --interactive-success: var(--kanso-green);
 
   --accent-h: 195;
   --accent-s: 43%;
   --accent-l: 65%;
-  --color-accent: var(--kanso-blue);
-  --color-accent-1: var(--kanso-blue-soft);
-  --color-accent-2: var(--kanso-aqua);
 
   --radius-s: calc(var(--kanso-radius) * 0.75);
   --radius-m: var(--kanso-radius);
@@ -335,8 +324,6 @@ body {
   --dropdown-padding: 0 2em 0 0.75em;
 
   --input-height: 32px;
-  --input-shadow: none;
-  --input-shadow-hover: none;
   --input-border-width: 1px;
   --input-border-color: var(--kanso-bg3);
   --input-border-color-hover: var(--kanso-bg4);
@@ -424,7 +411,37 @@ body {
   --callout-radius: var(--radius-m);
 }
 
-.theme-light {
+/*
+ * Obsidian's own app.css declares --background-secondary-alt,
+ * --background-modifier-form-field, --interactive-normal, --interactive-hover,
+ * --input-shadow(-hover), --background-modifier-cover,
+ * --background-modifier-box-shadow, --text-selection and the accent family on
+ * .theme-dark / .theme-light (specificity 0,1,0), which beats the body {}
+ * block above (0,0,1) regardless of CSS load order. Re-declare them here at
+ * body.theme-dark / body.theme-light (0,1,1), which always wins. This still
+ * loses to the more specific variant blocks below and to the
+ * .kanso-custom-accent block, so neither is affected.
+ */
+body.theme-dark,
+body.theme-light {
+  --background-secondary-alt: var(--kanso-bg2);
+  --background-modifier-form-field: var(--kanso-bg0);
+  --background-modifier-cover: color-mix(in srgb, var(--kanso-bg0) 60%, transparent);
+  --background-modifier-box-shadow: rgba(0, 0, 0, 0.25);
+  --text-selection: color-mix(in srgb, var(--kanso-visual) 72%, transparent);
+  --interactive-normal: var(--kanso-bg1);
+  --interactive-hover: var(--kanso-bg2);
+  --interactive-accent: var(--kanso-blue);
+  --interactive-accent-hover: var(--kanso-aqua);
+  --color-accent: var(--kanso-blue);
+  --color-accent-1: var(--kanso-blue-soft);
+  --color-accent-2: var(--kanso-aqua);
+  --text-accent: var(--kanso-blue);
+  --input-shadow: none;
+  --input-shadow-hover: none;
+}
+
+body.theme-light {
   --accent-h: 219;
   --accent-s: 34%;
   --accent-l: 45%;
@@ -432,10 +449,10 @@ body {
   --text-on-accent: #f2f1ef;
 }
 
-.theme-light.kanso-zen,
-.theme-light.kanso-ink,
-.theme-light.kanso-mist,
-.theme-light.kanso-void {
+body.theme-light.kanso-zen,
+body.theme-light.kanso-ink,
+body.theme-light.kanso-mist,
+body.theme-light.kanso-void {
   --accent-h: 195;
   --accent-s: 43%;
   --accent-l: 65%;
@@ -443,7 +460,7 @@ body {
   --text-on-accent: var(--kanso-bg0);
 }
 
-.theme-dark.kanso-pearl {
+body.theme-dark.kanso-pearl {
   --accent-h: 219;
   --accent-s: 34%;
   --accent-l: 45%;
@@ -451,8 +468,8 @@ body {
   --text-on-accent: #f2f1ef;
 }
 
-.theme-dark.kanso-custom-accent,
-.theme-light.kanso-custom-accent {
+body.theme-dark.kanso-custom-accent,
+body.theme-light.kanso-custom-accent {
   --accent-h: var(--kanso-accent-color-hsl-h, 195);
   --accent-s: var(--kanso-accent-color-hsl-s, 43%);
   --accent-l: var(--kanso-accent-color-hsl-l, 65%);
@@ -558,21 +575,41 @@ blockquote,
   padding: 0.35rem 1rem;
 }
 
+/*
+ * Obsidian pre-1.14 reads --callout-color as an "r, g, b" triplet inside
+ * rgba(var(--callout-color), a); Obsidian 1.14+ instead feeds it straight
+ * into color-mix() as a full color, where a triplet is invalid and the
+ * whole declaration falls back to no tint at all. Keep the triplet for
+ * anything else that still depends on it, but also set the callout's
+ * background, border and title/icon color ourselves with literal rgba()/
+ * rgb() values at higher specificity than Obsidian's own .callout /
+ * .callout-title / .callout-icon rules, so the result is identical on
+ * both Obsidian generations regardless of which form --callout-color takes.
+ */
 .callout[data-callout="note"],
 .callout[data-callout="info"] {
   --callout-color: 127, 180, 202;
+
+  background-color: rgb(127 180 202 / 10%);
+  border-color: rgb(127 180 202 / 30%);
 }
 
 .callout[data-callout="tip"],
 .callout[data-callout="success"],
 .callout[data-callout="done"] {
   --callout-color: 152, 187, 108;
+
+  background-color: rgb(152 187 108 / 10%);
+  border-color: rgb(152 187 108 / 30%);
 }
 
 .callout[data-callout="warning"],
 .callout[data-callout="caution"],
 .callout[data-callout="attention"] {
   --callout-color: 220, 165, 97;
+
+  background-color: rgb(220 165 97 / 10%);
+  border-color: rgb(220 165 97 / 30%);
 }
 
 .callout[data-callout="failure"],
@@ -580,16 +617,75 @@ blockquote,
 .callout[data-callout="error"],
 .callout[data-callout="bug"] {
   --callout-color: 195, 64, 67;
+
+  background-color: rgb(195 64 67 / 10%);
+  border-color: rgb(195 64 67 / 30%);
 }
 
 .callout[data-callout="example"],
 .callout[data-callout="abstract"],
 .callout[data-callout="summary"] {
   --callout-color: 147, 138, 169;
+
+  background-color: rgb(147 138 169 / 10%);
+  border-color: rgb(147 138 169 / 30%);
 }
 
 .callout[data-callout="quote"] {
   --callout-color: 113, 124, 124;
+
+  background-color: rgb(113 124 124 / 10%);
+  border-color: rgb(113 124 124 / 30%);
+}
+
+.callout[data-callout="note"] .callout-title,
+.callout[data-callout="note"] .callout-icon,
+.callout[data-callout="info"] .callout-title,
+.callout[data-callout="info"] .callout-icon {
+  color: rgb(127 180 202);
+}
+
+.callout[data-callout="tip"] .callout-title,
+.callout[data-callout="tip"] .callout-icon,
+.callout[data-callout="success"] .callout-title,
+.callout[data-callout="success"] .callout-icon,
+.callout[data-callout="done"] .callout-title,
+.callout[data-callout="done"] .callout-icon {
+  color: rgb(152 187 108);
+}
+
+.callout[data-callout="warning"] .callout-title,
+.callout[data-callout="warning"] .callout-icon,
+.callout[data-callout="caution"] .callout-title,
+.callout[data-callout="caution"] .callout-icon,
+.callout[data-callout="attention"] .callout-title,
+.callout[data-callout="attention"] .callout-icon {
+  color: rgb(220 165 97);
+}
+
+.callout[data-callout="failure"] .callout-title,
+.callout[data-callout="failure"] .callout-icon,
+.callout[data-callout="danger"] .callout-title,
+.callout[data-callout="danger"] .callout-icon,
+.callout[data-callout="error"] .callout-title,
+.callout[data-callout="error"] .callout-icon,
+.callout[data-callout="bug"] .callout-title,
+.callout[data-callout="bug"] .callout-icon {
+  color: rgb(195 64 67);
+}
+
+.callout[data-callout="example"] .callout-title,
+.callout[data-callout="example"] .callout-icon,
+.callout[data-callout="abstract"] .callout-title,
+.callout[data-callout="abstract"] .callout-icon,
+.callout[data-callout="summary"] .callout-title,
+.callout[data-callout="summary"] .callout-icon {
+  color: rgb(147 138 169);
+}
+
+.callout[data-callout="quote"] .callout-title,
+.callout[data-callout="quote"] .callout-icon {
+  color: rgb(113 124 124);
 }
 
 .markdown-rendered table {
