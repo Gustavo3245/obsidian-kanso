@@ -2,7 +2,7 @@
 
 A calm, minimal Obsidian theme ported from [kanso.nvim](https://github.com/webhooked/kanso.nvim), with five variants: Zen, Ink, Mist, Void, and Pearl.
 
-![Kanso Zen in Obsidian](screenshot.png)
+![Kanso Zen in Obsidian, showing a note with a callout, code block, and task list alongside the graph view](screenshot.png)
 
 ## Features
 
