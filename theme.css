@@ -883,3 +883,87 @@ li[data-task="?"] > p > input:checked::after {
   font-variant-numeric: tabular-nums;
   pointer-events: none;
 }
+
+/* Dataview plugin (blacksmithgu/obsidian-dataview): query tables and
+   inline fields. Its table rows, task hovers, and striping already follow
+   Kanso through the --table-* and --text-* variables; this softens the
+   header's border, which otherwise inherits the header text color at full
+   strength, and colors the inline-field chips the plugin leaves to
+   --nav-item-color-selected, which Kanso does not otherwise set.
+   No-op without the plugin. */
+
+.table-view-table > thead > tr > th {
+  border-bottom-color: var(--kanso-bg3);
+}
+
+.dataview.inline-field-key {
+  color: var(--kanso-muted-2);
+}
+
+.dataview.inline-field-value,
+.dataview.inline-field-standalone-value {
+  color: var(--kanso-fg2);
+}
+
+/* Kanban plugin (mgmeyers/obsidian-kanban): lanes, cards, and tags already
+   inherit Kanso through Obsidian's shared variables; these fill in the
+   handful of spots the plugin styles with its own hardcoded or unmapped
+   values. No-op without the plugin. */
+
+.kanban-plugin__lane {
+  border-radius: var(--radius-m);
+}
+
+.kanban-plugin__lane-title-text {
+  color: var(--kanso-fg2);
+}
+
+div.kanban-plugin__lane-title-count.wip-exceeded {
+  background-color: color-mix(in srgb, var(--kanso-red) 25%, transparent);
+  color: var(--kanso-fg2);
+}
+
+/* Excalidraw plugin (zsviczian/obsidian-excalidraw-plugin): the toolbar,
+   side panels, and popups around the canvas, which Excalidraw themes with
+   its own CSS variables, rewritten as an inline style on the `.excalidraw`
+   container every time a drawing opens (most visibly with Excalidraw's own
+   "Match Obsidian theme" setting, which samples a generic dark/light
+   palette rather than this theme's colors). Only `!important` can win
+   against that inline style, so it is used here, narrowly, for this
+   plugin's variables only. The canvas itself keeps its background from the
+   drawing file, which this theme does not touch. No-op without the plugin. */
+
+/* stylelint-disable declaration-no-important */
+.excalidraw.theme--dark {
+  --island-bg-color: var(--kanso-bg1) !important;
+  --popup-bg-color: var(--kanso-bg1) !important;
+  --popup-secondary-bg-color: var(--kanso-bg2) !important;
+  --text-primary-color: var(--kanso-fg) !important;
+  --popup-text-color: var(--kanso-fg) !important;
+  --icon-fill-color: var(--kanso-fg) !important;
+  --color-primary: var(--kanso-blue) !important;
+  --button-gray-1: var(--kanso-bg2) !important;
+}
+
+.excalidraw:not(.theme--dark) {
+  --island-bg-color: var(--kanso-bg0) !important;
+  --popup-bg-color: var(--kanso-bg0) !important;
+  --popup-secondary-bg-color: var(--kanso-bg1) !important;
+  --text-primary-color: var(--kanso-fg) !important;
+  --popup-text-color: var(--kanso-fg) !important;
+  --icon-fill-color: var(--kanso-fg) !important;
+  --color-primary: var(--kanso-blue) !important;
+  --button-gray-1: var(--kanso-bg1) !important;
+}
+/* stylelint-enable declaration-no-important */
+
+/* Calendar plugin (liamcain/obsidian-calendar-plugin): day, week-number,
+   and title colors already follow Kanso, since the plugin's own --color-*
+   variables fall back to Obsidian's shared text and accent variables. This
+   adds a backdrop for days with a note, which the plugin otherwise leaves
+   unstyled; per-source dot colors are chosen in the plugin's own settings
+   and are not recolored here. No-op without the plugin. */
+
+.calendar .day.has-note:not(.today):not(.active) {
+  background-color: color-mix(in srgb, var(--kanso-blue) 10%, transparent);
+}
