@@ -1,61 +1,68 @@
 # Kanso for Obsidian
 
-An Obsidian app theme based on [`webhooked/kanso.nvim`](https://github.com/webhooked/kanso.nvim), with variants for Zen, Ink, Mist, and Pearl.
+A calm, minimal Obsidian theme ported from [kanso.nvim](https://github.com/webhooked/kanso.nvim), with four variants: Zen, Ink, Mist, and Pearl.
 
-## Install
+![Kanso Zen in Obsidian](screenshot.png)
 
-Copy this folder into:
+## Features
 
-```text
-<your-vault>/.obsidian/themes/Kanso
-```
+- Four variants matching kanso.nvim's palettes: three dark (Zen, Ink, Mist) and one light (Pearl)
+- Code blocks colored like kanso.nvim
+- Things-inspired task checkboxes, with eight styled markers and a choice of square, rounded, or circle
+- Styling for the [Tasks](https://github.com/obsidian-tasks-group/obsidian-tasks) plugin's due, scheduled, and start dates
+- Optional settings through [Style Settings](https://github.com/mgmeyers/obsidian-style-settings)
 
-Then open **Settings → Appearance → Themes** and select **Kanso**.
+## Installation
 
-## Variants
+**From Obsidian (recommended):** open **Settings → Appearance → Themes → Manage**, search for **Kanso**, then select **Install and use**.
 
-Install the [Style Settings](https://github.com/mgmeyers/obsidian-style-settings) plugin and pick a variant from the **Kanso** section:
+**Manually:** download `manifest.json` and `theme.css` from the [latest release](https://github.com/friesentius/obsidian-kanso/releases/latest), and put both in `<your-vault>/.obsidian/themes/Kanso/`. Then select **Kanso** under **Settings → Appearance → Themes**.
 
-- Kanso Zen
-- Kanso Ink
-- Kanso Mist
-- Kanso Pearl
+## Settings
 
-The selected variant overrides Obsidian's base color scheme:
+Kanso works without any plugins. With the Style Settings plugin installed, the **Kanso** section adds:
 
-- Kanso Pearl always uses the light palette.
-- Kanso Zen, Kanso Ink, and Kanso Mist always use dark palettes.
+| Setting | Options | Default |
+| --- | --- | --- |
+| Variant | Zen, Ink, Mist, Pearl | Without the plugin: Zen in dark mode, Pearl in light mode |
+| Checkbox shape | Square, Rounded, Circle | Rounded |
+| Readable line width | Width in pixels | 760px |
+| Radius | Size in pixels | 8px |
+| Editor font size | Size in pixels | 16px |
 
-Style Settings also provides Kanso layout controls (readable width, radius, editor font size) and a **Checkbox shape** option (Square, Rounded, Circle). Without the Style Settings plugin installed, checkboxes default to Rounded.
+Choosing a variant sets the color scheme: Pearl is always light, and Zen, Ink, and Mist are always dark.
 
 ![Checkbox shapes: Square, Rounded, Circle](assets/checkbox-shapes.png)
 
 ## Task checkboxes
 
-Checkbox shape is Rounded by default (Square and Circle are also available, see above), and a handful of alternate checkbox markers get their own color and glyph in Kanso's own palette. Every glyph is drawn at the same bold stroke weight as Obsidian's own checkmark, so the set reads as one family instead of thin font characters:
-
 | Marker | Meaning | Style |
 | --- | --- | --- |
-| `[ ]` | To-do | Outlined |
-| `[x]` | Done | Filled green, muted text (no strikethrough) |
-| `[-]` | Cancelled | Filled muted, bold X cut out, strikethrough text |
-| `[>]` | Forwarded | Filled blue, bold arrow |
-| `[<]` | Scheduled | Filled violet, bold arrow |
-| `[!]` | Important | Filled red, bold exclamation mark |
-| `[?]` | Question | Filled yellow, bold question mark |
+| `[ ]` | To do | Outlined |
+| `[x]` | Done | Green, muted text |
+| `[-]` | Cancelled | Grey with an X, struck-through text |
+| `[>]` | Forwarded | Blue, right arrow |
+| `[<]` | Scheduled | Violet, left arrow |
+| `[!]` | Important | Red, exclamation mark |
+| `[?]` | Question | Yellow, question mark |
 | `[/]` | In progress | Half-filled aqua |
-
-The idea of styling alternate checkbox markers was inspired by [colineckert/obsidian-things](https://github.com/colineckert/obsidian-things) (MIT licensed), which documents the technique as originating from kepano's [Minimal theme](https://minimal.guide/Block+types/Checklists#Checkbox+styling). Kanso's selectors, icons, and colors are an independent implementation in Kanso's own palette.
 
 ## Tasks plugin
 
-Kanso styles the metadata the [Tasks](https://github.com/obsidian-tasks-group/obsidian-tasks) community plugin adds to rendered tasks in Reading view and query results, using its documented [styling classes and data attributes](https://publish.obsidian.md/tasks/Advanced/Styling):
+If the Tasks plugin is installed, Kanso colors its dates. Due dates are red when overdue and orange when due today. Scheduled and start dates are orange once they have passed. Created, done, and cancelled dates are muted. You don't need any extra markup.
 
-- **Due date** (`task-due`): red and bold when overdue, orange and bold when due today, muted otherwise.
-- **Scheduled / start** dates: orange when in the past, muted otherwise.
-- **Created / done / cancelled** dates: muted, so they recede behind the task text.
+## Compatibility
 
-No Tasks-specific markup is required; these rules key off the plugin's own classes and only apply when the plugin is installed and enabled.
+Requires Obsidian 1.5.8 or later, on desktop and mobile.
+
+## Credits
+
+- Colors from [kanso.nvim](https://github.com/webhooked/kanso.nvim) by webhooked.
+- The idea of styling alternate checkbox markers comes from [obsidian-things](https://github.com/colineckert/obsidian-things) (MIT), which credits kepano's [Minimal theme](https://minimal.guide/Block+types/Checklists#Checkbox+styling). Kanso's own selectors, icons, and colors are an independent implementation.
+
+## Feedback
+
+Found a bug or have an idea? [Open an issue](https://github.com/friesentius/obsidian-kanso/issues).
 
 ## License
 
