@@ -90,7 +90,20 @@ Ported from kanso.nvim's `minimal = true` option, Minimal mode subdues color var
 - **Italics:** Rendered cleanly through typographic slant alone, without adding yellow tint.
 - **Tags:** Styled as subtle, quiet chips with neutral backdrops instead of bright colored labels.
 - **Links & Blockquotes:** Softened and harmonized to prevent visual fragmentation across paragraphs.
-- **Code & Syntax:** Code blocks adopt kanso.nvim's minimal syntax highlighting, muting keywords and operators to calm gray tones. Inline code drops its border for a smooth, blended background.
+- **Code & Syntax:** Code blocks and inline code adopt kanso.nvim's exact minimal syntax scheme:
+
+| Element | Color |
+| --- | --- |
+| Variables, Constants | Foreground (white / neutral) |
+| Parameters | Gray |
+| Functions, Methods | Blue |
+| Types | Aqua |
+| Keywords, Statements | Gray |
+| Operators (`=`, `+`, `*`, etc.) | Yellow |
+| Brackets, Punctuation | Gray |
+| Properties, Members | Violet |
+| Strings | Green |
+| Numbers | Pink |
 
 ## Plugin styling
 

@@ -1232,12 +1232,28 @@ body.theme-light.kanso-minimal-mode {
   --blockquote-border-color: var(--kanso-bg4);
   --blockquote-background-color: color-mix(in srgb, var(--kanso-bg1) 60%, transparent);
 
-  --code-keyword: var(--kanso-muted-2);
-  --code-operator: var(--kanso-muted-2);
-  --code-punctuation: var(--kanso-muted);
-  --code-tag: var(--kanso-fg);
+  /* Minimal syntax highlighting (matches kanso.nvim's minimal color scheme):
+     - Variables, Constants: White (foreground)
+     - Parameters: Gray
+     - Functions, Methods: Blue
+     - Types: Aqua
+     - Keywords, Statements: Gray
+     - Operators (=, +, *, etc.): Yellow
+     - Brackets, Punctuation: Gray
+     - Properties, Members: Violet
+     - Strings: Green
+     - Numbers: Pink */
+  --code-normal: var(--kanso-fg);
+  --code-comment: var(--kanso-muted);
+  --code-function: var(--kanso-blue-soft);
   --code-important: var(--kanso-yellow-soft);
-  --code-property: var(--kanso-fg);
+  --code-keyword: var(--kanso-muted-2);
+  --code-operator: var(--kanso-yellow-soft);
+  --code-property: var(--kanso-violet-soft);
+  --code-punctuation: var(--kanso-muted);
+  --code-string: var(--kanso-green-soft);
+  --code-tag: var(--kanso-fg);
+  --code-value: var(--kanso-pink);
 }
 
 body.kanso-minimal-mode .inline-title,
@@ -1265,6 +1281,61 @@ body.kanso-minimal-mode .cm-s-obsidian .cm-inline-code {
   background-color: color-mix(in srgb, var(--kanso-bg2) 50%, transparent);
   border-color: transparent;
   color: var(--kanso-fg2);
+}
+
+/* Explicit syntax token rules for Live Preview (CodeMirror 6) and Reading view (Prism) */
+body.kanso-minimal-mode .cm-s-obsidian .cm-type,
+body.kanso-minimal-mode .markdown-rendered code .token.class-name,
+body.kanso-minimal-mode .markdown-rendered code .token.type {
+  color: var(--kanso-aqua);
+}
+
+body.kanso-minimal-mode .cm-s-obsidian .cm-variable-2,
+body.kanso-minimal-mode .markdown-rendered code .token.parameter {
+  color: var(--kanso-muted-2);
+}
+
+body.kanso-minimal-mode .cm-s-obsidian .cm-property,
+body.kanso-minimal-mode .markdown-rendered code .token.property {
+  color: var(--kanso-violet-soft);
+}
+
+body.kanso-minimal-mode .cm-s-obsidian .cm-operator,
+body.kanso-minimal-mode .markdown-rendered code .token.operator {
+  color: var(--kanso-yellow-soft);
+}
+
+body.kanso-minimal-mode .cm-s-obsidian .cm-punctuation,
+body.kanso-minimal-mode .cm-s-obsidian .cm-bracket,
+body.kanso-minimal-mode .markdown-rendered code .token.punctuation {
+  color: var(--kanso-muted);
+}
+
+body.kanso-minimal-mode .cm-s-obsidian .cm-keyword,
+body.kanso-minimal-mode .markdown-rendered code .token.keyword {
+  color: var(--kanso-muted-2);
+}
+
+body.kanso-minimal-mode .cm-s-obsidian .cm-def,
+body.kanso-minimal-mode .markdown-rendered code .token.function {
+  color: var(--kanso-blue-soft);
+}
+
+body.kanso-minimal-mode .cm-s-obsidian .cm-string,
+body.kanso-minimal-mode .markdown-rendered code .token.string {
+  color: var(--kanso-green-soft);
+}
+
+body.kanso-minimal-mode .cm-s-obsidian .cm-number,
+body.kanso-minimal-mode .markdown-rendered code .token.number {
+  color: var(--kanso-pink);
+}
+
+body.kanso-minimal-mode .cm-s-obsidian .cm-variable,
+body.kanso-minimal-mode .cm-s-obsidian .cm-atom,
+body.kanso-minimal-mode .markdown-rendered code .token.variable,
+body.kanso-minimal-mode .markdown-rendered code .token.constant {
+  color: var(--kanso-fg);
 }
 
 /* Mobile polish (always on, scoped to Obsidian's own .is-mobile class; desktop
