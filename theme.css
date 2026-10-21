@@ -160,9 +160,9 @@ settings:
   -
     id: kanso-saturated-foreground
     title: Saturated foreground
-    description: Increase the saturation of syntax highlighting and accent colors (+20% in dark mode, +40% in Pearl), matching kanso.nvim's saturated mode. On by default.
+    description: Increase the saturation of syntax highlighting and accent colors (+20% in dark mode, +40% in Pearl), matching kanso.nvim's saturated mode. Off by default.
     type: class-toggle
-    default: true
+    default: false
   -
     id: kanso-folder-icons-disabled
     title: Disable folder icons
@@ -783,10 +783,10 @@ blockquote,
   .callout[data-callout="success"],
 :is(.theme-light:not(.kanso-zen):not(.kanso-ink):not(.kanso-mist):not(.kanso-void), .kanso-pearl)
   .callout[data-callout="done"] {
-  --callout-color: 111, 137, 78;
+  --callout-color: 93, 116, 65;
 
-  background-color: rgb(111 137 78 / 10%);
-  border-color: rgb(111 137 78 / 30%);
+  background-color: rgb(93 116 65 / 10%);
+  border-color: rgb(93 116 65 / 30%);
 }
 
 :is(.theme-light:not(.kanso-zen):not(.kanso-ink):not(.kanso-mist):not(.kanso-void), .kanso-pearl)
@@ -795,10 +795,10 @@ blockquote,
   .callout[data-callout="caution"],
 :is(.theme-light:not(.kanso-zen):not(.kanso-ink):not(.kanso-mist):not(.kanso-void), .kanso-pearl)
   .callout[data-callout="attention"] {
-  --callout-color: 204, 109, 0;
+  --callout-color: 162, 86, 0;
 
-  background-color: rgb(204 109 0 / 10%);
-  border-color: rgb(204 109 0 / 30%);
+  background-color: rgb(162 86 0 / 10%);
+  border-color: rgb(162 86 0 / 30%);
 }
 
 :is(.theme-light:not(.kanso-zen):not(.kanso-ink):not(.kanso-mist):not(.kanso-void), .kanso-pearl)
@@ -809,10 +809,10 @@ blockquote,
   .callout[data-callout="error"],
 :is(.theme-light:not(.kanso-zen):not(.kanso-ink):not(.kanso-mist):not(.kanso-void), .kanso-pearl)
   .callout[data-callout="bug"] {
-  --callout-color: 200, 64, 83;
+  --callout-color: 193, 55, 73;
 
-  background-color: rgb(200 64 83 / 10%);
-  border-color: rgb(200 64 83 / 30%);
+  background-color: rgb(193 55 73 / 10%);
+  border-color: rgb(193 55 73 / 30%);
 }
 
 :is(.theme-light:not(.kanso-zen):not(.kanso-ink):not(.kanso-mist):not(.kanso-void), .kanso-pearl)
@@ -848,7 +848,7 @@ blockquote,
   .callout[data-callout="success"] :is(.callout-title, .callout-icon),
 :is(.theme-light:not(.kanso-zen):not(.kanso-ink):not(.kanso-mist):not(.kanso-void), .kanso-pearl)
   .callout[data-callout="done"] :is(.callout-title, .callout-icon) {
-  color: rgb(111 137 78);
+  color: rgb(93 116 65);
 }
 
 :is(.theme-light:not(.kanso-zen):not(.kanso-ink):not(.kanso-mist):not(.kanso-void), .kanso-pearl)
@@ -857,7 +857,7 @@ blockquote,
   .callout[data-callout="caution"] :is(.callout-title, .callout-icon),
 :is(.theme-light:not(.kanso-zen):not(.kanso-ink):not(.kanso-mist):not(.kanso-void), .kanso-pearl)
   .callout[data-callout="attention"] :is(.callout-title, .callout-icon) {
-  color: rgb(204 109 0);
+  color: rgb(162 86 0);
 }
 
 :is(.theme-light:not(.kanso-zen):not(.kanso-ink):not(.kanso-mist):not(.kanso-void), .kanso-pearl)
@@ -868,7 +868,7 @@ blockquote,
   .callout[data-callout="error"] :is(.callout-title, .callout-icon),
 :is(.theme-light:not(.kanso-zen):not(.kanso-ink):not(.kanso-mist):not(.kanso-void), .kanso-pearl)
   .callout[data-callout="bug"] :is(.callout-title, .callout-icon) {
-  color: rgb(200 64 83);
+  color: rgb(193 55 73);
 }
 
 :is(.theme-light:not(.kanso-zen):not(.kanso-ink):not(.kanso-mist):not(.kanso-void), .kanso-pearl)
