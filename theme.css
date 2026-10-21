@@ -158,6 +158,12 @@ settings:
     type: class-toggle
     default: false
   -
+    id: kanso-saturated-foreground
+    title: Saturated foreground
+    description: Increase the saturation of syntax highlighting and accent colors (+20% in dark mode, +40% in Pearl), matching kanso.nvim's saturated mode. On by default.
+    type: class-toggle
+    default: true
+  -
     id: kanso-folder-icons-disabled
     title: Disable folder icons
     description: Turn off folder icons before folder names in the file explorer.
@@ -257,6 +263,57 @@ settings:
   --kanso-diff-add: #b7d0ae;
   --kanso-diff-delete: #d9a594;
   --kanso-diff-change: #d7e3d8;
+}
+
+/*
+ * Saturated foreground (Style Settings toggle, off by default).
+ * Ported from kanso.nvim's `foreground = "saturated"` option.
+ * Increases the saturation of syntax highlighting, headings, and accent
+ * colors (+20% in dark mode, +40% in Pearl/light mode) without altering
+ * UI backgrounds or base layout colors.
+ */
+.theme-dark.kanso-saturated-foreground,
+.theme-light.kanso-zen.kanso-saturated-foreground,
+.theme-light.kanso-ink.kanso-saturated-foreground,
+.theme-light.kanso-mist.kanso-saturated-foreground,
+.theme-light.kanso-void.kanso-saturated-foreground,
+.theme-dark.kanso-zen.kanso-saturated-foreground,
+.theme-dark.kanso-ink.kanso-saturated-foreground,
+.theme-dark.kanso-mist.kanso-saturated-foreground,
+.theme-dark.kanso-void.kanso-saturated-foreground,
+.kanso-saturated-foreground {
+  --kanso-red: #c93134;
+  --kanso-red-soft: #ca675f;
+  --kanso-orange: #bc8a6c;
+  --kanso-yellow: #e59f49;
+  --kanso-yellow-soft: #caac7a;
+  --kanso-green: #8fc055;
+  --kanso-green-soft: #7f9f6e;
+  --kanso-aqua: #81aaa9;
+  --kanso-blue: #6ebbd4;
+  --kanso-blue-soft: #7eaaba;
+  --kanso-violet: #8a88b0;
+  --kanso-violet-soft: #7e91af;
+  --kanso-pink: #a08aa2;
+}
+
+.theme-light:not(.kanso-zen):not(.kanso-ink):not(.kanso-mist):not(.kanso-void).kanso-saturated-foreground,
+.theme-light.kanso-pearl.kanso-saturated-foreground,
+.theme-dark.kanso-pearl.kanso-saturated-foreground,
+:is(.theme-light:not(.kanso-zen):not(.kanso-ink):not(.kanso-mist):not(.kanso-void), .kanso-pearl) .kanso-saturated-foreground {
+  --kanso-red: #d72436;
+  --kanso-red-soft: #e42d2c;
+  --kanso-orange: #e05700;
+  --kanso-yellow: #656720;
+  --kanso-yellow-soft: #72612b;
+  --kanso-green: #5e8f2f;
+  --kanso-green-soft: #5b9945;
+  --kanso-aqua: #3e8366;
+  --kanso-blue: #2a73b1;
+  --kanso-blue-soft: #3d8077;
+  --kanso-violet: #44418f;
+  --kanso-violet-soft: #44418f;
+  --kanso-pink: #c04062;
 }
 
 body {

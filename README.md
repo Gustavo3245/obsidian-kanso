@@ -19,6 +19,7 @@ A calm, minimal Obsidian theme ported from [kanso.nvim](https://github.com/webho
 - Larger checkbox and tag tap targets on mobile
 - Optional settings through [Style Settings](https://github.com/mgmeyers/obsidian-style-settings)
 - Minimal mode: a reduced, monochromatic color palette for distraction-free writing, with muted headings, subdued tags, neutral italics, and quiet code syntax from kanso.nvim
+- Saturated foreground: increases the saturation of syntax highlighting and headings (+20% in dark mode, +40% in Pearl), matching kanso.nvim's saturated mode
 - Folder icons in the file explorer, open or closed to match the folder's state
 
 ## Installation
@@ -41,6 +42,7 @@ Kanso works without any plugins. With the Style Settings plugin installed, the *
 | Disable active line highlight | On, Off | Off |
 | Focus mode | On, Off | Off |
 | Minimal mode | On, Off | Off |
+| Saturated foreground | On, Off | On |
 | Custom accent color | Off, or a color picker | Off |
 | Body font | Default, Sans-serif, Serif | Default (Obsidian's text font setting) |
 | Heading font | Default, Sans-serif, Serif | Default (same as body) |
@@ -104,6 +106,10 @@ Ported from kanso.nvim's `minimal = true` option, Minimal mode subdues color var
 | Properties, Members | Violet |
 | Strings | Green |
 | Numbers | Pink |
+
+## Saturated foreground
+
+Ported from kanso.nvim's `foreground = "saturated"` option, this setting enhances the saturation and vibrancy of syntax highlighting colors, headings, and tags (+20% in dark mode and +40% in Pearl/light mode). It only affects foreground accents while leaving UI backgrounds and structural layout completely calm.
 
 ## Plugin styling
 
