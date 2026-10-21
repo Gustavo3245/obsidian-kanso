@@ -1256,85 +1256,85 @@ body.theme-light.kanso-minimal-mode {
   --code-value: var(--kanso-pink);
 }
 
-body.kanso-minimal-mode .inline-title,
-body.kanso-minimal-mode .inline-title:not([data-level]) {
+.kanso-minimal-mode .inline-title,
+.kanso-minimal-mode .inline-title:not([data-level]) {
   color: var(--kanso-fg2);
 }
 
-body.kanso-minimal-mode .cm-formatting-header {
+.kanso-minimal-mode .cm-formatting-header {
   color: var(--kanso-muted);
   opacity: 0.6;
 }
 
-body.kanso-minimal-mode .cm-em,
-body.kanso-minimal-mode em {
+.kanso-minimal-mode .cm-em,
+.kanso-minimal-mode em {
   color: inherit;
 }
 
-body.kanso-minimal-mode .cm-strong,
-body.kanso-minimal-mode strong {
+.kanso-minimal-mode .cm-strong,
+.kanso-minimal-mode strong {
   color: var(--kanso-fg2);
 }
 
-body.kanso-minimal-mode .markdown-rendered code,
-body.kanso-minimal-mode .cm-s-obsidian .cm-inline-code {
+.kanso-minimal-mode .markdown-rendered code,
+.kanso-minimal-mode .cm-s-obsidian .cm-inline-code {
   background-color: color-mix(in srgb, var(--kanso-bg2) 50%, transparent);
   border-color: transparent;
   color: var(--kanso-fg2);
 }
 
 /* Explicit syntax token rules for Live Preview (CodeMirror 6) and Reading view (Prism) */
-body.kanso-minimal-mode .cm-s-obsidian .cm-type,
-body.kanso-minimal-mode .markdown-rendered code .token.class-name,
-body.kanso-minimal-mode .markdown-rendered code .token.type {
+.kanso-minimal-mode .cm-s-obsidian .cm-type,
+.kanso-minimal-mode .markdown-rendered code .token.class-name,
+.kanso-minimal-mode .markdown-rendered code .token.type {
   color: var(--kanso-aqua);
 }
 
-body.kanso-minimal-mode .cm-s-obsidian .cm-variable-2,
-body.kanso-minimal-mode .markdown-rendered code .token.parameter {
+.kanso-minimal-mode .cm-s-obsidian .cm-variable-2,
+.kanso-minimal-mode .markdown-rendered code .token.parameter {
   color: var(--kanso-muted-2);
 }
 
-body.kanso-minimal-mode .cm-s-obsidian .cm-property,
-body.kanso-minimal-mode .markdown-rendered code .token.property {
+.kanso-minimal-mode .cm-s-obsidian .cm-property,
+.kanso-minimal-mode .markdown-rendered code .token.property {
   color: var(--kanso-violet-soft);
 }
 
-body.kanso-minimal-mode .cm-s-obsidian .cm-operator,
-body.kanso-minimal-mode .markdown-rendered code .token.operator {
+.kanso-minimal-mode .cm-s-obsidian .cm-operator,
+.kanso-minimal-mode .markdown-rendered code .token.operator {
   color: var(--kanso-yellow-soft);
 }
 
-body.kanso-minimal-mode .cm-s-obsidian .cm-punctuation,
-body.kanso-minimal-mode .cm-s-obsidian .cm-bracket,
-body.kanso-minimal-mode .markdown-rendered code .token.punctuation {
+.kanso-minimal-mode .cm-s-obsidian .cm-punctuation,
+.kanso-minimal-mode .cm-s-obsidian .cm-bracket,
+.kanso-minimal-mode .markdown-rendered code .token.punctuation {
   color: var(--kanso-muted);
 }
 
-body.kanso-minimal-mode .cm-s-obsidian .cm-keyword,
-body.kanso-minimal-mode .markdown-rendered code .token.keyword {
+.kanso-minimal-mode .cm-s-obsidian .cm-keyword,
+.kanso-minimal-mode .markdown-rendered code .token.keyword {
   color: var(--kanso-muted-2);
 }
 
-body.kanso-minimal-mode .cm-s-obsidian .cm-def,
-body.kanso-minimal-mode .markdown-rendered code .token.function {
+.kanso-minimal-mode .cm-s-obsidian .cm-def,
+.kanso-minimal-mode .markdown-rendered code .token.function {
   color: var(--kanso-blue-soft);
 }
 
-body.kanso-minimal-mode .cm-s-obsidian .cm-string,
-body.kanso-minimal-mode .markdown-rendered code .token.string {
+.kanso-minimal-mode .cm-s-obsidian .cm-string,
+.kanso-minimal-mode .markdown-rendered code .token.string {
   color: var(--kanso-green-soft);
 }
 
-body.kanso-minimal-mode .cm-s-obsidian .cm-number,
-body.kanso-minimal-mode .markdown-rendered code .token.number {
+.kanso-minimal-mode .cm-s-obsidian .cm-number,
+.kanso-minimal-mode .markdown-rendered code .token.number {
   color: var(--kanso-pink);
 }
 
-body.kanso-minimal-mode .cm-s-obsidian .cm-variable,
-body.kanso-minimal-mode .cm-s-obsidian .cm-atom,
-body.kanso-minimal-mode .markdown-rendered code .token.variable,
-body.kanso-minimal-mode .markdown-rendered code .token.constant {
+.kanso-minimal-mode .cm-s-obsidian .cm-variable,
+.kanso-minimal-mode .cm-s-obsidian .cm-atom,
+.kanso-minimal-mode .markdown-rendered code .token.variable,
+.kanso-minimal-mode .markdown-rendered code .token.constant {
   color: var(--kanso-fg);
 }
 
