@@ -20,6 +20,7 @@ A calm, minimal Obsidian theme ported from [kanso.nvim](https://github.com/webho
 - Optional settings through [Style Settings](https://github.com/mgmeyers/obsidian-style-settings)
 - Minimal mode: a reduced, monochromatic color palette for distraction-free writing, with muted headings, subdued tags, neutral italics, and quiet code syntax from kanso.nvim
 - Saturated foreground: increases the saturation of syntax highlighting and headings (+20% in dark mode, +40% in Pearl), matching kanso.nvim's saturated mode
+- Search & Diff highlights: serene altBlue search matches and full diffGreen/diffRed/diffYellow palette for diff code blocks, File Recovery, and Obsidian Git
 - Folder icons in the file explorer, open or closed to match the folder's state
 
 ## Installation

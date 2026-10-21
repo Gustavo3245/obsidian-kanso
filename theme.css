@@ -348,6 +348,10 @@ body {
   --text-success: var(--kanso-green);
   --text-highlight-bg: color-mix(in srgb, var(--kanso-yellow) 28%, transparent);
   --text-highlight-bg-active: color-mix(in srgb, var(--kanso-yellow) 38%, transparent);
+  --text-search-bg: color-mix(in srgb, var(--kanso-search) 70%, transparent);
+  --text-search-bg-active: var(--kanso-search);
+  --search-result-background: color-mix(in srgb, var(--kanso-search) 70%, transparent);
+  --search-result-background-active: var(--kanso-search);
 
   --interactive-success: var(--kanso-green);
 
@@ -1379,6 +1383,96 @@ body:not(.kanso-image-zoom-disabled)
   max-height: 51%;
   transform: translate(-50%, -50%) scale(1.8);
   box-shadow: 0 4px 24px var(--background-modifier-box-shadow);
+}
+
+/* Search highlights (kanso.nvim altBlue search palette): replaces harsh
+   yellow editor search matches with Kanso's calm, focused deep blue tone. */
+
+.cm-searching {
+  background-color: color-mix(in srgb, var(--kanso-search) 65%, transparent);
+  border-radius: var(--radius-s);
+}
+
+.cm-searching.cm-searching-current {
+  background-color: var(--kanso-search);
+  outline: 1px solid var(--kanso-blue);
+}
+
+.search-highlight,
+.suggestion-highlight {
+  color: var(--kanso-blue);
+  background-color: color-mix(in srgb, var(--kanso-search) 40%, transparent);
+  border-radius: 2px;
+}
+
+/* Git and Diff styling (kanso.nvim diffGreen, diffRed, diffYellow, diffBlue):
+   styles diff code blocks (```diff), Obsidian's native File Recovery diffs,
+   and community Git plugin gutter markers. */
+
+/* Diff code blocks (Live Preview & Reading View) */
+.markdown-rendered pre code.language-diff .token.inserted,
+.markdown-rendered pre code.language-diff .token.prefix.inserted,
+.cm-s-obsidian .HyperMD-codeblock .cm-inserted {
+  background-color: color-mix(in srgb, var(--kanso-diff-add) 60%, transparent);
+  color: var(--kanso-green);
+}
+
+.markdown-rendered pre code.language-diff .token.deleted,
+.markdown-rendered pre code.language-diff .token.prefix.deleted,
+.cm-s-obsidian .HyperMD-codeblock .cm-deleted {
+  background-color: color-mix(in srgb, var(--kanso-diff-delete) 60%, transparent);
+  color: var(--kanso-red);
+}
+
+.markdown-rendered pre code.language-diff .token.coord,
+.cm-s-obsidian .HyperMD-codeblock .cm-coord {
+  background-color: color-mix(in srgb, var(--kanso-diff-change) 60%, transparent);
+  color: var(--kanso-blue-soft);
+}
+
+/* Obsidian native File Recovery modal diff viewer */
+.diff-line-added,
+.diff-added {
+  background-color: color-mix(in srgb, var(--kanso-diff-add) 65%, transparent);
+  color: var(--kanso-green);
+}
+
+.diff-line-deleted,
+.diff-deleted {
+  background-color: color-mix(in srgb, var(--kanso-diff-delete) 65%, transparent);
+  color: var(--kanso-red);
+}
+
+/* Obsidian Git plugin gutter marks & source control list */
+.git-gutter-added,
+.diff-gutter-add {
+  border-inline-start: 3px solid var(--kanso-green);
+  background-color: color-mix(in srgb, var(--kanso-diff-add) 50%, transparent);
+}
+
+.git-gutter-deleted,
+.diff-gutter-del {
+  border-inline-start: 3px solid var(--kanso-red);
+  background-color: color-mix(in srgb, var(--kanso-diff-delete) 50%, transparent);
+}
+
+.git-gutter-modified,
+.diff-gutter-change {
+  border-inline-start: 3px solid var(--kanso-yellow);
+  background-color: color-mix(in srgb, var(--kanso-diff-change) 50%, transparent);
+}
+
+.git-view .git-item.added,
+.git-status-staged .git-item {
+  color: var(--kanso-green);
+}
+
+.git-view .git-item.deleted {
+  color: var(--kanso-red);
+}
+
+.git-view .git-item.modified {
+  color: var(--kanso-yellow);
 }
 
 /* Minimal mode (Style Settings toggle, off by default): inspired by
