@@ -151,6 +151,18 @@ settings:
     description: Click and hold a rendered image in reading view to enlarge it. On by default; turn this on to disable it.
     type: class-toggle
     default: false
+  -
+    id: kanso-minimal-mode
+    title: Minimal mode
+    description: Reduced color palette for a calmer, distraction-free writing experience. Subdues headings to monochromatic tones, softens tags and italics, and applies kanso.nvim's minimal code syntax.
+    type: class-toggle
+    default: false
+  -
+    id: kanso-folder-icons-disabled
+    title: Disable folder icons
+    description: Turn off folder icons before folder names in the file explorer.
+    type: class-toggle
+    default: false
 */
 
 .theme-dark,
@@ -1186,6 +1198,73 @@ body:not(.kanso-image-zoom-disabled)
   max-height: 51%;
   transform: translate(-50%, -50%) scale(1.8);
   box-shadow: 0 4px 24px var(--background-modifier-box-shadow);
+}
+
+/* Minimal mode (Style Settings toggle, off by default): inspired by
+   kanso.nvim's `minimal = true` option. Reduces visual noise and color
+   proliferation across notes for a calmer, distraction-free writing
+   experience. Replaces the multi-colored heading spectrum with an elegant
+   monochromatic typographic hierarchy, subdues tags and note title, renders
+   italics cleanly by slant rather than colored yellow, softens blockquotes
+   and links, and applies kanso.nvim's muted syntax palette to code blocks
+   and inline code. */
+
+body.kanso-minimal-mode,
+body.theme-dark.kanso-minimal-mode,
+body.theme-light.kanso-minimal-mode {
+  --h1-color: var(--kanso-fg2);
+  --h2-color: var(--kanso-fg);
+  --h3-color: var(--kanso-fg);
+  --h4-color: var(--kanso-fg);
+  --h5-color: var(--kanso-muted-2);
+  --h6-color: var(--kanso-muted-2);
+
+  --tag-color: var(--kanso-muted-2);
+  --tag-background: color-mix(in srgb, var(--kanso-bg2) 75%, transparent);
+  --tag-color-hover: var(--kanso-fg2);
+  --tag-background-hover: var(--kanso-bg3);
+
+  --link-color: var(--kanso-blue-soft);
+  --link-color-hover: var(--kanso-blue);
+  --link-external-color: var(--kanso-blue-soft);
+  --link-external-color-hover: var(--kanso-blue);
+
+  --blockquote-border-color: var(--kanso-bg4);
+  --blockquote-background-color: color-mix(in srgb, var(--kanso-bg1) 60%, transparent);
+
+  --code-keyword: var(--kanso-muted-2);
+  --code-operator: var(--kanso-muted-2);
+  --code-punctuation: var(--kanso-muted);
+  --code-tag: var(--kanso-fg);
+  --code-important: var(--kanso-yellow-soft);
+  --code-property: var(--kanso-fg);
+}
+
+body.kanso-minimal-mode .inline-title,
+body.kanso-minimal-mode .inline-title:not([data-level]) {
+  color: var(--kanso-fg2);
+}
+
+body.kanso-minimal-mode .cm-formatting-header {
+  color: var(--kanso-muted);
+  opacity: 0.6;
+}
+
+body.kanso-minimal-mode .cm-em,
+body.kanso-minimal-mode em {
+  color: inherit;
+}
+
+body.kanso-minimal-mode .cm-strong,
+body.kanso-minimal-mode strong {
+  color: var(--kanso-fg2);
+}
+
+body.kanso-minimal-mode .markdown-rendered code,
+body.kanso-minimal-mode .cm-s-obsidian .cm-inline-code {
+  background-color: color-mix(in srgb, var(--kanso-bg2) 50%, transparent);
+  border-color: transparent;
+  color: var(--kanso-fg2);
 }
 
 /* Mobile polish (always on, scoped to Obsidian's own .is-mobile class; desktop

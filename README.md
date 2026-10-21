@@ -18,6 +18,7 @@ A calm, minimal Obsidian theme ported from [kanso.nvim](https://github.com/webho
 - Image zoom: click and hold a rendered image in reading view to enlarge it
 - Larger checkbox and tag tap targets on mobile
 - Optional settings through [Style Settings](https://github.com/mgmeyers/obsidian-style-settings)
+- Minimal mode: a reduced, monochromatic color palette for distraction-free writing, with muted headings, subdued tags, neutral italics, and quiet code syntax from kanso.nvim
 - Folder icons in the file explorer, open or closed to match the folder's state
 
 ## Installation
@@ -39,6 +40,7 @@ Kanso works without any plugins. With the Style Settings plugin installed, the *
 | Editor font size | Size in pixels | 16px |
 | Disable active line highlight | On, Off | Off |
 | Focus mode | On, Off | Off |
+| Minimal mode | On, Off | Off |
 | Custom accent color | Off, or a color picker | Off |
 | Body font | Default, Sans-serif, Serif | Default (Obsidian's text font setting) |
 | Heading font | Default, Sans-serif, Serif | Default (same as body) |
@@ -78,6 +80,17 @@ Kanso highlights the line your cursor is on while editing, matching the cursorli
 ## Focus mode
 
 With the Style Settings plugin installed, turning on Focus mode hides the title bar, status bar, and ribbon for distraction-free writing. Hover near the left edge to bring the ribbon back, the bottom-right to bring the status bar back, or the window controls in the top-right to bring the title bar back; move the pointer away and each hides again. On touch devices, where there's no hover to rely on, nothing is hidden in the first place: the title bar and status bar stay visible (mobile Obsidian has no ribbon to hide). Turn the setting off to restore the normal layout.
+
+## Minimal mode
+
+Ported from kanso.nvim's `minimal = true` option, Minimal mode subdues color variety across your notes for a cleaner, quieter writing and reading environment. When enabled via Style Settings:
+
+- **Headings (Muted):** Replaces the multi-colored H1–H6 spectrum with a refined monochromatic hierarchy based on typographic weight and scale.
+- **Note title:** Matches the prominent neutral foreground rather than carrying a bright yellow accent.
+- **Italics:** Rendered cleanly through typographic slant alone, without adding yellow tint.
+- **Tags:** Styled as subtle, quiet chips with neutral backdrops instead of bright colored labels.
+- **Links & Blockquotes:** Softened and harmonized to prevent visual fragmentation across paragraphs.
+- **Code & Syntax:** Code blocks adopt kanso.nvim's minimal syntax highlighting, muting keywords and operators to calm gray tones. Inline code drops its border for a smooth, blended background.
 
 ## Plugin styling
 
