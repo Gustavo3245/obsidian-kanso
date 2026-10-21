@@ -700,6 +700,130 @@ blockquote,
   color: rgb(113 124 124);
 }
 
+/* Callouts in Pearl (light theme): in light mode, pastel dark-mode callout
+   colors lack sufficient contrast against the bright background. These rules
+   override them with kanso.nvim's tuned Pearl palette (pearlBlue, pearlGreen,
+   pearlOrange, pearlRed, pearlViolet, and pearlMuted) for WCAG 2.1 AA compliant
+   contrast and readability. */
+
+:is(.theme-light:not(.kanso-zen):not(.kanso-ink):not(.kanso-mist):not(.kanso-void), .kanso-pearl)
+  .callout[data-callout="note"],
+:is(.theme-light:not(.kanso-zen):not(.kanso-ink):not(.kanso-mist):not(.kanso-void), .kanso-pearl)
+  .callout[data-callout="info"] {
+  --callout-color: 77, 105, 155;
+
+  background-color: rgb(77 105 155 / 10%);
+  border-color: rgb(77 105 155 / 30%);
+}
+
+:is(.theme-light:not(.kanso-zen):not(.kanso-ink):not(.kanso-mist):not(.kanso-void), .kanso-pearl)
+  .callout[data-callout="tip"],
+:is(.theme-light:not(.kanso-zen):not(.kanso-ink):not(.kanso-mist):not(.kanso-void), .kanso-pearl)
+  .callout[data-callout="success"],
+:is(.theme-light:not(.kanso-zen):not(.kanso-ink):not(.kanso-mist):not(.kanso-void), .kanso-pearl)
+  .callout[data-callout="done"] {
+  --callout-color: 111, 137, 78;
+
+  background-color: rgb(111 137 78 / 10%);
+  border-color: rgb(111 137 78 / 30%);
+}
+
+:is(.theme-light:not(.kanso-zen):not(.kanso-ink):not(.kanso-mist):not(.kanso-void), .kanso-pearl)
+  .callout[data-callout="warning"],
+:is(.theme-light:not(.kanso-zen):not(.kanso-ink):not(.kanso-mist):not(.kanso-void), .kanso-pearl)
+  .callout[data-callout="caution"],
+:is(.theme-light:not(.kanso-zen):not(.kanso-ink):not(.kanso-mist):not(.kanso-void), .kanso-pearl)
+  .callout[data-callout="attention"] {
+  --callout-color: 204, 109, 0;
+
+  background-color: rgb(204 109 0 / 10%);
+  border-color: rgb(204 109 0 / 30%);
+}
+
+:is(.theme-light:not(.kanso-zen):not(.kanso-ink):not(.kanso-mist):not(.kanso-void), .kanso-pearl)
+  .callout[data-callout="failure"],
+:is(.theme-light:not(.kanso-zen):not(.kanso-ink):not(.kanso-mist):not(.kanso-void), .kanso-pearl)
+  .callout[data-callout="danger"],
+:is(.theme-light:not(.kanso-zen):not(.kanso-ink):not(.kanso-mist):not(.kanso-void), .kanso-pearl)
+  .callout[data-callout="error"],
+:is(.theme-light:not(.kanso-zen):not(.kanso-ink):not(.kanso-mist):not(.kanso-void), .kanso-pearl)
+  .callout[data-callout="bug"] {
+  --callout-color: 200, 64, 83;
+
+  background-color: rgb(200 64 83 / 10%);
+  border-color: rgb(200 64 83 / 30%);
+}
+
+:is(.theme-light:not(.kanso-zen):not(.kanso-ink):not(.kanso-mist):not(.kanso-void), .kanso-pearl)
+  .callout[data-callout="example"],
+:is(.theme-light:not(.kanso-zen):not(.kanso-ink):not(.kanso-mist):not(.kanso-void), .kanso-pearl)
+  .callout[data-callout="abstract"],
+:is(.theme-light:not(.kanso-zen):not(.kanso-ink):not(.kanso-mist):not(.kanso-void), .kanso-pearl)
+  .callout[data-callout="summary"] {
+  --callout-color: 98, 76, 131;
+
+  background-color: rgb(98 76 131 / 10%);
+  border-color: rgb(98 76 131 / 30%);
+}
+
+:is(.theme-light:not(.kanso-zen):not(.kanso-ink):not(.kanso-mist):not(.kanso-void), .kanso-pearl)
+  .callout[data-callout="quote"] {
+  --callout-color: 109, 109, 105;
+
+  background-color: rgb(109 109 105 / 10%);
+  border-color: rgb(109 109 105 / 30%);
+}
+
+:is(.theme-light:not(.kanso-zen):not(.kanso-ink):not(.kanso-mist):not(.kanso-void), .kanso-pearl)
+  .callout[data-callout="note"] :is(.callout-title, .callout-icon),
+:is(.theme-light:not(.kanso-zen):not(.kanso-ink):not(.kanso-mist):not(.kanso-void), .kanso-pearl)
+  .callout[data-callout="info"] :is(.callout-title, .callout-icon) {
+  color: rgb(77 105 155);
+}
+
+:is(.theme-light:not(.kanso-zen):not(.kanso-ink):not(.kanso-mist):not(.kanso-void), .kanso-pearl)
+  .callout[data-callout="tip"] :is(.callout-title, .callout-icon),
+:is(.theme-light:not(.kanso-zen):not(.kanso-ink):not(.kanso-mist):not(.kanso-void), .kanso-pearl)
+  .callout[data-callout="success"] :is(.callout-title, .callout-icon),
+:is(.theme-light:not(.kanso-zen):not(.kanso-ink):not(.kanso-mist):not(.kanso-void), .kanso-pearl)
+  .callout[data-callout="done"] :is(.callout-title, .callout-icon) {
+  color: rgb(111 137 78);
+}
+
+:is(.theme-light:not(.kanso-zen):not(.kanso-ink):not(.kanso-mist):not(.kanso-void), .kanso-pearl)
+  .callout[data-callout="warning"] :is(.callout-title, .callout-icon),
+:is(.theme-light:not(.kanso-zen):not(.kanso-ink):not(.kanso-mist):not(.kanso-void), .kanso-pearl)
+  .callout[data-callout="caution"] :is(.callout-title, .callout-icon),
+:is(.theme-light:not(.kanso-zen):not(.kanso-ink):not(.kanso-mist):not(.kanso-void), .kanso-pearl)
+  .callout[data-callout="attention"] :is(.callout-title, .callout-icon) {
+  color: rgb(204 109 0);
+}
+
+:is(.theme-light:not(.kanso-zen):not(.kanso-ink):not(.kanso-mist):not(.kanso-void), .kanso-pearl)
+  .callout[data-callout="failure"] :is(.callout-title, .callout-icon),
+:is(.theme-light:not(.kanso-zen):not(.kanso-ink):not(.kanso-mist):not(.kanso-void), .kanso-pearl)
+  .callout[data-callout="danger"] :is(.callout-title, .callout-icon),
+:is(.theme-light:not(.kanso-zen):not(.kanso-ink):not(.kanso-mist):not(.kanso-void), .kanso-pearl)
+  .callout[data-callout="error"] :is(.callout-title, .callout-icon),
+:is(.theme-light:not(.kanso-zen):not(.kanso-ink):not(.kanso-mist):not(.kanso-void), .kanso-pearl)
+  .callout[data-callout="bug"] :is(.callout-title, .callout-icon) {
+  color: rgb(200 64 83);
+}
+
+:is(.theme-light:not(.kanso-zen):not(.kanso-ink):not(.kanso-mist):not(.kanso-void), .kanso-pearl)
+  .callout[data-callout="example"] :is(.callout-title, .callout-icon),
+:is(.theme-light:not(.kanso-zen):not(.kanso-ink):not(.kanso-mist):not(.kanso-void), .kanso-pearl)
+  .callout[data-callout="abstract"] :is(.callout-title, .callout-icon),
+:is(.theme-light:not(.kanso-zen):not(.kanso-ink):not(.kanso-mist):not(.kanso-void), .kanso-pearl)
+  .callout[data-callout="summary"] :is(.callout-title, .callout-icon) {
+  color: rgb(98 76 131);
+}
+
+:is(.theme-light:not(.kanso-zen):not(.kanso-ink):not(.kanso-mist):not(.kanso-void), .kanso-pearl)
+  .callout[data-callout="quote"] :is(.callout-title, .callout-icon) {
+  color: rgb(109 109 105);
+}
+
 .markdown-rendered table {
   border-collapse: collapse;
 }
