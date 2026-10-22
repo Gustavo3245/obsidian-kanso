@@ -18,6 +18,10 @@ A calm, minimal Obsidian theme ported from [kanso.nvim](https://github.com/webho
 - Image zoom: click and hold a rendered image in reading view to enlarge it
 - Larger checkbox and tag tap targets on mobile
 - Optional settings through [Style Settings](https://github.com/mgmeyers/obsidian-style-settings)
+- Minimal mode: a reduced, monochromatic color palette for distraction-free writing, with muted headings, subdued tags, neutral italics, and quiet code syntax from kanso.nvim
+- Saturated foreground: increases the saturation of syntax highlighting and headings (+20% in dark mode, +40% in Pearl), matching kanso.nvim's saturated mode
+- Search & Diff highlights: serene altBlue search matches and full diffGreen/diffRed/diffYellow palette for diff code blocks, File Recovery, and Obsidian Git
+- Folder icons in the file explorer, open or closed to match the folder's state
 
 ## Installation
 
@@ -38,11 +42,14 @@ Kanso works without any plugins. With the Style Settings plugin installed, the *
 | Editor font size | Size in pixels | 16px |
 | Disable active line highlight | On, Off | Off |
 | Focus mode | On, Off | Off |
+| Minimal mode | On, Off | Off |
+| Saturated foreground | On, Off | Off |
 | Custom accent color | Off, or a color picker | Off |
 | Body font | Default, Sans-serif, Serif | Default (Obsidian's text font setting) |
 | Heading font | Default, Sans-serif, Serif | Default (same as body) |
 | Monospace font | Default, System monospace, Classic monospace | Default (Obsidian's monospace font setting) |
 | Disable image zoom | On, Off | Off (zoom is on) |
+| Disable folder icons | On, Off | Off (icons are on) |
 
 Choosing a variant sets the color scheme: Pearl is always light, and Zen, Ink, Mist, and Void are always dark. Void sets the editor background to true black and raises the other surfaces just enough to stay distinguishable, for OLED screens, while keeping the same hue relationships as the other dark variants. The body, heading, and monospace font settings default to whatever you've chosen in **Settings → Appearance → Font**; picking anything other than Default here switches to that font instead.
 
@@ -77,6 +84,34 @@ Kanso highlights the line your cursor is on while editing, matching the cursorli
 
 With the Style Settings plugin installed, turning on Focus mode hides the title bar, status bar, and ribbon for distraction-free writing. Hover near the left edge to bring the ribbon back, the bottom-right to bring the status bar back, or the window controls in the top-right to bring the title bar back; move the pointer away and each hides again. On touch devices, where there's no hover to rely on, nothing is hidden in the first place: the title bar and status bar stay visible (mobile Obsidian has no ribbon to hide). Turn the setting off to restore the normal layout.
 
+## Minimal mode
+
+Ported from kanso.nvim's `minimal = true` option, Minimal mode subdues color variety across your notes for a cleaner, quieter writing and reading environment. When enabled via Style Settings:
+
+- **Headings (Muted):** Replaces the multi-colored H1–H6 spectrum with a refined monochromatic hierarchy based on typographic weight and scale.
+- **Note title:** Matches the prominent neutral foreground rather than carrying a bright yellow accent.
+- **Italics:** Rendered cleanly through typographic slant alone, without adding yellow tint.
+- **Tags:** Styled as subtle, quiet chips with neutral backdrops instead of bright colored labels.
+- **Links & Blockquotes:** Softened and harmonized to prevent visual fragmentation across paragraphs.
+- **Code & Syntax:** Code blocks and inline code adopt kanso.nvim's exact minimal syntax scheme:
+
+| Element | Color |
+| --- | --- |
+| Variables, Constants | Foreground (white / neutral) |
+| Parameters | Gray |
+| Functions, Methods | Blue |
+| Types | Aqua |
+| Keywords, Statements | Gray |
+| Operators (`=`, `+`, `*`, etc.) | Yellow |
+| Brackets, Punctuation | Gray |
+| Properties, Members | Violet |
+| Strings | Green |
+| Numbers | Pink |
+
+## Saturated foreground
+
+Ported from kanso.nvim's `foreground = "saturated"` option, this setting enhances the saturation and vibrancy of syntax highlighting colors, headings, and tags (+20% in dark mode and +40% in Pearl/light mode). It is off by default and only affects foreground accents when enabled, leaving UI backgrounds and structural layout completely calm.
+
 ## Plugin styling
 
 Kanso recolors four popular community plugins with its own palette. No extra markup or settings are needed, and nothing changes if a plugin isn't installed.
@@ -102,7 +137,7 @@ Requires Obsidian 1.5.8 or later, on desktop and mobile.
 
 - Colors from [kanso.nvim](https://github.com/webhooked/kanso.nvim) by webhooked.
 - The idea of styling alternate checkbox markers, and of a paper airplane for forwarded, comes from [obsidian-things](https://github.com/colineckert/obsidian-things) (MIT), which credits kepano's [Minimal theme](https://minimal.guide/Block+types/Checklists#Checkbox+styling). Kanso's own selectors and colors are an independent implementation.
-- Checkbox marker icons from [Lucide](https://lucide.dev) (ISC licence; `check` and `x` are Feather-derived icons bundled in Lucide under the MIT licence), except the question-mark glyph, which is Kanso's own original hand-drawn icon from 1.0.1. See [THIRD_PARTY_LICENSES.md](THIRD_PARTY_LICENSES.md) for the full notices.
+- Checkbox marker and folder icons from [Lucide](https://lucide.dev) (ISC licence; `check` and `x` are Feather-derived icons bundled in Lucide under the MIT licence), except the question-mark glyph, which is Kanso's own original hand-drawn icon from 1.0.1. See [THIRD_PARTY_LICENSES.md](THIRD_PARTY_LICENSES.md) for the full notices.
 - The idea of a focus mode that hides the title bar, status bar, and ribbon comes from kepano's [Minimal theme](https://github.com/kepano/obsidian-minimal) (MIT). Kanso's CSS is an independent implementation.
 - The idea of click-and-hold image zoom comes from kepano's [Minimal theme](https://github.com/kepano/obsidian-minimal) (MIT). Kanso's CSS is an independent implementation.
 
