@@ -13,6 +13,7 @@ A calm, minimal Obsidian theme ported from [kanso.nvim](https://github.com/webho
 - Active line highlight while editing, like kanso.nvim's cursorline
 - Focus mode, which hides the title bar, status bar, and ribbon for distraction-free writing
 - Dim inactive panes: subtly dims unfocused editor splits, focusing attention on the active note (from kanso.nvim)
+- Translucent window support: works with Obsidian's native translucent window setting (Settings → Appearance) to create a calm frosted-glass backdrop from kanso.nvim's transparent mode
 - Optional custom accent color, overriding a variant's accent without swapping variants
 - Optional font-family choices for body text, headings, and code, each with web-safe fallbacks
 - Styling for Dataview, Kanban, Excalidraw, and Calendar
@@ -46,6 +47,7 @@ Kanso works without any plugins. With the Style Settings plugin installed, the *
 | Disable active line highlight | On, Off | Off |
 | Focus mode | On, Off | Off |
 | Dim inactive panes | On, Off | Off |
+| Translucency level | Subtle (85%), Balanced (75%), Clear (60%) | Balanced (75%) |
 | Minimal mode | On, Off | Off |
 | Saturated foreground | On, Off | On |
 | Custom accent color | Off, or a color picker | Off |
@@ -91,6 +93,15 @@ With the Style Settings plugin installed, turning on Focus mode hides the title 
 ## Dim inactive panes
 
 Ported from kanso.nvim's `dimInactive = true` option, this setting subtly reduces the opacity of unfocused editor splits (to 55%) in split-view layouts. This naturally draws visual attention to whichever note is currently active. Hovering the pointer over an inactive pane smoothly restores its clarity (to 90%), allowing effortless reading across panes before clicking to switch focus. Sidebars (file explorer, search, outline) are unaffected.
+
+## Translucent window
+
+Ported from kanso.nvim's `transparent = true` option, Kanso seamlessly integrates with Obsidian's native **Settings → Appearance → Translucent window**. When enabled in Obsidian, Kanso replaces solid background surfaces with a serene, semi-transparent backdrop (`color-mix` with `--kanso-bg0`).
+
+With Style Settings installed, you can customize the **Translucency level**:
+- **Subtle (85%):** gentle desktop bleed-through with high text contrast.
+- **Balanced (75%, default):** the optimal frosted-glass balance.
+- **Clear (60%):** pronounced transparency for vivid desktop wallpapers.
 
 ## Minimal mode
 
