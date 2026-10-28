@@ -372,12 +372,12 @@ body {
   --canvas-card-label-color: var(--kanso-muted-2);
   --canvas-dot-pattern: var(--kanso-bg3);
   --canvas-color: var(--kanso-bg4);
-  --canvas-color-1: var(--kanso-red);
-  --canvas-color-2: var(--kanso-orange);
-  --canvas-color-3: var(--kanso-yellow);
-  --canvas-color-4: var(--kanso-green);
-  --canvas-color-5: var(--kanso-blue);
-  --canvas-color-6: var(--kanso-violet);
+  --canvas-color-1: var(--kanso-red-soft);
+  --canvas-color-2: var(--kanso-green);
+  --canvas-color-3: var(--kanso-blue);
+  --canvas-color-4: var(--kanso-violet);
+  --canvas-color-5: var(--kanso-aqua);
+  --canvas-color-6: var(--kanso-yellow);
 
   --interactive-success: var(--kanso-green);
 
@@ -1602,11 +1602,11 @@ body.theme-light.kanso-minimal-mode {
 
   --canvas-dot-pattern: var(--kanso-bg2);
   --canvas-color-1: var(--kanso-red-soft);
-  --canvas-color-2: var(--kanso-orange);
-  --canvas-color-3: var(--kanso-yellow-soft);
-  --canvas-color-4: var(--kanso-green-soft);
-  --canvas-color-5: var(--kanso-blue-soft);
-  --canvas-color-6: var(--kanso-violet-soft);
+  --canvas-color-2: var(--kanso-green-soft);
+  --canvas-color-3: var(--kanso-blue-soft);
+  --canvas-color-4: var(--kanso-violet-soft);
+  --canvas-color-5: var(--kanso-aqua);
+  --canvas-color-6: var(--kanso-yellow-soft);
 
   --tag-color: var(--kanso-muted-2);
   --tag-background: color-mix(in srgb, var(--kanso-bg2) 75%, transparent);

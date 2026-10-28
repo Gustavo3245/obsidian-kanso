@@ -23,7 +23,7 @@ A calm, minimal Obsidian theme ported from [kanso.nvim](https://github.com/webho
 - Saturated foreground: increases the saturation of syntax highlighting and headings (+20% in dark mode, +40% in Pearl), matching kanso.nvim's saturated mode
 - Search & Diff highlights: serene altBlue search matches and full diffGreen/diffRed/diffYellow palette for diff code blocks, File Recovery, and Obsidian Git
 - Graph view styled to match Kanso's palette, with serene blue note nodes, yellow focused highlights, violet tag nodes, and subtle connection lines
-- Canvas support: maps Obsidian Canvas's 6 card and sticky note colors to Kanso's primary palette (red, orange, yellow, green, blue, violet) and styles grid dots, controls, and card menus
+- Canvas support: maps Obsidian Canvas's 6 card and sticky note colors to Kanso's heading palette (red-soft, green, blue, violet, aqua, yellow) and styles grid dots, controls, and card menus
 - Folder icons in the file explorer, open or closed to match the folder's state
 
 ## Installation
@@ -124,7 +124,7 @@ Ported from kanso.nvim's `foreground = "saturated"` option, this setting enhance
 
 Obsidian Canvas's native palette is completely harmonized with Kanso:
 
-- **Card & note colors (1–6):** mapped directly to Kanso's six primary colors (`red`, `orange`, `yellow`, `green`, `blue`, `violet`), automatically adapting across variants (Zen, Ink, Mist, Void, Pearl) and modes (Saturated, Minimal).
+- **Card & note colors (1–6):** mapped directly to Kanso's heading colors (`red-soft`, `green`, `blue`, `violet`, `aqua`, `yellow`), matching `--h1-color` through `--h6-color` for visual consistency across notes and canvas, and automatically adapting across variants (Zen, Ink, Mist, Void, Pearl) and modes (Saturated, Minimal).
 - **Grid dot pattern:** rendered in Kanso's subtle border tone (`--kanso-bg3` in standard mode, `--kanso-bg2` in Minimal mode), providing clean spatial orientation without visual clutter.
 - **Canvas controls & menus:** toolbar groups, card creation menus, and color picker popups carry Kanso's elevated background (`--kanso-bg1`), soft border, and rounded corners.
 
