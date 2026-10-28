@@ -130,9 +130,9 @@ settings:
     type: class-toggle
     default: false
   -
-    id: kanso-translucent-status-bar
-    title: Translucent status bar
-    description: Apply a frosted-glass translucent backdrop with blur to the bottom status bar (word count, character count, and note stats). Off by default.
+    id: kanso-translucent-ui
+    title: Translucent UI
+    description: Apply a frosted-glass translucent backdrop with blur to the status bar and command palette. Off by default.
     type: class-toggle
     default: false
   -
@@ -1287,10 +1287,12 @@ li[data-task="?"] > p > input:checked::after {
   opacity: 1;
 }
 
-/* Translucent status bar (frosted glass with blur): displays word count,
-   character count, and note statistics with a serene semi-transparent
-   backdrop that smoothly blurs content scrolling underneath it. */
+/* Translucent UI (status bar & command palette with blur): displays word
+   count and note statistics, and the command palette / quick switcher
+   with a serene semi-transparent frosted-glass backdrop that smoothly
+   blurs content underneath it. */
 
+body.kanso-translucent-ui .status-bar,
 body.kanso-translucent-status-bar .status-bar {
   background-color: color-mix(in srgb, var(--kanso-bg1) 0%, transparent);
   -webkit-backdrop-filter: blur(10px);
@@ -1300,10 +1302,24 @@ body.kanso-translucent-status-bar .status-bar {
   box-shadow: 0 2px 10px var(--background-modifier-box-shadow);
 }
 
-
+body.kanso-translucent-ui .status-bar-item.mod-clickable:hover,
 body.kanso-translucent-status-bar .status-bar-item.mod-clickable:hover {
   background-color: color-mix(in srgb, var(--kanso-bg2) 60%, transparent);
   color: var(--kanso-fg2);
+}
+
+body.kanso-translucent-ui .prompt,
+body.kanso-translucent-status-bar .prompt {
+  background-color: color-mix(in srgb, var(--kanso-bg1) 0%, transparent);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  border: 1px solid color-mix(in srgb, var(--kanso-bg3) 60%, transparent);
+  box-shadow: 0 16px 36px var(--background-modifier-box-shadow);
+}
+
+body.kanso-translucent-ui .prompt input.prompt-input,
+body.kanso-translucent-status-bar .prompt input.prompt-input {
+  border-bottom: 1px solid color-mix(in srgb, var(--kanso-bg3) 60%, transparent);
 }
 
 /* Dataview plugin (blacksmithgu/obsidian-dataview): query tables and

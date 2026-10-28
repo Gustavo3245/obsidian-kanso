@@ -13,7 +13,7 @@ A calm, minimal Obsidian theme ported from [kanso.nvim](https://github.com/webho
 - Active line highlight while editing, like kanso.nvim's cursorline
 - Focus mode, which hides the title bar, status bar, and ribbon for distraction-free writing
 - Dim inactive panes: subtly dims unfocused editor splits, focusing attention on the active note (from kanso.nvim)
-- Translucent status bar: optional frosted-glass blur backdrop for note word count, character count, and editor info
+- Translucent UI: optional frosted-glass blur backdrop for the status bar (word count, note statistics) and command palette
 - Optional custom accent color, overriding a variant's accent without swapping variants
 - Optional font-family choices for body text, headings, and code, each with web-safe fallbacks
 - Styling for Dataview, Kanban, Excalidraw, and Calendar
@@ -47,7 +47,7 @@ Kanso works without any plugins. With the Style Settings plugin installed, the *
 | Disable active line highlight | On, Off | Off |
 | Focus mode | On, Off | Off |
 | Dim inactive panes | On, Off | Off |
-| Translucent status bar | On, Off | Off |
+| Translucent UI | On, Off | Off |
 | Minimal mode | On, Off | Off |
 | Saturated foreground | On, Off | On |
 | Custom accent color | Off, or a color picker | Off |
@@ -94,11 +94,13 @@ With the Style Settings plugin installed, turning on Focus mode hides the title 
 
 Ported from kanso.nvim's `dimInactive = true` option, this setting subtly reduces the opacity of unfocused editor splits (to 55%) in split-view layouts. This naturally draws visual attention to whichever note is currently active. Hovering the pointer over an inactive pane smoothly restores its clarity (to 90%), allowing effortless reading across panes before clicking to switch focus. Sidebars (file explorer, search, outline) are unaffected.
 
-## Translucent status bar
+## Translucent UI
 
-This setting applies a transparent frosted-glass backdrop with blur to the bottom status bar, which displays note word count, character count, and editor statistics. As notes or Canvas elements scroll beneath the status bar, content is smoothly blurred through the surface (`backdrop-filter: blur(10px)`).
+This setting applies a transparent frosted-glass backdrop with blur (`backdrop-filter: blur(10px)`) to key interface surfaces:
+- **Status bar:** Note word count, character count, and editor statistics float above scrolling notes and Canvas elements, with content smoothly blurred through the bar.
+- **Command palette:** The command palette (`Ctrl+P` / `Cmd+P`) and quick switcher open with a serene frosted-glass panel that blurs underlying notes while keeping commands and results crisply readable.
 
-Off by default. With the Style Settings plugin installed, turn on **Translucent status bar** to enable it.
+Off by default. With the Style Settings plugin installed, turn on **Translucent UI** to enable it.
 
 ## Minimal mode
 
