@@ -195,11 +195,13 @@ settings:
   --kanso-red: #c34043;
   --kanso-red-soft: #c4746e;
   --kanso-orange: #b6927b;
+  --kanso-orange-soft: #b98d7b;
   --kanso-yellow: #dca561;
   --kanso-yellow-soft: #c4b28a;
   --kanso-green: #98bb6c;
   --kanso-green-soft: #8a9a7b;
   --kanso-aqua: #8ea4a2;
+  --kanso-aqua-soft: #7aa89f;
   --kanso-blue: #7fb4ca;
   --kanso-blue-soft: #8ba4b0;
   --kanso-violet: #938aa9;
@@ -254,11 +256,13 @@ settings:
   --kanso-red: #c84053;
   --kanso-red-soft: #d7474b;
   --kanso-orange: #cc6d00;
+  --kanso-orange-soft: #b86828;
   --kanso-yellow: #77713f;
   --kanso-yellow-soft: #836f4a;
   --kanso-green: #6f894e;
   --kanso-green-soft: #6e915f;
   --kanso-aqua: #597b75;
+  --kanso-aqua-soft: #5e857a;
   --kanso-blue: #4d699b;
   --kanso-blue-soft: #5a7785;
   --kanso-violet: #624c83;
@@ -291,11 +295,13 @@ settings:
   --kanso-red: #c93134;
   --kanso-red-soft: #ca675f;
   --kanso-orange: #bc8a6c;
+  --kanso-orange-soft: #bf856b;
   --kanso-yellow: #e59f49;
   --kanso-yellow-soft: #caac7a;
   --kanso-green: #8fc055;
   --kanso-green-soft: #7f9f6e;
   --kanso-aqua: #81aaa9;
+  --kanso-aqua-soft: #6bae97;
   --kanso-blue: #6ebbd4;
   --kanso-blue-soft: #7eaaba;
   --kanso-violet: #8a88b0;
@@ -310,11 +316,13 @@ settings:
   --kanso-red: #d72436;
   --kanso-red-soft: #e42d2c;
   --kanso-orange: #e05700;
+  --kanso-orange-soft: #c65d1b;
   --kanso-yellow: #656720;
   --kanso-yellow-soft: #72612b;
   --kanso-green: #5e8f2f;
   --kanso-green-soft: #5b9945;
   --kanso-aqua: #3e8366;
+  --kanso-aqua-soft: #428f6a;
   --kanso-blue: #2a73b1;
   --kanso-blue-soft: #3d8077;
   --kanso-violet: #44418f;
@@ -1605,7 +1613,7 @@ body.theme-light.kanso-minimal-mode {
   --canvas-color-2: var(--kanso-green-soft);
   --canvas-color-3: var(--kanso-blue-soft);
   --canvas-color-4: var(--kanso-violet-soft);
-  --canvas-color-5: var(--kanso-aqua);
+  --canvas-color-5: var(--kanso-aqua-soft);
   --canvas-color-6: var(--kanso-yellow-soft);
 
   --tag-color: var(--kanso-muted-2);

@@ -120,6 +120,14 @@ Ported from kanso.nvim's `minimal = true` option, Minimal mode subdues color var
 
 Ported from kanso.nvim's `foreground = "saturated"` option, this setting enhances the saturation and vibrancy of syntax highlighting colors, headings, and tags (+20% in dark mode and +40% in Pearl/light mode). It only affects foreground accents while leaving UI backgrounds and structural layout completely calm.
 
+## Graph view
+
+Kanso styles the native Graph view (and local graph) with the same calm, disciplined palette used throughout the theme:
+
+- **Nodes:** Existing notes render in serene blue (`--kanso-blue`), focused notes in warm yellow (`--kanso-yellow`), tags in violet (`--kanso-violet`), and attachments in green (`--kanso-green`). Unresolved links stay subdued in muted gray.
+- **Connection lines:** Rendered with semi-transparent lines matching Kanso's border tone (`--kanso-bg3`), reducing visual noise across dense graphs.
+- **Controls panel:** Graph settings and filter panels use Kanso's elevated card surface (`--kanso-bg1`) with subtle borders and rounded corners.
+
 ## Canvas
 
 Obsidian Canvas's native palette is completely harmonized with Kanso:
