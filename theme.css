@@ -538,25 +538,6 @@ body.theme-light {
   --text-accent: var(--kanso-blue);
   --input-shadow: none;
   --input-shadow-hover: none;
-  --graph-controls-width: 260px;
-  --graph-text: var(--kanso-fg);
-  --graph-line: color-mix(in srgb, var(--kanso-bg3) 85%, transparent);
-  --graph-node: var(--kanso-blue);
-  --graph-node-unresolved: var(--kanso-muted);
-  --graph-node-focused: var(--kanso-yellow);
-  --graph-node-tag: var(--kanso-violet);
-  --graph-node-attachment: var(--kanso-green);
-
-  --canvas-background: var(--kanso-bg0);
-  --canvas-card-label-color: var(--kanso-muted-2);
-  --canvas-dot-pattern: var(--kanso-bg3);
-  --canvas-color: var(--kanso-bg4);
-  --canvas-color-1: var(--kanso-red);
-  --canvas-color-2: var(--kanso-orange);
-  --canvas-color-3: var(--kanso-yellow);
-  --canvas-color-4: var(--kanso-green);
-  --canvas-color-5: var(--kanso-blue);
-  --canvas-color-6: var(--kanso-violet);
 }
 
 body.theme-light {
