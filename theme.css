@@ -130,21 +130,11 @@ settings:
     type: class-toggle
     default: false
   -
-    id: kanso-translucency-level
-    title: Translucency level
-    description: Background opacity level when "Translucent window" is turned on in Settings → Appearance.
-    type: variable-select
-    default: 75%
-    options:
-      -
-        label: Subtle (85% opacity)
-        value: 85%
-      -
-        label: Balanced (75% opacity)
-        value: 75%
-      -
-        label: Clear (60% opacity)
-        value: 60%
+    id: kanso-translucent-status-bar
+    title: Translucent status bar
+    description: Apply a frosted-glass translucent backdrop with blur to the bottom status bar (word count, character count, and note stats). Off by default.
+    type: class-toggle
+    default: false
   -
     id: kanso-custom-accent
     title: Custom accent color
@@ -345,7 +335,6 @@ body {
   --kanso-font-body: var(--font-text);
   --kanso-font-heading: var(--kanso-font-body);
   --kanso-font-mono: var(--font-monospace);
-  --kanso-translucency-level: 75%;
 
   --background-primary: var(--kanso-bg0);
   --background-primary-alt: var(--kanso-bg1);
@@ -1298,27 +1287,23 @@ li[data-task="?"] > p > input:checked::after {
   opacity: 1;
 }
 
-/* Translucent window support (inspired by kanso.nvim's `transparent` option
-   and Obsidian's native Settings → Appearance → Translucent window). */
+/* Translucent status bar (frosted glass with blur): displays word count,
+   character count, and note statistics with a serene semi-transparent
+   backdrop that smoothly blurs content scrolling underneath it. */
 
-body.is-translucent {
-  --workspace-background-translucent: color-mix(in srgb, var(--kanso-bg0) var(--kanso-translucency-level, 75%), transparent);
-  --canvas-background: color-mix(in srgb, var(--kanso-bg0) var(--kanso-translucency-level, 75%), transparent);
-  --titlebar-background: transparent;
-  --titlebar-background-focused: transparent;
-  --tab-container-background: transparent;
+body.kanso-translucent-status-bar .status-bar {
+  background-color: color-mix(in srgb, var(--kanso-bg1) 0%, transparent);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  border-top: 1px solid color-mix(in srgb, var(--kanso-bg3) 60%, transparent);
+  border-left: 1px solid color-mix(in srgb, var(--kanso-bg3) 60%, transparent);
+  box-shadow: 0 2px 10px var(--background-modifier-box-shadow);
 }
 
-body.is-translucent:not(.is-fullscreen) .workspace-split.mod-root {
-  background-color: transparent;
-}
 
-body.is-translucent:not(.is-fullscreen) .status-bar {
-  background-color: color-mix(in srgb, var(--kanso-bg1) 65%, transparent);
-}
-
-body.is-translucent:not(.is-fullscreen) .workspace-tab-header.is-active {
-  background-color: color-mix(in srgb, var(--kanso-bg1) 75%, transparent);
+body.kanso-translucent-status-bar .status-bar-item.mod-clickable:hover {
+  background-color: color-mix(in srgb, var(--kanso-bg2) 60%, transparent);
+  color: var(--kanso-fg2);
 }
 
 /* Dataview plugin (blacksmithgu/obsidian-dataview): query tables and
