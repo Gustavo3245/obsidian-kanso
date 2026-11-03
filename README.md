@@ -24,7 +24,7 @@ A calm, minimal Obsidian theme ported from [kanso.nvim](https://github.com/webho
 - Saturated foreground: increases the saturation of syntax highlighting and headings (+20% in dark mode, +40% in Pearl), matching kanso.nvim's saturated mode
 - Search & Diff highlights: serene altBlue search matches and full diffGreen/diffRed/diffYellow palette for diff code blocks, File Recovery, and Obsidian Git
 - Graph view styled to match Kanso's palette, with serene blue note nodes, yellow focused highlights, violet tag nodes, and subtle connection lines
-- Canvas support: maps Obsidian Canvas's 6 card and sticky note colors to Kanso's primary palette (red, orange, yellow, green, blue, violet) and styles grid dots, controls, and card menus
+- Canvas support: maps Obsidian Canvas's 6 card and sticky note colors to Kanso's heading palette (red-soft, green, blue, violet, aqua, yellow) and styles grid dots, controls, and card menus
 - Folder icons in the file explorer, open or closed to match the folder's state
 
 ## Installation

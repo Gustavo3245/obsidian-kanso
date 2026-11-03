@@ -386,12 +386,12 @@ body {
   --canvas-card-label-color: var(--kanso-muted-2);
   --canvas-dot-pattern: var(--kanso-bg3);
   --canvas-color: var(--kanso-bg4);
-  --canvas-color-1: var(--kanso-red);
-  --canvas-color-2: var(--kanso-orange);
-  --canvas-color-3: var(--kanso-yellow);
-  --canvas-color-4: var(--kanso-green);
-  --canvas-color-5: var(--kanso-blue);
-  --canvas-color-6: var(--kanso-violet);
+  --canvas-color-1: var(--kanso-red-soft);
+  --canvas-color-2: var(--kanso-green);
+  --canvas-color-3: var(--kanso-blue);
+  --canvas-color-4: var(--kanso-violet);
+  --canvas-color-5: var(--kanso-aqua);
+  --canvas-color-6: var(--kanso-yellow);
 
   --interactive-success: var(--kanso-green);
 
@@ -552,25 +552,6 @@ body.theme-light {
   --text-accent: var(--kanso-blue);
   --input-shadow: none;
   --input-shadow-hover: none;
-  --graph-controls-width: 260px;
-  --graph-text: var(--kanso-fg);
-  --graph-line: color-mix(in srgb, var(--kanso-bg3) 85%, transparent);
-  --graph-node: var(--kanso-blue);
-  --graph-node-unresolved: var(--kanso-muted);
-  --graph-node-focused: var(--kanso-yellow);
-  --graph-node-tag: var(--kanso-violet);
-  --graph-node-attachment: var(--kanso-green);
-
-  --canvas-background: var(--kanso-bg0);
-  --canvas-card-label-color: var(--kanso-muted-2);
-  --canvas-dot-pattern: var(--kanso-bg3);
-  --canvas-color: var(--kanso-bg4);
-  --canvas-color-1: var(--kanso-red);
-  --canvas-color-2: var(--kanso-orange);
-  --canvas-color-3: var(--kanso-yellow);
-  --canvas-color-4: var(--kanso-green);
-  --canvas-color-5: var(--kanso-blue);
-  --canvas-color-6: var(--kanso-violet);
 }
 
 body.theme-light {
@@ -1301,8 +1282,7 @@ li[data-task="?"] > p > input:checked::after {
    with a serene semi-transparent frosted-glass backdrop that smoothly blurs content
    underneath them. */
 
-body.kanso-translucent-ui .status-bar,
-body.kanso-translucent-status-bar .status-bar {
+body.kanso-translucent-ui .status-bar {
   background-color: color-mix(in srgb, var(--kanso-bg1) 0%, transparent);
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
@@ -1311,14 +1291,12 @@ body.kanso-translucent-status-bar .status-bar {
   box-shadow: 0 2px 10px var(--background-modifier-box-shadow);
 }
 
-body.kanso-translucent-ui .status-bar-item.mod-clickable:hover,
-body.kanso-translucent-status-bar .status-bar-item.mod-clickable:hover {
+body.kanso-translucent-ui .status-bar-item.mod-clickable:hover {
   background-color: color-mix(in srgb, var(--kanso-bg2) 60%, transparent);
   color: var(--kanso-fg2);
 }
 
-body.kanso-translucent-ui .prompt,
-body.kanso-translucent-status-bar .prompt {
+body.kanso-translucent-ui .prompt {
   background-color: color-mix(in srgb, var(--kanso-bg1) 0%, transparent);
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
@@ -1326,15 +1304,12 @@ body.kanso-translucent-status-bar .prompt {
   box-shadow: 0 16px 36px var(--background-modifier-box-shadow);
 }
 
-body.kanso-translucent-ui .prompt input.prompt-input,
-body.kanso-translucent-status-bar .prompt input.prompt-input {
+body.kanso-translucent-ui .prompt input.prompt-input {
   border-bottom: 1px solid color-mix(in srgb, var(--kanso-bg3) 60%, transparent);
 }
 
 body.kanso-translucent-ui .modal,
-body.kanso-translucent-status-bar .modal,
-body.kanso-translucent-ui .modal.mod-settings,
-body.kanso-translucent-status-bar .modal.mod-settings {
+body.kanso-translucent-ui .modal.mod-settings {
   --modal-background: color-mix(in srgb, var(--kanso-bg1) 0%, transparent);
   --modal-sidebar-background: color-mix(in srgb, var(--kanso-bg1) 0%, transparent);
   --settings-background: color-mix(in srgb, var(--kanso-bg1) 0%, transparent);
@@ -1357,58 +1332,45 @@ body.kanso-translucent-status-bar .modal.mod-settings {
 }
 
 body.kanso-translucent-ui .modal .vertical-tab-content,
-body.kanso-translucent-status-bar .modal .vertical-tab-content,
 body.kanso-translucent-ui .modal .horizontal-tab-content,
-body.kanso-translucent-status-bar .modal .horizontal-tab-content,
-body.kanso-translucent-ui .modal .modal-content,
-body.kanso-translucent-status-bar .modal .modal-content {
+body.kanso-translucent-ui .modal .modal-content {
   background-color: transparent;
 }
 
-body.kanso-translucent-ui .modal .vertical-tab-header,
-body.kanso-translucent-status-bar .modal .vertical-tab-header {
+body.kanso-translucent-ui .modal .vertical-tab-header {
   background-color: transparent;
   border-inline-end: 1px solid color-mix(in srgb, var(--kanso-bg3) 60%, transparent);
 }
 
-body.kanso-translucent-ui .modal .modal-sidebar-inner,
-body.kanso-translucent-status-bar .modal .modal-sidebar-inner {
+body.kanso-translucent-ui .modal .modal-sidebar-inner {
   background-color: transparent;
   border-inline-end: 1px solid color-mix(in srgb, var(--kanso-bg3) 60%, transparent);
 }
 
-body.kanso-translucent-ui .modal .setting-page-titlebar,
-body.kanso-translucent-status-bar .modal .setting-page-titlebar {
+body.kanso-translucent-ui .modal .setting-page-titlebar {
   background-color: transparent;
   box-shadow: none;
 }
 
 body.kanso-translucent-ui .modal .setting-group .setting-items,
-body.kanso-translucent-status-bar .modal .setting-group .setting-items,
-body.kanso-translucent-ui .modal .setting-group .setting-group-search,
-body.kanso-translucent-status-bar .modal .setting-group .setting-group-search {
+body.kanso-translucent-ui .modal .setting-group .setting-group-search {
   background-color: color-mix(in srgb, var(--kanso-bg1) 0%, transparent);
   border: 1px solid color-mix(in srgb, var(--kanso-bg3) 60%, transparent);
 }
 
-body.kanso-translucent-ui .modal .community-item,
-body.kanso-translucent-status-bar .modal .community-item {
+body.kanso-translucent-ui .modal .community-item {
   background-color: color-mix(in srgb, var(--kanso-bg1) 0%, transparent);
   border: 1px solid color-mix(in srgb, var(--kanso-bg3) 60%, transparent);
 }
 
-body.kanso-translucent-ui .modal .modal-button-container,
-body.kanso-translucent-status-bar .modal .modal-button-container {
+body.kanso-translucent-ui .modal .modal-button-container {
   background-color: transparent;
   border-top: 1px solid color-mix(in srgb, var(--kanso-bg3) 60%, transparent);
 }
 
 body.kanso-translucent-ui .modal input[type="text"],
-body.kanso-translucent-status-bar .modal input[type="text"],
 body.kanso-translucent-ui .modal input[type="search"],
-body.kanso-translucent-status-bar .modal input[type="search"],
-body.kanso-translucent-ui .modal select.dropdown,
-body.kanso-translucent-status-bar .modal select.dropdown {
+body.kanso-translucent-ui .modal select.dropdown {
   background-color: color-mix(in srgb, var(--kanso-bg1) 0%, transparent);
   border: 1px solid color-mix(in srgb, var(--kanso-bg3) 60%, transparent);
 }
