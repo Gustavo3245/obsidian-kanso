@@ -1283,7 +1283,7 @@ li[data-task="?"] > p > input:checked::after {
    underneath them. */
 
 body.kanso-translucent-ui .status-bar {
-  background-color: color-mix(in srgb, var(--kanso-bg1) 0%, transparent);
+  background-color: color-mix(in srgb, var(--kanso-bg1) 75%, transparent);
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
   border-top: 1px solid color-mix(in srgb, var(--kanso-bg3) 60%, transparent);
@@ -1297,7 +1297,7 @@ body.kanso-translucent-ui .status-bar-item.mod-clickable:hover {
 }
 
 body.kanso-translucent-ui .prompt {
-  background-color: color-mix(in srgb, var(--kanso-bg1) 0%, transparent);
+  background-color: color-mix(in srgb, var(--kanso-bg1) 75%, transparent);
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
   border: 1px solid color-mix(in srgb, var(--kanso-bg3) 60%, transparent);
@@ -1310,21 +1310,21 @@ body.kanso-translucent-ui .prompt input.prompt-input {
 
 body.kanso-translucent-ui .modal,
 body.kanso-translucent-ui .modal.mod-settings {
-  --modal-background: color-mix(in srgb, var(--kanso-bg1) 0%, transparent);
-  --modal-sidebar-background: color-mix(in srgb, var(--kanso-bg1) 0%, transparent);
-  --settings-background: color-mix(in srgb, var(--kanso-bg1) 0%, transparent);
-  --setting-items-background: color-mix(in srgb, var(--kanso-bg1) 0%, transparent);
+  --modal-background: color-mix(in srgb, var(--kanso-bg1) 75%, transparent);
+  --modal-sidebar-background: color-mix(in srgb, var(--kanso-bg1) 75%, transparent);
+  --settings-background: color-mix(in srgb, var(--kanso-bg1) 75%, transparent);
+  --setting-items-background: color-mix(in srgb, var(--kanso-bg1) 75%, transparent);
   --setting-items-border-color: color-mix(in srgb, var(--kanso-bg3) 60%, transparent);
   --setting-items-border-width: 1px;
-  --background-modifier-form-field: color-mix(in srgb, var(--kanso-bg1) 0%, transparent);
+  --background-modifier-form-field: color-mix(in srgb, var(--kanso-bg1) 75%, transparent);
   --background-modifier-form-field-hover: color-mix(in srgb, var(--kanso-bg2) 60%, transparent);
-  --input-background: color-mix(in srgb, var(--kanso-bg1) 0%, transparent);
+  --input-background: color-mix(in srgb, var(--kanso-bg1) 75%, transparent);
   --input-border-color: color-mix(in srgb, var(--kanso-bg3) 60%, transparent);
-  --dropdown-background: color-mix(in srgb, var(--kanso-bg1) 0%, transparent);
+  --dropdown-background: color-mix(in srgb, var(--kanso-bg1) 75%, transparent);
   --dropdown-background-hover: color-mix(in srgb, var(--kanso-bg2) 60%, transparent);
   --divider-color: color-mix(in srgb, var(--kanso-bg3) 60%, transparent);
   --background-modifier-border: color-mix(in srgb, var(--kanso-bg3) 60%, transparent);
-  background-color: color-mix(in srgb, var(--kanso-bg1) 0%, transparent);
+  background-color: color-mix(in srgb, var(--kanso-bg1) 75%, transparent);
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
   border: 1px solid color-mix(in srgb, var(--kanso-bg3) 60%, transparent);
@@ -1354,12 +1354,12 @@ body.kanso-translucent-ui .modal .setting-page-titlebar {
 
 body.kanso-translucent-ui .modal .setting-group .setting-items,
 body.kanso-translucent-ui .modal .setting-group .setting-group-search {
-  background-color: color-mix(in srgb, var(--kanso-bg1) 0%, transparent);
+  background-color: color-mix(in srgb, var(--kanso-bg1) 75%, transparent);
   border: 1px solid color-mix(in srgb, var(--kanso-bg3) 60%, transparent);
 }
 
 body.kanso-translucent-ui .modal .community-item {
-  background-color: color-mix(in srgb, var(--kanso-bg1) 0%, transparent);
+  background-color: color-mix(in srgb, var(--kanso-bg1) 75%, transparent);
   border: 1px solid color-mix(in srgb, var(--kanso-bg3) 60%, transparent);
 }
 
@@ -1371,7 +1371,7 @@ body.kanso-translucent-ui .modal .modal-button-container {
 body.kanso-translucent-ui .modal input[type="text"],
 body.kanso-translucent-ui .modal input[type="search"],
 body.kanso-translucent-ui .modal select.dropdown {
-  background-color: color-mix(in srgb, var(--kanso-bg1) 0%, transparent);
+  background-color: color-mix(in srgb, var(--kanso-bg1) 75%, transparent);
   border: 1px solid color-mix(in srgb, var(--kanso-bg3) 60%, transparent);
 }
 
