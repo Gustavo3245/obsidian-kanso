@@ -49,7 +49,7 @@ Kanso works without any plugins. With the Style Settings plugin installed, the *
 | Dim inactive panes | On, Off | Off |
 | Translucent UI | On, Off | Off |
 | Minimal mode | On, Off | Off |
-| Saturated foreground | On, Off | On |
+| Saturated foreground | On, Off | Off |
 | Custom accent color | Off, or a color picker | Off |
 | Body font | Default, Sans-serif, Serif | Default (Obsidian's text font setting) |
 | Heading font | Default, Sans-serif, Serif | Default (same as body) |
@@ -129,7 +129,23 @@ Ported from kanso.nvim's `minimal = true` option, Minimal mode subdues color var
 
 ## Saturated foreground
 
-Ported from kanso.nvim's `foreground = "saturated"` option, this setting enhances the saturation and vibrancy of syntax highlighting colors, headings, and tags (+20% in dark mode and +40% in Pearl/light mode). It only affects foreground accents while leaving UI backgrounds and structural layout completely calm.
+Ported from kanso.nvim's `foreground = "saturated"` option, this setting enhances the saturation and vibrancy of syntax highlighting colors, headings, and tags (+20% in dark mode and +40% in Pearl/light mode). It is off by default and only affects foreground accents when enabled, leaving UI backgrounds and structural layout completely calm.
+
+## Graph view
+
+Kanso styles the native Graph view (and local graph) with the same calm, disciplined palette used throughout the theme:
+
+- **Nodes:** Existing notes render in serene blue (`--kanso-blue`), focused notes in warm yellow (`--kanso-yellow`), tags in violet (`--kanso-violet`), and attachments in green (`--kanso-green`). Unresolved links stay subdued in muted gray.
+- **Connection lines:** Rendered with semi-transparent lines matching Kanso's border tone (`--kanso-bg3`), reducing visual noise across dense graphs.
+- **Controls panel:** Graph settings and filter panels use Kanso's elevated card surface (`--kanso-bg1`) with subtle borders and rounded corners.
+
+## Canvas
+
+Obsidian Canvas's native palette is completely harmonized with Kanso:
+
+- **Card & note colors (1–6):** mapped directly to Kanso's heading colors (`red-soft`, `green`, `blue`, `violet`, `aqua`, `yellow`), matching `--h1-color` through `--h6-color` for visual consistency across notes and canvas, and automatically adapting across variants (Zen, Ink, Mist, Void, Pearl) and modes (Saturated, Minimal).
+- **Grid dot pattern:** rendered in Kanso's subtle border tone (`--kanso-bg3` in standard mode, `--kanso-bg2` in Minimal mode), providing clean spatial orientation without visual clutter.
+- **Canvas controls & menus:** toolbar groups, card creation menus, and color picker popups carry Kanso's elevated background (`--kanso-bg1`), soft border, and rounded corners.
 
 ## Graph view
 
@@ -172,7 +188,7 @@ Requires Obsidian 1.5.8 or later, on desktop and mobile.
 
 - Colors from [kanso.nvim](https://github.com/webhooked/kanso.nvim) by webhooked.
 - The idea of styling alternate checkbox markers, and of a paper airplane for forwarded, comes from [obsidian-things](https://github.com/colineckert/obsidian-things) (MIT), which credits kepano's [Minimal theme](https://minimal.guide/Block+types/Checklists#Checkbox+styling). Kanso's own selectors and colors are an independent implementation.
-- Checkbox marker icons from [Lucide](https://lucide.dev) (ISC licence; `check` and `x` are Feather-derived icons bundled in Lucide under the MIT licence), except the question-mark glyph, which is Kanso's own original hand-drawn icon from 1.0.1. See [THIRD_PARTY_LICENSES.md](THIRD_PARTY_LICENSES.md) for the full notices.
+- Checkbox marker and folder icons from [Lucide](https://lucide.dev) (ISC licence; `check` and `x` are Feather-derived icons bundled in Lucide under the MIT licence), except the question-mark glyph, which is Kanso's own original hand-drawn icon from 1.0.1. See [THIRD_PARTY_LICENSES.md](THIRD_PARTY_LICENSES.md) for the full notices.
 - The idea of a focus mode that hides the title bar, status bar, and ribbon comes from kepano's [Minimal theme](https://github.com/kepano/obsidian-minimal) (MIT). Kanso's CSS is an independent implementation.
 - The idea of click-and-hold image zoom comes from kepano's [Minimal theme](https://github.com/kepano/obsidian-minimal) (MIT). Kanso's CSS is an independent implementation.
 
