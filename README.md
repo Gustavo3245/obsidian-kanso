@@ -96,9 +96,9 @@ Ported from kanso.nvim's `dimInactive = true` option, this setting subtly reduce
 
 ## Translucent UI
 
-This setting applies a transparent frosted-glass backdrop with blur (`backdrop-filter: blur(10px)`) to key interface surfaces:
+This setting applies a semi-transparent frosted-glass backdrop with blur (`backdrop-filter: blur(10px)`) to key interface surfaces:
 - **Status bar:** Note word count, character count, and editor statistics float above scrolling notes and Canvas elements, with content smoothly blurred through the bar.
-- **Command palette:** The command palette (`Ctrl+P` / `Cmd+P`) and quick switcher open with a serene frosted-glass panel that blurs underlying notes while keeping commands and results crisply readable.
+- **Command palette & prompts:** The command palette (`Ctrl+P` / `Cmd+P`), quick switcher (`Ctrl+O` / `Cmd+O`), and all command-palette-style prompt overlays open with a serene frosted-glass panel that blurs underlying notes while keeping commands and results crisply readable.
 - **Configuration windows:** The Settings dialog (`Ctrl+,` / `Cmd+,`), plugin options, community plugins/themes browsers, and all modal configuration windows adopt the translucent frosted-glass styling across sidebars, setting groups, and dialog containers.
 
 Off by default. With the Style Settings plugin installed, turn on **Translucent UI** to enable it.
@@ -130,22 +130,6 @@ Ported from kanso.nvim's `minimal = true` option, Minimal mode subdues color var
 ## Saturated foreground
 
 Ported from kanso.nvim's `foreground = "saturated"` option, this setting enhances the saturation and vibrancy of syntax highlighting colors, headings, and tags (+20% in dark mode and +40% in Pearl/light mode). It is off by default and only affects foreground accents when enabled, leaving UI backgrounds and structural layout completely calm.
-
-## Graph view
-
-Kanso styles the native Graph view (and local graph) with the same calm, disciplined palette used throughout the theme:
-
-- **Nodes:** Existing notes render in serene blue (`--kanso-blue`), focused notes in warm yellow (`--kanso-yellow`), tags in violet (`--kanso-violet`), and attachments in green (`--kanso-green`). Unresolved links stay subdued in muted gray.
-- **Connection lines:** Rendered with semi-transparent lines matching Kanso's border tone (`--kanso-bg3`), reducing visual noise across dense graphs.
-- **Controls panel:** Graph settings and filter panels use Kanso's elevated card surface (`--kanso-bg1`) with subtle borders and rounded corners.
-
-## Canvas
-
-Obsidian Canvas's native palette is completely harmonized with Kanso:
-
-- **Card & note colors (1–6):** mapped directly to Kanso's heading colors (`red-soft`, `green`, `blue`, `violet`, `aqua`, `yellow`), matching `--h1-color` through `--h6-color` for visual consistency across notes and canvas, and automatically adapting across variants (Zen, Ink, Mist, Void, Pearl) and modes (Saturated, Minimal).
-- **Grid dot pattern:** rendered in Kanso's subtle border tone (`--kanso-bg3` in standard mode, `--kanso-bg2` in Minimal mode), providing clean spatial orientation without visual clutter.
-- **Canvas controls & menus:** toolbar groups, card creation menus, and color picker popups carry Kanso's elevated background (`--kanso-bg1`), soft border, and rounded corners.
 
 ## Graph view
 
