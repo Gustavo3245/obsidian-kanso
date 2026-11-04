@@ -16,7 +16,7 @@ A calm, minimal Obsidian theme ported from [kanso.nvim](https://github.com/webho
 - Translucent UI: optional frosted-glass blur backdrop for the status bar, command palette, and all configuration windows
 - Optional custom accent color, overriding a variant's accent without swapping variants
 - Optional font-family choices for body text, headings, and code, each with web-safe fallbacks
-- Styling for Dataview, Kanban, and Calendar
+- Styling for Dataview, Kanban, Excalidraw, and Calendar
 - Image zoom: click and hold a rendered image in reading view to enlarge it
 - Larger checkbox and tag tap targets on mobile
 - Optional settings through [Style Settings](https://github.com/mgmeyers/obsidian-style-settings)
@@ -149,10 +149,11 @@ Obsidian Canvas's native palette is completely harmonized with Kanso:
 
 ## Plugin styling
 
-Kanso recolors three popular community plugins with its own palette. No extra markup or settings are needed, and nothing changes if a plugin isn't installed.
+Kanso recolors four popular community plugins with its own palette. No extra markup or settings are needed, and nothing changes if a plugin isn't installed.
 
 - **[Dataview](https://github.com/blacksmithgu/obsidian-dataview):** query tables, lists, and inline fields read like the rest of Kanso.
 - **[Kanban](https://github.com/mgmeyers/obsidian-kanban):** lanes, cards, and tags already pick up Kanso through Obsidian's shared colors; Kanso also matches the lane corners to its radius setting and colors the WIP-exceeded badge.
+- **[Excalidraw](https://github.com/zsviczian/obsidian-excalidraw-plugin):** toolbars, islands, dropdown menus, and action buttons dynamically adapt to both of Excalidraw's internal canvas modes (Dark and Light), featuring crisp typography, distinct color swatches in option menus, and visible toolbar keybindings.
 - **[Calendar](https://github.com/liamcain/obsidian-calendar-plugin):** day, week-number, and today colors already follow Kanso; Kanso also gives days with a note a subtle backdrop. Per-source dot colors are chosen in the plugin's own settings and are left as-is.
 
 ## Image zoom
