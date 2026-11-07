@@ -13,6 +13,7 @@ A calm, minimal Obsidian theme ported from [kanso.nvim](https://github.com/webho
 - Active line highlight while editing, like kanso.nvim's cursorline
 - Focus mode, which hides the title bar, status bar, and ribbon for distraction-free writing
 - Dim inactive panes: subtly dims unfocused editor splits, focusing attention on the active note (from kanso.nvim)
+- Translucent UI: optional frosted-glass blur backdrop for the status bar, command palette, and all configuration windows
 - Optional custom accent color, overriding a variant's accent without swapping variants
 - Optional font-family choices for body text, headings, and code, each with web-safe fallbacks
 - Styling for Dataview, Kanban, Excalidraw, and Calendar
@@ -46,6 +47,7 @@ Kanso works without any plugins. With the Style Settings plugin installed, the *
 | Disable active line highlight | On, Off | Off |
 | Focus mode | On, Off | Off |
 | Dim inactive panes | On, Off | Off |
+| Translucent UI | On, Off | Off |
 | Minimal mode | On, Off | Off |
 | Saturated foreground | On, Off | Off |
 | Custom accent color | Off, or a color picker | Off |
@@ -91,6 +93,15 @@ With the Style Settings plugin installed, turning on Focus mode hides the title 
 ## Dim inactive panes
 
 Ported from kanso.nvim's `dimInactive = true` option, this setting subtly reduces the opacity of unfocused editor splits (to 55%) in split-view layouts. This naturally draws visual attention to whichever note is currently active. Hovering the pointer over an inactive pane smoothly restores its clarity (to 90%), allowing effortless reading across panes before clicking to switch focus. Sidebars (file explorer, search, outline) are unaffected.
+
+## Translucent UI
+
+This setting applies a semi-transparent frosted-glass backdrop with blur (`backdrop-filter: blur(10px)`) to key interface surfaces:
+- **Status bar:** Stays fully opaque for readability over any content behind it, while keeping the frosted-glass border and shadow that mark it as part of the translucent UI.
+- **Command palette & prompts:** The command palette (`Ctrl+P` / `Cmd+P`), quick switcher (`Ctrl+O` / `Cmd+O`), and all command-palette-style prompt overlays open with a serene frosted-glass panel that blurs underlying notes while keeping commands and results crisply readable.
+- **Configuration windows:** The Settings dialog (`Ctrl+,` / `Cmd+,`), plugin options, community plugins/themes browsers, and all modal configuration windows adopt the translucent frosted-glass styling across sidebars, setting groups, and dialog containers.
+
+Off by default. With the Style Settings plugin installed, turn on **Translucent UI** to enable it.
 
 ## Minimal mode
 

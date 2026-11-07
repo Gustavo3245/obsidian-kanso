@@ -130,6 +130,12 @@ settings:
     type: class-toggle
     default: false
   -
+    id: kanso-translucent-ui
+    title: Translucent UI
+    description: Apply a frosted-glass translucent backdrop with blur to the command palette and configuration windows, plus a solid, bordered status bar to match. Off by default.
+    type: class-toggle
+    default: false
+  -
     id: kanso-custom-accent
     title: Custom accent color
     description: Override the active variant's accent color. Off by default, so each variant keeps its own accent until you turn this on.
@@ -1268,6 +1274,116 @@ li[data-task="?"] > p > input:checked::after {
 
 .kanso-dim-inactive .workspace-split.mod-root .workspace-leaf.mod-active {
   opacity: 1;
+}
+
+/* Translucent UI (command palette & configuration windows with blur, solid status bar):
+   displays word count and note statistics in an opaque, bordered status bar (kept solid
+   for contrast - the blur is a visual no-op there), the command palette / quick switcher,
+   and all modal configuration windows (settings, plugin options, community browsers) with
+   a serene semi-transparent frosted-glass backdrop that smoothly blurs content underneath
+   them. Muted/faint text on the still-translucent surfaces (prompt placeholder and hints,
+   modal and setting descriptions) is mixed 70% toward the normal foreground color so it
+   clears WCAG AA contrast over any backdrop while staying visibly dimmer than typed/title
+   text; the normal/emphasis text on those surfaces already had enough margin without any
+   change. */
+
+body.kanso-translucent-ui .status-bar {
+  background-color: var(--kanso-bg1);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  border-top: 1px solid color-mix(in srgb, var(--kanso-bg3) 60%, transparent);
+  border-left: 1px solid color-mix(in srgb, var(--kanso-bg3) 60%, transparent);
+  box-shadow: 0 2px 10px var(--background-modifier-box-shadow);
+}
+
+body.kanso-translucent-ui .status-bar-item.mod-clickable:hover {
+  background-color: color-mix(in srgb, var(--kanso-bg2) 60%, transparent);
+  color: var(--kanso-fg2);
+}
+
+body.kanso-translucent-ui .prompt {
+  background-color: color-mix(in srgb, var(--kanso-bg1) 75%, transparent);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  border: 1px solid color-mix(in srgb, var(--kanso-bg3) 60%, transparent);
+  box-shadow: 0 16px 36px var(--background-modifier-box-shadow);
+  --text-muted: color-mix(in srgb, var(--kanso-fg) 70%, var(--kanso-muted-2) 30%);
+  --text-faint: color-mix(in srgb, var(--kanso-fg) 70%, var(--kanso-muted-2) 30%);
+  --input-placeholder-color: color-mix(in srgb, var(--kanso-fg) 70%, var(--kanso-muted-2) 30%);
+}
+
+body.kanso-translucent-ui .prompt input.prompt-input {
+  border-bottom: 1px solid color-mix(in srgb, var(--kanso-bg3) 60%, transparent);
+}
+
+body.kanso-translucent-ui .modal,
+body.kanso-translucent-ui .modal.mod-settings {
+  --modal-background: color-mix(in srgb, var(--kanso-bg1) 75%, transparent);
+  --modal-sidebar-background: color-mix(in srgb, var(--kanso-bg1) 75%, transparent);
+  --settings-background: color-mix(in srgb, var(--kanso-bg1) 75%, transparent);
+  --setting-items-background: color-mix(in srgb, var(--kanso-bg1) 75%, transparent);
+  --setting-items-border-color: color-mix(in srgb, var(--kanso-bg3) 60%, transparent);
+  --setting-items-border-width: 1px;
+  --background-modifier-form-field: color-mix(in srgb, var(--kanso-bg1) 75%, transparent);
+  --background-modifier-form-field-hover: color-mix(in srgb, var(--kanso-bg2) 60%, transparent);
+  --input-background: color-mix(in srgb, var(--kanso-bg1) 75%, transparent);
+  --input-border-color: color-mix(in srgb, var(--kanso-bg3) 60%, transparent);
+  --dropdown-background: color-mix(in srgb, var(--kanso-bg1) 75%, transparent);
+  --dropdown-background-hover: color-mix(in srgb, var(--kanso-bg2) 60%, transparent);
+  --divider-color: color-mix(in srgb, var(--kanso-bg3) 60%, transparent);
+  --background-modifier-border: color-mix(in srgb, var(--kanso-bg3) 60%, transparent);
+  --text-muted: color-mix(in srgb, var(--kanso-fg) 70%, var(--kanso-muted-2) 30%);
+  --text-faint: color-mix(in srgb, var(--kanso-fg) 70%, var(--kanso-muted-2) 30%);
+  --input-placeholder-color: color-mix(in srgb, var(--kanso-fg) 70%, var(--kanso-muted-2) 30%);
+  background-color: color-mix(in srgb, var(--kanso-bg1) 75%, transparent);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  border: 1px solid color-mix(in srgb, var(--kanso-bg3) 60%, transparent);
+  box-shadow: 0 16px 36px var(--background-modifier-box-shadow);
+}
+
+body.kanso-translucent-ui .modal .vertical-tab-content,
+body.kanso-translucent-ui .modal .horizontal-tab-content,
+body.kanso-translucent-ui .modal .modal-content {
+  background-color: transparent;
+}
+
+body.kanso-translucent-ui .modal .vertical-tab-header {
+  background-color: transparent;
+  border-inline-end: 1px solid color-mix(in srgb, var(--kanso-bg3) 60%, transparent);
+}
+
+body.kanso-translucent-ui .modal .modal-sidebar-inner {
+  background-color: transparent;
+  border-inline-end: 1px solid color-mix(in srgb, var(--kanso-bg3) 60%, transparent);
+}
+
+body.kanso-translucent-ui .modal .setting-page-titlebar {
+  background-color: transparent;
+  box-shadow: none;
+}
+
+body.kanso-translucent-ui .modal .setting-group .setting-items,
+body.kanso-translucent-ui .modal .setting-group .setting-group-search {
+  background-color: color-mix(in srgb, var(--kanso-bg1) 75%, transparent);
+  border: 1px solid color-mix(in srgb, var(--kanso-bg3) 60%, transparent);
+}
+
+body.kanso-translucent-ui .modal .community-item {
+  background-color: color-mix(in srgb, var(--kanso-bg1) 75%, transparent);
+  border: 1px solid color-mix(in srgb, var(--kanso-bg3) 60%, transparent);
+}
+
+body.kanso-translucent-ui .modal .modal-button-container {
+  background-color: transparent;
+  border-top: 1px solid color-mix(in srgb, var(--kanso-bg3) 60%, transparent);
+}
+
+body.kanso-translucent-ui .modal input[type="text"],
+body.kanso-translucent-ui .modal input[type="search"],
+body.kanso-translucent-ui .modal select.dropdown {
+  background-color: color-mix(in srgb, var(--kanso-bg1) 75%, transparent);
+  border: 1px solid color-mix(in srgb, var(--kanso-bg3) 60%, transparent);
 }
 
 /* Dataview plugin (blacksmithgu/obsidian-dataview): query tables and
