@@ -97,7 +97,7 @@ Ported from kanso.nvim's `dimInactive = true` option, this setting subtly reduce
 ## Translucent UI
 
 This setting applies a semi-transparent frosted-glass backdrop with blur (`backdrop-filter: blur(10px)`) to key interface surfaces:
-- **Status bar:** Note word count, character count, and editor statistics float above scrolling notes and Canvas elements, with content smoothly blurred through the bar.
+- **Status bar:** Stays fully opaque for readability over any content behind it, while keeping the frosted-glass border and shadow that mark it as part of the translucent UI.
 - **Command palette & prompts:** The command palette (`Ctrl+P` / `Cmd+P`), quick switcher (`Ctrl+O` / `Cmd+O`), and all command-palette-style prompt overlays open with a serene frosted-glass panel that blurs underlying notes while keeping commands and results crisply readable.
 - **Configuration windows:** The Settings dialog (`Ctrl+,` / `Cmd+,`), plugin options, community plugins/themes browsers, and all modal configuration windows adopt the translucent frosted-glass styling across sidebars, setting groups, and dialog containers.
 

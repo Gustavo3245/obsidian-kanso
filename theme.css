@@ -1283,7 +1283,7 @@ li[data-task="?"] > p > input:checked::after {
    underneath them. */
 
 body.kanso-translucent-ui .status-bar {
-  background-color: color-mix(in srgb, var(--kanso-bg1) 75%, transparent);
+  background-color: var(--kanso-bg1);
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
   border-top: 1px solid color-mix(in srgb, var(--kanso-bg3) 60%, transparent);
