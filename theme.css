@@ -132,7 +132,7 @@ settings:
   -
     id: kanso-translucent-ui
     title: Translucent UI
-    description: Apply a frosted-glass translucent backdrop with blur to the status bar, command palette, and configuration windows. Off by default.
+    description: Apply a frosted-glass translucent backdrop with blur to the command palette and configuration windows, plus a solid, bordered status bar to match. Off by default.
     type: class-toggle
     default: false
   -
@@ -1276,11 +1276,15 @@ li[data-task="?"] > p > input:checked::after {
   opacity: 1;
 }
 
-/* Translucent UI (status bar, command palette & configuration windows with blur):
-   displays word count and note statistics, the command palette / quick switcher,
-   and all modal configuration windows (settings, plugin options, community browsers)
-   with a serene semi-transparent frosted-glass backdrop that smoothly blurs content
-   underneath them. */
+/* Translucent UI (command palette & configuration windows with blur, solid status bar):
+   displays word count and note statistics in an opaque, bordered status bar (kept solid
+   for contrast - the blur is a visual no-op there), the command palette / quick switcher,
+   and all modal configuration windows (settings, plugin options, community browsers) with
+   a serene semi-transparent frosted-glass backdrop that smoothly blurs content underneath
+   them. Muted/faint text on the still-translucent surfaces (prompt placeholder and hints,
+   modal and setting descriptions) is bumped to the full foreground color so it keeps
+   WCAG AA contrast over any backdrop; the normal/emphasis text on those surfaces already
+   had enough margin without any change. */
 
 body.kanso-translucent-ui .status-bar {
   background-color: var(--kanso-bg1);
@@ -1302,6 +1306,9 @@ body.kanso-translucent-ui .prompt {
   backdrop-filter: blur(10px);
   border: 1px solid color-mix(in srgb, var(--kanso-bg3) 60%, transparent);
   box-shadow: 0 16px 36px var(--background-modifier-box-shadow);
+  --text-muted: var(--kanso-fg);
+  --text-faint: var(--kanso-fg);
+  --input-placeholder-color: var(--kanso-fg);
 }
 
 body.kanso-translucent-ui .prompt input.prompt-input {
@@ -1324,6 +1331,9 @@ body.kanso-translucent-ui .modal.mod-settings {
   --dropdown-background-hover: color-mix(in srgb, var(--kanso-bg2) 60%, transparent);
   --divider-color: color-mix(in srgb, var(--kanso-bg3) 60%, transparent);
   --background-modifier-border: color-mix(in srgb, var(--kanso-bg3) 60%, transparent);
+  --text-muted: var(--kanso-fg);
+  --text-faint: var(--kanso-fg);
+  --input-placeholder-color: var(--kanso-fg);
   background-color: color-mix(in srgb, var(--kanso-bg1) 75%, transparent);
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
