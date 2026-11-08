@@ -198,6 +198,20 @@ settings:
   --kanso-fg2: #f2f1ef;
   --kanso-muted: #717c7c;
   --kanso-muted-2: #909398;
+
+  /* With Translucent UI off, --text-faint (shared, unmixed, by --input-placeholder-color
+     and every plain --kanso-muted-colored UI text) measures below WCAG AA 4.5:1 for every
+     variant against that variant's settings-sidebar group titles on --kanso-bg1 - the
+     worst real surface it renders on - and Zen and Ink also miss it on --kanso-bg0 (the
+     search/command-palette placeholder); see the PR description for every measured
+     before/after ratio. Each variant below nudges its own --text-faint, independently of
+     this Zen default, instead of the shared --kanso-muted token itself, so borders, graph
+     nodes, and code comments keep their current color; the new value clears AA on both
+     surfaces while staying visibly dimmer than typed/title text. --kanso-muted-2
+     (--text-muted) already clears AA everywhere measured and is left untouched. With
+     Translucent UI on, the command palette and modal windows already set their own
+     brighter --text-faint locally, which wins there regardless of this value. */
+  --text-faint: #7c8888;
   --kanso-red: #c34043;
   --kanso-red-soft: #c4746e;
   --kanso-orange: #b6927b;
@@ -227,6 +241,7 @@ settings:
   --kanso-bg2: #22262d;
   --kanso-bg3: #393b44;
   --kanso-bg4: #4b4e57;
+  --text-faint: #7e8a8a;
 }
 
 .theme-dark.kanso-mist,
@@ -236,6 +251,7 @@ settings:
   --kanso-bg2: #393b44;
   --kanso-bg3: #5c6066;
   --kanso-bg4: #717c7c;
+  --text-faint: #899797;
 }
 
 .theme-dark.kanso-void,
@@ -245,6 +261,7 @@ settings:
   --kanso-bg2: #181b22;
   --kanso-bg3: #22262d;
   --kanso-bg4: #393b44;
+  --text-faint: #758080;
 }
 
 .theme-light:not(.kanso-zen):not(.kanso-ink):not(.kanso-mist):not(.kanso-void),
@@ -259,6 +276,7 @@ settings:
   --kanso-fg2: #43436c;
   --kanso-muted: #6d6d69;
   --kanso-muted-2: #5c6068;
+  --text-faint: #636360;
   --kanso-red: #c84053;
   --kanso-red-soft: #d7474b;
   --kanso-orange: #cc6d00;
