@@ -180,6 +180,10 @@ Requires Obsidian 1.5.8 or later, on desktop and mobile.
 
 Found a bug or have an idea? [Open an issue](https://github.com/friesentius/obsidian-kanso/issues).
 
+## Support
+
+If Kanso's useful to you, you can support its development on [Ko-fi](https://ko-fi.com/friesentius).
+
 ## License
 
 [MIT](LICENSE)
