@@ -1262,6 +1262,12 @@ li[data-task="?"] > p > input:checked::after {
    title bar faded out, leaving an empty strip above the tab bar, so it is
    now collapsed too, with the title bar's z-index raised to stay above the
    tab bar/content once hovering reveals it again over that reclaimed space.
+   Collapsing that band also means the title bar's own box - still
+   hit-testable and, in Obsidian-frame mode, still an OS drag region even
+   at opacity: 0 - now sits on top of the tab bar underneath it, so while
+   hidden it loses pointer-events entirely and reveals only through a thin
+   top-edge strip, the same technique used for the ribbon below, keeping
+   tabs, the + button, and the view actions clickable through it.
    (Native frame mode draws the real title bar outside the page entirely -
    no `.titlebar` element or reserved band exists there, so there is
    nothing to collapse or reveal.) The ribbon is a real flex-row column, so
@@ -1286,9 +1292,30 @@ li[data-task="?"] > p > input:checked::after {
     transition: opacity 0.15s ease;
   }
 
+  .kanso-focus-mode.is-frameless:not(.is-hidden-frameless) .titlebar {
+    pointer-events: none;
+  }
+
+  /* An invisible hit-strip at the title bar's own top edge, kept
+     interactive even while the title bar itself is pointer-events: none,
+     so hovering there still brings it back. */
+  .kanso-focus-mode.is-frameless:not(.is-hidden-frameless) .titlebar::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 6px;
+    pointer-events: auto;
+  }
+
   .kanso-focus-mode .titlebar:hover,
   .kanso-focus-mode .status-bar:hover {
     opacity: 1;
+  }
+
+  .kanso-focus-mode.is-frameless:not(.is-hidden-frameless) .titlebar:hover {
+    pointer-events: auto;
   }
 
   .kanso-focus-mode .workspace-ribbon {
