@@ -1251,24 +1251,112 @@ li[data-task="?"] > p > input:checked::after {
 }
 
 /* Focus mode (Style Settings toggle, off by default): hides the title bar,
-   status bar, and left ribbon for distraction-free writing. Each stays in
-   place and keeps its hit area, so hovering near its edge brings it back
-   without any layout shift or JavaScript. Gated on a hover-capable pointer
-   so touch devices, which have no way to trigger :hover, keep the ribbon
-   (and its access to Settings) always visible instead of getting stuck. */
+   status bar, and left ribbon for distraction-free writing, and hovering
+   near an edge brings each back without any JavaScript. The status bar is
+   already one of Obsidian's own fixed-position overlays, so hiding it costs
+   no layout space. The title bar is too, EXCEPT with a custom or native
+   title bar enabled (Settings > Interface > Window frame style), where
+   Obsidian reserves a var(--titlebar-height)-tall band above everything
+   else (`body.is-frameless:not(.is-hidden-frameless)` padding-top) to keep
+   it from overlapping the tab bar; that band stayed reserved even once the
+   title bar faded out, leaving an empty strip above the tab bar, so it is
+   now collapsed too, with the title bar's z-index raised to stay above the
+   tab bar/content once hovering reveals it again over that reclaimed space.
+   Collapsing that band also means the title bar's own box - still
+   hit-testable and, in Obsidian-frame mode, still an OS drag region even
+   at opacity: 0 - now sits on top of the tab bar underneath it, so while
+   hidden it loses pointer-events entirely and reveals only through a thin
+   top-edge strip, the same technique used for the ribbon below, keeping
+   tabs, the + button, and the view actions clickable through it.
+   (Native frame mode draws the real title bar outside the page entirely -
+   no `.titlebar` element or reserved band exists there, so there is
+   nothing to collapse or reveal.) The ribbon is a real flex-row column, so
+   merely hiding it left a dead strip of empty space and cut off any border
+   that used to run under it (the tab bar's bottom border, the view
+   header); it is now collapsed to zero width too, handing that space back
+   to the sidebar/content next to it, and reveals through a thin invisible
+   strip at its edge so hovering there still restores it (including its
+   Settings button) without any layout shift until that reveal happens.
+   Gated on a hover-capable pointer so touch devices, which have no way to
+   trigger :hover, keep all three always visible instead of getting stuck. */
 
 @media (hover: hover) {
+  .kanso-focus-mode.is-frameless:not(.is-hidden-frameless) {
+    padding-top: 0;
+  }
+
   .kanso-focus-mode .titlebar,
-  .kanso-focus-mode .status-bar,
-  .kanso-focus-mode .workspace-ribbon {
+  .kanso-focus-mode .status-bar {
+    z-index: 100;
     opacity: 0;
     transition: opacity 0.15s ease;
   }
 
+  .kanso-focus-mode.is-frameless:not(.is-hidden-frameless) .titlebar {
+    pointer-events: none;
+  }
+
+  /* An invisible hit-strip at the title bar's own top edge, kept
+     interactive even while the title bar itself is pointer-events: none,
+     so hovering there still brings it back. */
+  .kanso-focus-mode.is-frameless:not(.is-hidden-frameless) .titlebar::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 6px;
+    pointer-events: auto;
+  }
+
   .kanso-focus-mode .titlebar:hover,
-  .kanso-focus-mode .status-bar:hover,
-  .kanso-focus-mode .workspace-ribbon:hover {
+  .kanso-focus-mode .status-bar:hover {
     opacity: 1;
+  }
+
+  .kanso-focus-mode.is-frameless:not(.is-hidden-frameless) .titlebar:hover {
+    pointer-events: auto;
+  }
+
+  .kanso-focus-mode .workspace-ribbon {
+    position: relative;
+    z-index: 2;
+    margin-inline-end: -44px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.15s ease, margin-inline-end 0.15s ease;
+  }
+
+  /* A right-docked secondary ribbon sits after the content instead of
+     before it, so its own edge (and the space it gives back) is on the
+     opposite side. */
+  .kanso-focus-mode .workspace-ribbon:last-child {
+    margin-inline: -44px 0;
+  }
+
+  /* An invisible hit-strip at the ribbon's own edge, kept interactive even
+     while the ribbon itself is opacity: 0; pointer-events: none, so hover
+     can still be detected there to bring the ribbon back. */
+  .kanso-focus-mode .workspace-ribbon::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 10px;
+    pointer-events: auto;
+  }
+
+  .kanso-focus-mode .workspace-ribbon:last-child::after {
+    left: auto;
+    right: 0;
+  }
+
+  .kanso-focus-mode .workspace-ribbon:hover,
+  .kanso-focus-mode .workspace-ribbon:focus-within {
+    margin-inline: 0;
+    opacity: 1;
+    pointer-events: auto;
   }
 }
 
