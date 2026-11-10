@@ -1418,12 +1418,15 @@ div.kanban-plugin__lane-title-count.wip-exceeded {
 }
 
 /* Excalidraw plugin (zsviczian/obsidian-excalidraw-plugin): companion styling
-   supporting both of Excalidraw's internal canvas modes (Dark via .theme--dark
-   and Light via :not(.theme--dark)).
+   supporting both of Excalidraw's internal modes (Dark via .theme--dark and
+   Light via :not(.theme--dark)).
    Excalidraw renders its UI (toolbars, islands, dropdown menus, and bottom actions)
-   using CSS custom properties and surface tokens. Descendant rules override
-   these without !important to ensure high contrast, legible text, distinct
-   swatches, and crisp keybinding indicators (0, 1, 2...) in both modes.
+   using CSS custom properties and surface tokens written as an inline style on
+   the `.excalidraw` container. Descendant rules override these without !important
+   to ensure high contrast, legible text, distinct swatches, and crisp keybinding
+   indicators (0, 1, 2...) in both modes. The canvas itself cannot be reached from
+   CSS: it is painted by Excalidraw onto a <canvas> element using its own fixed
+   default dark/light canvas color when "Match Obsidian theme" is on.
    No-op without the plugin. */
 
 /* Excalidraw in Dark mode */
