@@ -1,6 +1,6 @@
 # Third-party licences
 
-Kanso's checkbox marker glyphs (`[x]`, `[-]`, `[>]`, `[<]`, `[!]`) are drawn using unmodified SVG paths from [Lucide](https://lucide.dev), copied exactly (same path data, stroke width scaled to match, round caps and joins kept as drawn): `check`, `x`, `send`, `timer`, and the stem-and-dot from `circle-alert` (used without its outer circle, since Kanso's own checkbox box is already that container). The `[?]` glyph is not from Lucide - it's Kanso's own original hand-drawn question mark (unchanged from 1.0.1), just rescaled to match the Lucide set's sizing.
+Kanso's checkbox marker glyphs (`[x]`, `[-]`, `[>]`, `[<]`, `[!]`) and file explorer folder icons are drawn using unmodified SVG paths from [Lucide](https://lucide.dev), copied exactly (same path data, stroke width scaled to match, round caps and joins kept as drawn): `check`, `x`, `send`, `timer`, the stem-and-dot from `circle-alert` (used without its outer circle, since Kanso's own checkbox box is already that container), and `folder` / `folder-open` (for collapsed and expanded folders). The `[?]` glyph is not from Lucide - it's Kanso's own original hand-drawn question mark (unchanged from 1.0.1), just rescaled to match the Lucide set's sizing.
 
 ## Lucide
 
