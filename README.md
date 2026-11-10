@@ -49,7 +49,7 @@ Kanso works without any plugins. With the Style Settings plugin installed, the *
 | Dim inactive panes | On, Off | Off |
 | Translucent UI | On, Off | Off |
 | Minimal mode | On, Off | Off |
-| Saturated foreground | On, Off | On |
+| Saturated foreground | On, Off | Off |
 | Custom accent color | Off, or a color picker | Off |
 | Body font | Default, Sans-serif, Serif | Default (Obsidian's text font setting) |
 | Heading font | Default, Sans-serif, Serif | Default (same as body) |
@@ -96,9 +96,9 @@ Ported from kanso.nvim's `dimInactive = true` option, this setting subtly reduce
 
 ## Translucent UI
 
-This setting applies a transparent frosted-glass backdrop with blur (`backdrop-filter: blur(10px)`) to key interface surfaces:
-- **Status bar:** Note word count, character count, and editor statistics float above scrolling notes and Canvas elements, with content smoothly blurred through the bar.
-- **Command palette:** The command palette (`Ctrl+P` / `Cmd+P`) and quick switcher open with a serene frosted-glass panel that blurs underlying notes while keeping commands and results crisply readable.
+This setting applies a semi-transparent frosted-glass backdrop with blur (`backdrop-filter: blur(10px)`) to key interface surfaces:
+- **Status bar:** Stays fully opaque for readability over any content behind it, while keeping the frosted-glass border and shadow that mark it as part of the translucent UI.
+- **Command palette & prompts:** The command palette (`Ctrl+P` / `Cmd+P`), quick switcher (`Ctrl+O` / `Cmd+O`), and all command-palette-style prompt overlays open with a serene frosted-glass panel that blurs underlying notes while keeping commands and results crisply readable.
 - **Configuration windows:** The Settings dialog (`Ctrl+,` / `Cmd+,`), plugin options, community plugins/themes browsers, and all modal configuration windows adopt the translucent frosted-glass styling across sidebars, setting groups, and dialog containers.
 
 Off by default. With the Style Settings plugin installed, turn on **Translucent UI** to enable it.
@@ -129,7 +129,7 @@ Ported from kanso.nvim's `minimal = true` option, Minimal mode subdues color var
 
 ## Saturated foreground
 
-Ported from kanso.nvim's `foreground = "saturated"` option, this setting enhances the saturation and vibrancy of syntax highlighting colors, headings, and tags (+20% in dark mode and +40% in Pearl/light mode). It only affects foreground accents while leaving UI backgrounds and structural layout completely calm.
+Ported from kanso.nvim's `foreground = "saturated"` option, this setting enhances the saturation and vibrancy of syntax highlighting colors, headings, and tags (+20% in dark mode and +40% in Pearl/light mode). It is off by default and only affects foreground accents when enabled, leaving UI backgrounds and structural layout completely calm.
 
 ## Graph view
 
@@ -172,13 +172,17 @@ Requires Obsidian 1.5.8 or later, on desktop and mobile.
 
 - Colors from [kanso.nvim](https://github.com/webhooked/kanso.nvim) by webhooked.
 - The idea of styling alternate checkbox markers, and of a paper airplane for forwarded, comes from [obsidian-things](https://github.com/colineckert/obsidian-things) (MIT), which credits kepano's [Minimal theme](https://minimal.guide/Block+types/Checklists#Checkbox+styling). Kanso's own selectors and colors are an independent implementation.
-- Checkbox marker icons from [Lucide](https://lucide.dev) (ISC licence; `check` and `x` are Feather-derived icons bundled in Lucide under the MIT licence), except the question-mark glyph, which is Kanso's own original hand-drawn icon from 1.0.1. See [THIRD_PARTY_LICENSES.md](THIRD_PARTY_LICENSES.md) for the full notices.
+- Checkbox marker and folder icons from [Lucide](https://lucide.dev) (ISC licence; `check` and `x` are Feather-derived icons bundled in Lucide under the MIT licence), except the question-mark glyph, which is Kanso's own original hand-drawn icon from 1.0.1. See [THIRD_PARTY_LICENSES.md](THIRD_PARTY_LICENSES.md) for the full notices.
 - The idea of a focus mode that hides the title bar, status bar, and ribbon comes from kepano's [Minimal theme](https://github.com/kepano/obsidian-minimal) (MIT). Kanso's CSS is an independent implementation.
 - The idea of click-and-hold image zoom comes from kepano's [Minimal theme](https://github.com/kepano/obsidian-minimal) (MIT). Kanso's CSS is an independent implementation.
 
 ## Feedback
 
 Found a bug or have an idea? [Open an issue](https://github.com/friesentius/obsidian-kanso/issues).
+
+## Support
+
+If Kanso's useful to you, you can support its development on [Ko-fi](https://ko-fi.com/friesentius).
 
 ## License
 
